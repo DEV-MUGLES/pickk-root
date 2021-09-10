@@ -15,8 +15,8 @@ import { APOLLO_STATE_PROP_NAME } from './apollo.constants';
 
 let apolloClient: ApolloClient<unknown>;
 
-if (!process.env.API_URL) {
-  throw new Error('env.API_URL not found!');
+if (!process.env.NEXT_PUBLIC_API_URL) {
+  throw new Error('env.NEXT_PUBLIC_API_URL not found!');
 }
 
 const authMiddleware = (req?: IncomingMessage) =>
@@ -33,7 +33,7 @@ const authMiddleware = (req?: IncomingMessage) =>
 
 export function createApolloClient(req?: IncomingMessage) {
   return new ApolloClient({
-    uri: process.env.API_URL + '/graphql',
+    uri: process.env.NEXT_PUBLIC_API_URL + '/graphql',
     ssrMode: typeof window === 'undefined',
     link: from([authMiddleware(req)]),
     cache: new InMemoryCache(),

@@ -52,7 +52,7 @@ vercel env pull
 다음 내용의 `.env` 파일을 생성해주세요!
 
 ```sh
-API_URL="YOUR_API_URL"
+NEXT_PUBLIC_API_URL="YOUR_API_URL"
 ```
 
 ### 5. 실행 🏃
