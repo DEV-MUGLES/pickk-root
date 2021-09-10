@@ -20,7 +20,7 @@ cd pickk-root
 2. Choose "Select TypeScript Version"
 3. Pick "Use Workspace Version"
 
-### 3. 의존성 설치
+### 3. 의존성 설치 📦
 
 [Yarn Berry](https://yarnpkg.com/getting-started)를 사용합니다!
 
@@ -35,7 +35,27 @@ yarn -v
 yarn install
 ```
 
-### 4. 실행 🏃
+### 4. 환경 변수 설정 🔧
+
+**1. DEV-MUGLES 멤버라면**
+
+```sh
+# DEV-MUGLES pickk-root 프로젝트에 연결합니다.
+vercel link
+
+# development 환경 변수들을 가져옵니다.
+vercel env pull
+```
+
+**2. 이방인이라면**
+
+다음 내용의 `.env` 파일을 생성해주세요!
+
+```sh
+API_URL="YOUR_API_URL"
+```
+
+### 5. 실행 🏃
 
 ```shell
 # 개발 서버 실행
