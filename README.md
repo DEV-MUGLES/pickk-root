@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PICKK 관리자 어드민 어플리케이션 ✨
 
-## Getting Started
+> 옷 잘 입는 형들의 선택, PICKK
 
-First, run the development server:
+Next.js, Apollo Client, Emotion, Yarn Berry를 사용했어요!
 
-```bash
-npm run dev
-# or
-yarn dev
+## 🙋 시작해볼까요?
+
+### 1. 저장소를 기기에 Clone합니다.
+
+```shell
+git clone https://github.com/DEV-MUGLES/pickk-root.git
+
+cd pickk-root
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. (VSCode 사용자라면) Custon TS setting을 해주세요
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Press ctrl+shift+p in a TypeScript file
+2. Choose "Select TypeScript Version"
+3. Pick "Use Workspace Version"
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 3. 의존성 설치
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+[Yarn Berry](https://yarnpkg.com/getting-started)를 사용합니다!
 
-## Learn More
+```shell
+# 이미 설치했다면 스킵!
+npm i -g yarn
 
-To learn more about Next.js, take a look at the following resources:
+# yarn version 확인 (2 이상이어야합니다)
+yarn -v
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 설치~
+yarn install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 4. 실행 🏃
 
-## Deploy on Vercel
+```shell
+# 개발 서버 실행
+yarn dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 빌드 (lint, 타입체크를 포함합니다.)
+yarn build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# 프로덕션 모드로 실행
+yarn start
+```
