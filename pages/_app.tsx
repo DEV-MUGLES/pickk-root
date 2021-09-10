@@ -34,7 +34,7 @@ AdminApp.getInitialProps = async (appContext: AppContext) => {
       throw new Error('권한 없음');
     }
 
-    return { ...appProps };
+    return { ...appProps, pageProps: { ...appProps.pageProps, me } };
   } catch {
     const { ctx } = appContext;
 
@@ -48,6 +48,8 @@ AdminApp.getInitialProps = async (appContext: AppContext) => {
 const GET_ME = gql`
   query me {
     me {
+      id
+      nickname
       role
     }
   }
