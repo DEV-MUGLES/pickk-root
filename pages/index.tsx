@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { User } from '@pickk/common';
 
+import { useRefreshJwtToken } from '@common/hooks';
+
 export type HomePageProps = {
   me?: User;
 };
 
 export default function HomePage({ me }: HomePageProps) {
+  useRefreshJwtToken();
+
   return (
     <div>
       <h1>
