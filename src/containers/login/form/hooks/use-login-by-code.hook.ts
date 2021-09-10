@@ -1,8 +1,6 @@
 import { gql } from '@apollo/client';
 import { JwtToken, LoginByCodeInput, useImperativeQuery } from '@pickk/common';
 
-import { setCookie } from '@common/helpers';
-
 const LOGIN_BY_CODE = gql`
   query loginByCode($code: String!, $password: String!) {
     loginByCode(
