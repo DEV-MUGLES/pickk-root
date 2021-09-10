@@ -22,7 +22,9 @@ export default function ImagesUploadContainer() {
       setUploading(true);
       const files = Array.from<File>(e.target.files);
       const urls = await uploadImages(files);
-      setImageUrls(urls);
+      if (urls) {
+        setImageUrls(urls);
+      }
     } catch {
       alert(
         '이미지 업로드에 실패했습니다!\n너무 큰 용량이 원인일 수 있습니다. (1번에 총 128MB까지 업로드 가능)'
