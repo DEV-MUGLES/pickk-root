@@ -38,6 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
             ["@types/node", "npm:16.9.1"],
             ["@types/react", "npm:17.0.20"],
+            ["babel-plugin-module-resolver", "npm:4.1.0"],
             ["deepmerge", "npm:4.2.2"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
@@ -1018,6 +1019,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/axobject-query-npm-2.2.0-6553738f52-96b8c7d807.zip/node_modules/axobject-query/",
           "packageDependencies": [
             ["axobject-query", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["babel-plugin-module-resolver", [
+        ["npm:4.1.0", {
+          "packageLocation": "./.yarn/cache/babel-plugin-module-resolver-npm-4.1.0-0510da8f92-3907fba21c.zip/node_modules/babel-plugin-module-resolver/",
+          "packageDependencies": [
+            ["babel-plugin-module-resolver", "npm:4.1.0"],
+            ["find-babel-config", "npm:1.2.0"],
+            ["glob", "npm:7.1.7"],
+            ["pkg-up", "npm:3.1.0"],
+            ["reselect", "npm:4.0.0"],
+            ["resolve", "patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=00b1ff"]
           ],
           "linkType": "HARD",
         }]
@@ -2480,6 +2495,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["find-babel-config", [
+        ["npm:1.2.0", {
+          "packageLocation": "./.yarn/cache/find-babel-config-npm-1.2.0-428bef14f2-0a1785d3da.zip/node_modules/find-babel-config/",
+          "packageDependencies": [
+            ["find-babel-config", "npm:1.2.0"],
+            ["json5", "npm:0.5.1"],
+            ["path-exists", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["find-cache-dir", [
         ["npm:3.3.1", {
           "packageLocation": "./.yarn/cache/find-cache-dir-npm-3.3.1-66916b4b23-0f7c22b65e.zip/node_modules/find-cache-dir/",
@@ -3461,6 +3487,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/locate-path-npm-3.0.0-991671ae9f-53db399667.zip/node_modules/locate-path/",
+          "packageDependencies": [
+            ["locate-path", "npm:3.0.0"],
+            ["p-locate", "npm:3.0.0"],
+            ["path-exists", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:5.0.0", {
           "packageLocation": "./.yarn/cache/locate-path-npm-5.0.0-46580c43e4-83e51725e6.zip/node_modules/locate-path/",
           "packageDependencies": [
@@ -4185,6 +4220,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/p-locate-npm-3.0.0-74de74f952-83991734a9.zip/node_modules/p-locate/",
+          "packageDependencies": [
+            ["p-locate", "npm:3.0.0"],
+            ["p-limit", "npm:2.3.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:4.1.0", {
           "packageLocation": "./.yarn/cache/p-locate-npm-4.1.0-eec6872537-513bd14a45.zip/node_modules/p-locate/",
           "packageDependencies": [
@@ -4362,6 +4405,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
             ["@types/node", "npm:16.9.1"],
             ["@types/react", "npm:17.0.20"],
+            ["babel-plugin-module-resolver", "npm:4.1.0"],
             ["deepmerge", "npm:4.2.2"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
@@ -4417,6 +4461,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["pkg-up", "npm:2.0.0"],
             ["find-up", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.1.0", {
+          "packageLocation": "./.yarn/cache/pkg-up-npm-3.1.0-1eebe033b7-5bac346b7c.zip/node_modules/pkg-up/",
+          "packageDependencies": [
+            ["pkg-up", "npm:3.1.0"],
+            ["find-up", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
