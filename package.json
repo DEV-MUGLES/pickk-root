@@ -14,6 +14,7 @@
     "@pickk/common": "1.7.34",
     "@pickk/design-token": "^0.0.6",
     "axios": "^0.21.4",
+    "dayjs": "^1.10.7",
     "deepmerge": "^4.2.2",
     "graphql": "^15.5.3",
     "js-cookie": "^3.0.1",

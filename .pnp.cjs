@@ -44,6 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:17.0.20"],
             ["axios", "npm:0.21.4"],
             ["babel-plugin-module-resolver", "npm:4.1.0"],
+            ["dayjs", "npm:1.10.7"],
             ["deepmerge", "npm:4.2.2"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
@@ -1772,6 +1773,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/data-uri-to-buffer-npm-3.0.1-830646f9ee-c59c300968.zip/node_modules/data-uri-to-buffer/",
           "packageDependencies": [
             ["data-uri-to-buffer", "npm:3.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["dayjs", [
+        ["npm:1.10.7", {
+          "packageLocation": "./.yarn/cache/dayjs-npm-1.10.7-34318a8e39-a0a4ca95ab.zip/node_modules/dayjs/",
+          "packageDependencies": [
+            ["dayjs", "npm:1.10.7"]
           ],
           "linkType": "HARD",
         }]
@@ -4578,6 +4588,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:17.0.20"],
             ["axios", "npm:0.21.4"],
             ["babel-plugin-module-resolver", "npm:4.1.0"],
+            ["dayjs", "npm:1.10.7"],
             ["deepmerge", "npm:4.2.2"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
