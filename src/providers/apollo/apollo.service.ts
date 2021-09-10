@@ -1,7 +1,5 @@
 import {
   ApolloClient,
-  ApolloLink,
-  from,
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
@@ -19,24 +17,20 @@ if (!process.env.NEXT_PUBLIC_API_URL) {
   throw new Error('env.NEXT_PUBLIC_API_URL not found!');
 }
 
-const authMiddleware = (req?: IncomingMessage) =>
-  new ApolloLink((operation, forward) => {
-    const token = getCookie('accessToken', req);
-    operation.setContext({
-      headers: {
-        Authorization: token ? `Bearer ${token}` : null,
-      },
-    });
+const getHeaders = (req?: IncomingMessage) => {
+  const token = getCookie('accessToken', req);
 
-    return forward(operation);
-  });
+  return {
+    Authorization: token ? `Bearer ${token}` : '',
+  };
+};
 
 export function createApolloClient(req?: IncomingMessage) {
   return new ApolloClient({
     uri: process.env.NEXT_PUBLIC_API_URL + '/graphql',
     ssrMode: typeof window === 'undefined',
-    link: from([authMiddleware(req)]),
     cache: new InMemoryCache(),
+    headers: getHeaders(req),
   });
 }
 
