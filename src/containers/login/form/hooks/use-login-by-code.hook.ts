@@ -16,19 +16,18 @@ const LOGIN_BY_CODE = gql`
 
 export const useLoginByCode = () => {
   const loginByCode = useImperativeQuery<
-    JwtToken,
+    { loginByCode: JwtToken },
     Pick<LoginByCodeInput, 'code' | 'password'>
   >(LOGIN_BY_CODE);
 
   const login = async (
     input: Pick<LoginByCodeInput, 'code' | 'password'>
   ): Promise<JwtToken> => {
-    const { data: jwtToken } = await loginByCode(input);
+    const {
+      data: { loginByCode: jwtToken },
+    } = await loginByCode(input);
 
     return jwtToken;
-
-    setCookie('accessToken', jwtToken.access);
-    setCookie('refreshToken', jwtToken.refresh);
   };
 
   return { login };
