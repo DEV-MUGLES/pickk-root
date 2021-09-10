@@ -29,5 +29,8 @@ jobs:
       - name: Install project dependencies
         run: yarn install
 
-      - name: Type Check + Lint + Build
-        run: yarn build
+      - name: Type Check
+        run: yarn type-check
+
+      - name: Lint Check
+        run: yarn lint
