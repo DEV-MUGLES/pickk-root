@@ -35,6 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["@types/node", "npm:16.9.1"],
             ["@types/react", "npm:17.0.20"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
@@ -4198,6 +4199,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["pickk-root", "workspace:."],
+            ["@types/node", "npm:16.9.1"],
             ["@types/react", "npm:17.0.20"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
