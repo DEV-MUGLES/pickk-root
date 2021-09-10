@@ -2245,6 +2245,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"graphql@npm:^15.5.3":
+  version: 15.5.3
+  resolution: "graphql@npm:15.5.3"
+  checksum: 0d507c7fdc1fd42b012827440473bb92b61cf3327f1ef837241c9344e87d2c8bcd400ae3f7acbfd20837e4aa90a31075b9f6d3abb0cc4dacad417bbb1306b89b
+  languageName: node
+  linkType: hard
+
 "has-bigints@npm:^1.0.1":
   version: 1.0.1
   resolution: "has-bigints@npm:1.0.1"
@@ -3750,6 +3757,7 @@ fsevents@~2.3.1:
     deepmerge: ^4.2.2
     eslint: 7.32.0
     eslint-config-next: 11.1.2
+    graphql: ^15.5.3
     js-cookie: ^3.0.1
     lodash: ^4.17.21
     next: 11.1.2

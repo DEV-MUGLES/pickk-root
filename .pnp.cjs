@@ -44,6 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deepmerge", "npm:4.2.2"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
+            ["graphql", "npm:15.5.3"],
             ["js-cookie", "npm:3.0.1"],
             ["lodash", "npm:4.17.21"],
             ["next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
@@ -74,7 +75,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@wry/context", "npm:0.6.1"],
             ["@wry/equality", "npm:0.5.2"],
             ["@wry/trie", "npm:0.3.1"],
-            ["graphql", null],
+            ["graphql", "npm:15.5.3"],
             ["graphql-tag", "virtual:afea36a93ca8afbf93ffc8658a4ecdb89860977a7212c7d9d37718f53b8bdce50fb73cbaeaff2a892c44eff139d288cf967f2b3d87188df427d96745d2970bc2#npm:2.12.5"],
             ["hoist-non-react-statics", "npm:3.3.2"],
             ["optimism", "npm:0.16.1"],
@@ -240,7 +241,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@graphql-typed-document-node/core", "virtual:afea36a93ca8afbf93ffc8658a4ecdb89860977a7212c7d9d37718f53b8bdce50fb73cbaeaff2a892c44eff139d288cf967f2b3d87188df427d96745d2970bc2#npm:3.1.0"],
             ["@types/graphql", null],
-            ["graphql", null]
+            ["graphql", "npm:15.5.3"]
           ],
           "packagePeers": [
             "@types/graphql",
@@ -2760,6 +2761,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["graphql", [
+        ["npm:15.5.3", {
+          "packageLocation": "./.yarn/cache/graphql-npm-15.5.3-4d1d33e89e-0d507c7fdc.zip/node_modules/graphql/",
+          "packageDependencies": [
+            ["graphql", "npm:15.5.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["graphql-tag", [
         ["npm:2.12.5", {
           "packageLocation": "./.yarn/cache/graphql-tag-npm-2.12.5-2219ffa124-7afe8b0a26.zip/node_modules/graphql-tag/",
@@ -2773,7 +2783,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["graphql-tag", "virtual:afea36a93ca8afbf93ffc8658a4ecdb89860977a7212c7d9d37718f53b8bdce50fb73cbaeaff2a892c44eff139d288cf967f2b3d87188df427d96745d2970bc2#npm:2.12.5"],
             ["@types/graphql", null],
-            ["graphql", null],
+            ["graphql", "npm:15.5.3"],
             ["tslib", "npm:2.3.1"]
           ],
           "packagePeers": [
@@ -4456,6 +4466,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deepmerge", "npm:4.2.2"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
+            ["graphql", "npm:15.5.3"],
             ["js-cookie", "npm:3.0.1"],
             ["lodash", "npm:4.17.21"],
             ["next", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:11.1.2"],
