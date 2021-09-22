@@ -13,7 +13,7 @@ const LOGIN_BY_CODE = gql`
 `;
 
 export const useLoginByCode = () => {
-  const loginByCode = useImperativeQuery<
+  const { callQuery: loginByCode } = useImperativeQuery<
     { loginByCode: JwtToken },
     Pick<LoginByCodeInput, 'code' | 'password'>
   >(LOGIN_BY_CODE);

@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
-            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.7.34"],
+            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.3"],
             ["@pickk/design-token", "npm:0.0.6"],
             ["@types/js-cookie", "npm:2.2.7"],
             ["@types/lodash", "npm:4.14.172"],
@@ -677,17 +677,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@pickk/common", [
-        ["npm:1.7.34", {
-          "packageLocation": "./.yarn/cache/@pickk-common-npm-1.7.34-3d3c56d748-f81b3fcc1b.zip/node_modules/@pickk/common/",
+        ["npm:1.9.3", {
+          "packageLocation": "./.yarn/cache/@pickk-common-npm-1.9.3-6582c898f2-c78d9707a9.zip/node_modules/@pickk/common/",
           "packageDependencies": [
-            ["@pickk/common", "npm:1.7.34"]
+            ["@pickk/common", "npm:1.9.3"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.7.34", {
-          "packageLocation": "./.yarn/__virtual__/@pickk-common-virtual-4bb64e63d1/0/cache/@pickk-common-npm-1.7.34-3d3c56d748-f81b3fcc1b.zip/node_modules/@pickk/common/",
+        ["virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.3", {
+          "packageLocation": "./.yarn/__virtual__/@pickk-common-virtual-628b1a712d/0/cache/@pickk-common-npm-1.9.3-6582c898f2-c78d9707a9.zip/node_modules/@pickk/common/",
           "packageDependencies": [
-            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.7.34"],
+            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.3"],
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
             ["@types/apollo__client", null],
             ["@types/graphql", null],
@@ -4873,7 +4873,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["pickk-root", "workspace:."],
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
-            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.7.34"],
+            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.3"],
             ["@pickk/design-token", "npm:0.0.6"],
             ["@types/js-cookie", "npm:2.2.7"],
             ["@types/lodash", "npm:4.14.172"],
