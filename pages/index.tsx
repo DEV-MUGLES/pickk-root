@@ -1,7 +1,13 @@
 import Link from 'next/link';
+import styled from 'styled-components';
 import { User } from '@pickk/common';
 
 import { useRefreshJwtToken } from '@common/hooks';
+
+const StyledMenuWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export type HomePageProps = {
   me?: User;
@@ -15,7 +21,10 @@ export default function HomePage({ me }: HomePageProps) {
       <h1>
         {me.nickname}님 안녕하세요! {getRandomMessage()}
       </h1>
-      <Link href="/images-upload">이미지업로드하러가기</Link>
+      <StyledMenuWrapper>
+        <Link href="/images-upload">🖼이미지업로드하러가기</Link>
+        <Link href="/inquiries">💬문의내역확인ㄱㄱ</Link>
+      </StyledMenuWrapper>
     </div>
   );
 }
