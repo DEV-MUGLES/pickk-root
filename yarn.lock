@@ -21,7 +21,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/icons@npm:^4.6.3":
+"@ant-design/icons@npm:^4.6.3, @ant-design/icons@npm:^4.7.0":
   version: 4.7.0
   resolution: "@ant-design/icons@npm:4.7.0"
   dependencies:
@@ -4244,6 +4244,7 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "pickk-root@workspace:."
   dependencies:
+    "@ant-design/icons": ^4.7.0
     "@apollo/client": ^3.4.10
     "@pickk/common": 1.9.3
     "@pickk/design-token": ^0.0.6

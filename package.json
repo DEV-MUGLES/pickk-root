@@ -10,6 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@apollo/client": "^3.4.10",
     "@pickk/common": "1.9.3",
     "@pickk/design-token": "^0.0.6",
