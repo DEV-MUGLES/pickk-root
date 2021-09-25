@@ -56,7 +56,7 @@ export type InquiryDataType = Pick<
 > & {
   item: Pick<Item, 'id' | 'name' | 'imageUrl'>;
   user: Pick<User, 'id' | 'nickname'>;
-  answers: Pick<InquiryAnswer, 'id' | 'content' | 'displayAuthor'>;
+  answers: Pick<InquiryAnswer, 'id' | 'content' | 'displayAuthor'>[];
 };
 
 export const useInquiries: BoardTemplateProps['useBoardData'] = ({
