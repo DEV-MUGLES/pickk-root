@@ -1,5 +1,6 @@
 import App, { AppContext, AppProps } from 'next/app';
 import { ApolloProvider, gql } from '@apollo/client';
+import 'antd/dist/antd.css';
 import { UserRole } from '@pickk/common';
 
 import { createApolloClient, useApolloClient } from '@providers/apollo';
