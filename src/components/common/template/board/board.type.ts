@@ -10,9 +10,13 @@ export type BoardDataFetcher<
   refetch: () => Promise<void>;
 };
 
-export type BoardTemplateProps = Pick<PageHeaderProps, 'title' | 'subTitle'> & {
+export type BoardTemplateProps<DataT = any> = Pick<
+  PageHeaderProps,
+  'title' | 'subTitle'
+> & {
   useBoardData: BoardDataFetcher;
-  tableColumns: ColumnsType<any>;
+  tableColumns: ColumnsType<DataT>;
+  onRowClick?: (record: DataT) => void;
   filter?: Record<string, unknown>;
   filterInputs?: any; // @TODO
 };

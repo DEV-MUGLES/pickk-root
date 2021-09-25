@@ -35,7 +35,14 @@ const StyledTableTitleWrapper = styled.div`
 const PAGE_SIZE = 20;
 
 export default function BoardTemplate(props: BoardTemplateProps) {
-  const { title, subTitle, useBoardData, tableColumns, filter = {} } = props;
+  const {
+    title,
+    subTitle,
+    useBoardData,
+    tableColumns,
+    filter = {},
+    onRowClick = () => null,
+  } = props;
 
   const router = useRouter();
 
@@ -73,6 +80,11 @@ export default function BoardTemplate(props: BoardTemplateProps) {
         columns={tableColumns}
         pagination={{ position: ['bottomCenter'], pageSize: PAGE_SIZE }}
         scroll={{ x: true }}
+        onRow={(record) => {
+          return {
+            onClick: () => onRowClick(record),
+          };
+        }}
       />
     </StyledWrapper>
   );
