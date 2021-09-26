@@ -1,12 +1,11 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { PageHeader, Table, Typography, Button } from 'antd';
-import { ReloadOutlined } from '@ant-design/icons';
+import { PageHeader } from 'antd';
 import { palette } from '@pickk/design-token';
 
-import { BoardTemplateProps } from './board.type';
+import { BoardTable } from '@components/common/organisms';
 
-const { Title } = Typography;
+import { BoardTemplateProps } from './board.type';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -23,16 +22,6 @@ const StyledPageHeader = styled(PageHeader)`
 
   background-color: ${palette.white};
 `;
-
-const StyledTableTitleWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  padding: 6px 16px;
-`;
-
-const PAGE_SIZE = 20;
 
 export default function BoardTemplate(props: BoardTemplateProps) {
   const {
@@ -63,28 +52,13 @@ export default function BoardTemplate(props: BoardTemplateProps) {
         subTitle={subTitle}
         onBack={handleBackClick}
       />
-      <Table
-        size="small"
-        title={() => (
-          <StyledTableTitleWrapper>
-            <Title level={5}>
-              {title} 목록 (총 {data.length} 개)
-            </Title>
-            <Button onClick={refetch} icon={<ReloadOutlined />}>
-              새로고침
-            </Button>
-          </StyledTableTitleWrapper>
-        )}
+      <BoardTable
+        title={title}
         dataSource={data}
         loading={loading}
         columns={tableColumns}
-        pagination={{ position: ['bottomCenter'], pageSize: PAGE_SIZE }}
-        scroll={{ x: true }}
-        onRow={(record) => {
-          return {
-            onClick: () => onRowClick(record),
-          };
-        }}
+        onRefreshClick={refetch}
+        onRowClick={onRowClick}
       />
     </StyledWrapper>
   );
