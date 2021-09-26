@@ -1,13 +1,23 @@
 import { ChangeEvent, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Modal, Alert, Input, Typography, message } from 'antd';
+import { InquiryAnswer } from '@pickk/common';
 
 import { useMe } from '@common/hooks';
+
+import AnswerList from './answer-list';
 
 import { useAnswerInquiry } from './hooks';
 
 const { Text } = Typography;
 const { TextArea } = Input;
+
+const StyledAlert = styled(Alert).attrs({
+  showIcon: true,
+  type: 'warning',
+})`
+  margin-top: 1.6rem;
+`;
 
 const StyledRow = styled.div`
   display: flex;
@@ -26,11 +36,14 @@ export type InquiryAnswerModalProps = {
   visible: boolean;
   onClose: () => void;
   inquiryId: number;
-  answerCount?: number;
+  answers?: Pick<
+    InquiryAnswer,
+    'id' | 'content' | 'displayAuthor' | 'createdAt'
+  >[];
 };
 
 export default function InquiryAnswerModal(props: InquiryAnswerModalProps) {
-  const { visible, onClose, inquiryId, answerCount = 0 } = props;
+  const { visible, onClose, inquiryId, answers = [] } = props;
 
   const [content, setContent] = useState('');
   const [displayAuthor, setDisplayAuthor] = useState('');
@@ -79,14 +92,6 @@ export default function InquiryAnswerModal(props: InquiryAnswerModalProps) {
 
   return (
     <Modal visible={visible} onOk={answer} onCancel={onClose} title="답변달기">
-      {answerCount > 0 && (
-        <Alert
-          showIcon
-          message={`기존 답변에 추가적인 답변으로 등록됩니다. (이미 존재하는 답변 개수: ${answerCount})`}
-          type="warning"
-          style={{ marginBottom: '1.6rem' }}
-        />
-      )}
       <TextArea value={content} onChange={handleContentChange} />
       <StyledRow>
         <Text>담당자명: </Text>
@@ -95,6 +100,10 @@ export default function InquiryAnswerModal(props: InquiryAnswerModalProps) {
           onChange={handleDisplayAuthorChange}
         />
       </StyledRow>
+      <StyledAlert
+        message={`기존 답변에 추가적인 답변으로 등록됩니다. (이미 등록된 답변 개수: ${answers.length})`}
+      />
+      <AnswerList answers={answers} />
     </Modal>
   );
 }
