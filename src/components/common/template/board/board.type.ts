@@ -1,4 +1,3 @@
-import { PageHeaderProps } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
 export type BoardDataFetcher<
@@ -10,10 +9,9 @@ export type BoardDataFetcher<
   refetch: () => Promise<void>;
 };
 
-export type BoardTemplateProps<DataT = any> = Pick<
-  PageHeaderProps,
-  'title' | 'subTitle'
-> & {
+export type BoardTemplateProps<DataT = any> = {
+  title: string;
+  subTitle: string;
   useBoardData: BoardDataFetcher;
   tableColumns: ColumnsType<DataT>;
   onRowClick?: (record: DataT) => void;
