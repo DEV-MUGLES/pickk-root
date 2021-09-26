@@ -37,6 +37,7 @@ const GET_ROOT_INQUIRIES = gql`
         id
         content
         displayAuthor
+        createdAt
       }
     }
   }
@@ -56,7 +57,10 @@ export type InquiryDataType = Pick<
 > & {
   item: Pick<Item, 'id' | 'name' | 'imageUrl'>;
   user: Pick<User, 'id' | 'nickname'>;
-  answers: Pick<InquiryAnswer, 'id' | 'content' | 'displayAuthor'>[];
+  answers: Pick<
+    InquiryAnswer,
+    'id' | 'content' | 'displayAuthor' | 'createdAt'
+  >[];
 };
 
 export const useInquiries: BoardTemplateProps['useBoardData'] = ({

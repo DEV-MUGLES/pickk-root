@@ -12,6 +12,7 @@ const ANSWER_INQUIRY = gql`
         id
         content
         displayAuthor
+        createdAt
       }
     }
   }
