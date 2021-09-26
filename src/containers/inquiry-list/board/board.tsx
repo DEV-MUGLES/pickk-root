@@ -44,6 +44,9 @@ export default function InquiryListBoardContainer() {
         subTitle="문의내역입니다."
         useBoardData={useInquiries}
         tableColumns={newInquiriesColumns}
+        onRowClick={(record) => {
+          window.open(`/inquiries/${record.id}`, '_ blank');
+        }}
       />
       {!!selectedRecord && isModalVisible && (
         <InquiryAnswerModal
