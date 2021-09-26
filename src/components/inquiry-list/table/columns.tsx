@@ -19,7 +19,7 @@ export const inquiriesColumns: ColumnsType<InquiryDataType> = [
     title: '답변여부',
     dataIndex: 'isAnswered',
     key: 'isAnswered',
-    render: (value) => (value ? '답변완료' : '미답변'),
+    render: (value) => (value ? '✅' : '❌'),
     width: 60,
     ellipsis: true,
     align: 'center',
