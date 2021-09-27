@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { PageHeader } from 'antd';
 import { palette } from '@pickk/design-token';
 
-import { BoardTable } from '@components/common/organisms';
+import { BoardFilter, BoardTable } from '@components/common/organisms';
 
 import { BoardTemplateProps } from './board.type';
 
@@ -29,11 +30,14 @@ export default function BoardTemplate(props: BoardTemplateProps) {
     subTitle,
     useBoardData,
     tableColumns,
-    filter = {},
+    defaultFilter,
+    filterInputs,
     onRowClick = () => null,
   } = props;
 
   const router = useRouter();
+
+  const [filter, setFilter] = useState<Record<string, unknown>>(defaultFilter);
 
   const { data = [], loading, refetch } = useBoardData({ filter });
 
@@ -52,6 +56,13 @@ export default function BoardTemplate(props: BoardTemplateProps) {
         subTitle={subTitle}
         onBack={handleBackClick}
       />
+      {!!filterInputs && (
+        <BoardFilter
+          defaultFilter={filter}
+          onFilterChange={setFilter}
+          inputs={filterInputs}
+        />
+      )}
       <BoardTable
         title={title}
         dataSource={data}
