@@ -9,7 +9,7 @@ import {
 } from '@src/common/helpers';
 import { OrderItemDataType } from '@containers/order-item-list/board/hooks';
 
-export const orderItemsColumns: ColumnsType<OrderItemDataType> = [
+export const orderItemsTableColumns: ColumnsType<OrderItemDataType> = [
   {
     title: '주문상품번호',
     dataIndex: 'merchantUid',
