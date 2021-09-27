@@ -48,7 +48,7 @@ export default function InquiryAnswerModalAnswerList({
       <StyledAnswerCard key={id}>
         <Text>{content}</Text>
         <StyledText>
-          {displayAuthor} {getCreatedAtText(createdAt)}
+          {getCreatedAtText(createdAt)} {displayAuthor}
         </StyledText>
       </StyledAnswerCard>
     ));
