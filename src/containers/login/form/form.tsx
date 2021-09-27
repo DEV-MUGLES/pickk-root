@@ -27,11 +27,15 @@ export default function LoginFormContainer() {
     );
   };
 
+  const redirect = () => {
+    router.push(router.query?.to?.toString() ?? '/');
+  };
+
   const handleSubmit = async () => {
     try {
       await submit();
       alert('성공~');
-      router.push('/');
+      redirect();
     } catch {
       alert('로그인 실패했습니다.');
     }

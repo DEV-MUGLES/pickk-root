@@ -46,8 +46,11 @@ AdminApp.getInitialProps = async (appContext: AppContext) => {
     const { ctx } = appContext;
 
     if (ctx.res) {
-      ctx.res.writeHead(302, { Location: '/login' });
+      ctx.res.writeHead(302, {
+        Location: `/login?to=${ctx.pathname}`,
+      });
       ctx.res.end();
+      ctx.res;
     }
   }
 };
