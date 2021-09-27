@@ -50,7 +50,6 @@ export default function InquiryListBoardContainer() {
           visible={isModalVisible}
           onClose={handleModalClose}
           inquiryId={selectedRecord.id}
-          answers={selectedRecord.answers}
         />
       )}
     </>
