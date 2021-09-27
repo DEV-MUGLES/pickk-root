@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import { Typography, Alert } from 'antd';
+import { Typography, Alert, Button } from 'antd';
 import { palette } from '@pickk/design-token';
 
-import { useInquiryAnswers } from './hooks';
+import InquiryAnswerUpdateModal from './update-modal';
+
+import { InquiryAnswerDataType, useInquiryAnswers } from './hooks';
 
 const { Text } = Typography;
 
@@ -28,6 +31,13 @@ const StyledAnswerCard = styled.div`
   margin-top: 0.8rem;
 `;
 
+const StyledRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const StyledText = styled.div`
   color: ${palette.gray5};
 `;
@@ -46,9 +56,22 @@ export default function InquiryAnswerModalAnswerList({
 }: InquiryAnswerModalAnswerListProps) {
   const { data: answers } = useInquiryAnswers(id);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] =
+    useState<InquiryAnswerDataType>(null);
+
   if (!answers?.length) {
     return null;
   }
+
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleUpdateClick = (answer: InquiryAnswerDataType) => () => {
+    setSelectedAnswer(answer);
+    setIsModalVisible(true);
+  };
 
   const renderAnswers = () => {
     return answers.map((answer) => {
@@ -57,9 +80,12 @@ export default function InquiryAnswerModalAnswerList({
       return (
         <StyledAnswerCard key={id}>
           <Text>{content}</Text>
-          <StyledText>
-            {getCreatedAtText(createdAt)} {displayAuthor}
-          </StyledText>
+          <StyledRow>
+            <StyledText>
+              {getCreatedAtText(createdAt)} {displayAuthor}
+            </StyledText>
+            <Button onClick={handleUpdateClick(answer)}>수정</Button>
+          </StyledRow>
         </StyledAnswerCard>
       );
     });
@@ -73,6 +99,13 @@ export default function InquiryAnswerModalAnswerList({
         />
         {renderAnswers()}
       </StyledWrapper>
+      {isModalVisible && (
+        <InquiryAnswerUpdateModal
+          visible={isModalVisible}
+          onClose={handleModalClose}
+          answer={selectedAnswer}
+        />
+      )}
     </>
   );
 }
