@@ -22,8 +22,9 @@ export default function HomePage({ me }: HomePageProps) {
         {me.nickname}님 안녕하세요! {getRandomMessage()}
       </h1>
       <StyledMenuWrapper>
-        <Link href="/images-upload">🖼이미지업로드하러가기</Link>
-        <Link href="/inquiries">💬문의내역확인ㄱㄱ</Link>
+        <Link href="/images-upload">🖼 이미지업로드</Link>
+        <Link href="/inquiries">💬 문의내역</Link>
+        <Link href="/order-items">🛍 주문상품내역</Link>
       </StyledMenuWrapper>
     </div>
   );
