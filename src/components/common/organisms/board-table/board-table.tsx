@@ -1,17 +1,24 @@
 import styled from 'styled-components';
 import { Table, Typography, Button } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
+import { palette } from '@pickk/design-token';
 
 import { BoardTableProps } from './board-table.types';
 
 const { Title } = Typography;
+
+const StyledWrapper = styled.div`
+  padding: 0.4rem 0;
+
+  background-color: ${palette.white};
+`;
 
 const StyledTableTitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  padding: 6px 16px;
+  padding: 0 0.8rem;
 `;
 
 const PAGE_SIZE = 20;
@@ -33,17 +40,19 @@ export default function BoardTable(props: BoardTableProps) {
   };
 
   return (
-    <Table
-      {...props}
-      size="small"
-      title={renderTitle}
-      pagination={{ position: ['bottomCenter'], pageSize: PAGE_SIZE }}
-      scroll={{ x: true }}
-      onRow={(record) => {
-        return {
-          onClick: () => onRowClick(record),
-        };
-      }}
-    />
+    <StyledWrapper>
+      <Table
+        {...props}
+        size="small"
+        title={renderTitle}
+        pagination={{ position: ['bottomCenter'], pageSize: PAGE_SIZE }}
+        scroll={{ x: true }}
+        onRow={(record) => {
+          return {
+            onClick: () => onRowClick(record),
+          };
+        }}
+      />
+    </StyledWrapper>
   );
 }

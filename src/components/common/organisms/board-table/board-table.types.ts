@@ -1,10 +1,10 @@
 import { TableProps } from 'antd';
 
-export type BoardTableProps<DataT = object> = Pick<
-  TableProps<DataT>,
+export type BoardTableProps<DataType = object> = Pick<
+  TableProps<DataType>,
   'dataSource' | 'loading' | 'columns'
 > & {
   title: string;
   onRefreshClick: () => void;
-  onRowClick: (record: DataT) => void;
+  onRowClick: (record: DataType) => void;
 };
