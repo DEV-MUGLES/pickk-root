@@ -1,12 +1,12 @@
 import { gql, useMutation } from '@apollo/client';
-import { Mutation, MutationRootAnswerInquiryArgs } from '@pickk/common';
+import { Mutation, MutationAnswerRootInquiryArgs } from '@pickk/common';
 
 const ANSWER_INQUIRY = gql`
-  mutation rootAnswerInquiry(
+  mutation answerRootInquiry(
     $id: Int!
     $answerInquiryInput: AnswerInquiryInput!
   ) {
-    rootAnswerInquiry(id: $id, answerInquiryInput: $answerInquiryInput) {
+    answerRootInquiry(id: $id, answerInquiryInput: $answerInquiryInput) {
       id
       answers {
         id
@@ -20,8 +20,8 @@ const ANSWER_INQUIRY = gql`
 
 export const useAnswerInquiry = () => {
   const [answer] = useMutation<
-    Pick<Mutation, 'rootAnswerInquiry'>,
-    MutationRootAnswerInquiryArgs
+    Pick<Mutation, 'answerRootInquiry'>,
+    MutationAnswerRootInquiryArgs
   >(ANSWER_INQUIRY);
 
   const answerInquiry = async (
