@@ -5,7 +5,6 @@ import {
   Inquiry,
   Item,
   User,
-  InquiryAnswer,
 } from '@pickk/common';
 
 import { BoardTemplateProps } from '@components/common/template';
@@ -33,12 +32,6 @@ const GET_ROOT_INQUIRIES = gql`
         nickname
         phoneNumber
       }
-      answers {
-        id
-        content
-        displayAuthor
-        createdAt
-      }
     }
   }
 `;
@@ -57,10 +50,6 @@ export type InquiryDataType = Pick<
 > & {
   item: Pick<Item, 'id' | 'name' | 'imageUrl'>;
   user: Pick<User, 'id' | 'nickname'>;
-  answers: Pick<
-    InquiryAnswer,
-    'id' | 'content' | 'displayAuthor' | 'createdAt'
-  >[];
 };
 
 export const useInquiries: BoardTemplateProps['useBoardData'] = ({
