@@ -20,6 +20,7 @@ const GET_ORDER_ITEMS = gql`
       claimStatus
       itemId
       itemName
+      brandNameKor
       productVariantName
       quantity
       order {
@@ -48,6 +49,7 @@ export type OrderItemDataType = Pick<
   | 'claimStatus'
   | 'itemId'
   | 'itemName'
+  | 'brandNameKor'
   | 'productVariantName'
   | 'quantity'
 > & {
