@@ -1,8 +1,10 @@
 import {
   ApolloClient,
+  createHttpLink,
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import merge from 'deepmerge';
 import isEqual from 'lodash/isEqual';
 import { IncomingMessage } from 'http';
@@ -17,20 +19,28 @@ if (!process.env.NEXT_PUBLIC_API_URL) {
   throw new Error('env.NEXT_PUBLIC_API_URL not found!');
 }
 
-const getHeaders = (req?: IncomingMessage) => {
-  const token = getCookie('accessToken', req);
+const httpLink = createHttpLink({
+  uri: process.env.NEW_API_URL + '/graphql',
+});
 
-  return {
-    Authorization: token ? `Bearer ${token}` : '',
-  };
-};
+const authLink = (req?: IncomingMessage) =>
+  setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    const token = getCookie('accessToken', req);
+    // return the headers to the context so httpLink can read them
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    };
+  });
 
 export function createApolloClient(req?: IncomingMessage) {
   return new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_API_URL + '/graphql',
     ssrMode: typeof window === 'undefined',
+    link: authLink(req).concat(httpLink),
     cache: new InMemoryCache(),
-    headers: getHeaders(req),
   });
 }
 
