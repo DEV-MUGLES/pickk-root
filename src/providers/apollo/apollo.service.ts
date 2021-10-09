@@ -20,7 +20,7 @@ if (!process.env.NEXT_PUBLIC_API_URL) {
 }
 
 const httpLink = createHttpLink({
-  uri: process.env.NEW_API_URL + '/graphql',
+  uri: process.env.NEXT_PUBLIC_API_URL + '/graphql',
 });
 
 const authLink = (req?: IncomingMessage) =>
