@@ -31,7 +31,7 @@ export const orderItemsTableColumns: ColumnsType<OrderItemDataType> = [
     dataIndex: 'createdAt',
     key: 'createdAt',
     render: (value) =>
-      value ? dayjs(value).format('YYYY.MM.DD hh:mm:ss') : '-',
+      value ? dayjs(value).format('YYYY.MM.DD HH:mm:ss') : '-',
     sorter: (a, b) => stringSorter(b.createdAt, a.createdAt),
     defaultSortOrder: 'ascend',
     width: 100,
@@ -117,9 +117,12 @@ export const orderItemsTableColumns: ColumnsType<OrderItemDataType> = [
     title: '수취인명',
     dataIndex: 'receiverName',
     key: 'receiverName',
-    render: (_, { order }) => order?.receiver?.name,
+    render: (_, { order }) => order?.receiver?.receiverName,
     sorter: (a, b) =>
-      stringSorter(b.order?.receiver?.name, a.order?.receiver?.name),
+      stringSorter(
+        b.order?.receiver?.receiverName,
+        a.order?.receiver?.receiverName
+      ),
     width: 75,
     ellipsis: true,
   },

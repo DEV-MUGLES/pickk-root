@@ -33,6 +33,7 @@ const GET_ORDER_ITEMS = gql`
         receiver {
           id
           name
+          receiverName
         }
       }
     }
@@ -55,7 +56,7 @@ export type OrderItemDataType = Pick<
 > & {
   order: Pick<Order, 'id'> & {
     buyer: Pick<OrderBuyer, 'id' | 'name' | 'phoneNumber'>;
-    receiver: Pick<OrderReceiver, 'id' | 'name'>;
+    receiver: Pick<OrderReceiver, 'id' | 'name' | 'receiverName'>;
   };
 };
 

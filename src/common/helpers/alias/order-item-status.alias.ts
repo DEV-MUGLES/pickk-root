@@ -1,4 +1,4 @@
-import {OrderItemStatus} from '@pickk/common';
+import { OrderItemStatus } from '@pickk/common';
 
 export const getOrderItemStatusDisplayName = (status: OrderItemStatus) => {
   if (!status) {
@@ -26,8 +26,8 @@ export const getOrderItemStatusDisplayName = (status: OrderItemStatus) => {
       [Paid]: '결제 완료',
       [ShipPending]: '배송 예약중',
       [ShipReady]: '배송 준비중',
-      [Shipped]: '배송중',
-      [Shipping]: '배송 완료',
+      [Shipping]: '배송중',
+      [Shipped]: '배송 완료',
     }[status] || status
   );
 };
