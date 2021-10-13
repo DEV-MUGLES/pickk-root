@@ -7,5 +7,5 @@
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "conventionalCommits.scopes": ["providers"]
+  "conventionalCommits.scopes": ["providers", "pages"]
 }
