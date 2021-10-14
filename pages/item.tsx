@@ -31,6 +31,13 @@ export default function ItemPage() {
       }
     }
   `);
+  const [updateRootItemByCrawl] = useMutation(gql`
+    mutation updateRootItemByCrawl($itemId: Int!) {
+      updateRootItemByCrawl(itemId: $itemId) {
+        id
+      }
+    }
+  `);
 
   const [itemId, setItemId] = useState(null);
 
@@ -44,10 +51,18 @@ export default function ItemPage() {
     message.success('업데이트되었습니다.');
   };
 
+  const updateByCrawl = async () => {
+    await updateRootItemByCrawl({ variables: { itemId } });
+    message.success('업데이트되었습니다.');
+  };
+
   return (
     <StyledWrapper>
       아래에 아이템 ID를 입력하세요
       <InputNumber min={1} value={itemId} onChange={setItemId} />
+      <Button type="primary" disabled={!itemId} onClick={updateByCrawl}>
+        이름,가격 업데이트
+      </Button>
       <Button type="primary" disabled={!itemId} onClick={updateImageUrl}>
         대표 이미지 업데이트
       </Button>
