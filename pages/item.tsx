@@ -17,6 +17,12 @@ const StyledA = styled.a`
 `;
 
 export default function ItemPage() {
+  const [updating, setUpdating] = useState({
+    info: false,
+    imageUrl: false,
+    detailImages: false,
+  });
+
   const [updateRootItemImageUrl] = useMutation(gql`
     mutation updateRootItemImageUrl($itemId: Int!) {
       updateRootItemImageUrl(itemId: $itemId) {
@@ -41,32 +47,71 @@ export default function ItemPage() {
 
   const [itemId, setItemId] = useState(null);
 
+  const updateByCrawl = async () => {
+    setUpdating({ ...updating, info: true });
+
+    try {
+      await updateRootItemByCrawl({ variables: { itemId } });
+      message.success('업데이트되었습니다.');
+    } catch (err) {
+      message.error('실패했습니다' + err);
+    } finally {
+      setUpdating({ ...updating, info: false });
+    }
+  };
+
   const updateImageUrl = async () => {
-    await updateRootItemImageUrl({ variables: { itemId } });
-    message.success('업데이트되었습니다.');
+    setUpdating({ ...updating, imageUrl: true });
+
+    try {
+      await updateRootItemImageUrl({ variables: { itemId } });
+      message.success('업데이트되었습니다.');
+    } catch (err) {
+      message.error('실패했습니다' + err);
+    } finally {
+      setUpdating({ ...updating, imageUrl: false });
+    }
   };
 
   const updateDetailImages = async () => {
-    await updateRootItemDetailImages({ variables: { itemId } });
-    message.success('업데이트되었습니다.');
-  };
+    setUpdating({ ...updating, detailImages: true });
 
-  const updateByCrawl = async () => {
-    await updateRootItemByCrawl({ variables: { itemId } });
-    message.success('업데이트되었습니다.');
+    try {
+      await updateRootItemDetailImages({ variables: { itemId } });
+      message.success('업데이트되었습니다.');
+    } catch (err) {
+      message.error('실패했습니다' + err);
+    } finally {
+      setUpdating({ ...updating, detailImages: false });
+    }
   };
 
   return (
     <StyledWrapper>
       아래에 아이템 ID를 입력하세요
       <InputNumber min={1} value={itemId} onChange={setItemId} />
-      <Button type="primary" disabled={!itemId} onClick={updateByCrawl}>
+      <Button
+        type="primary"
+        disabled={!itemId}
+        loading={updating.info}
+        onClick={updateByCrawl}
+      >
         이름,가격 업데이트
       </Button>
-      <Button type="primary" disabled={!itemId} onClick={updateImageUrl}>
+      <Button
+        type="primary"
+        disabled={!itemId}
+        loading={updating.imageUrl}
+        onClick={updateImageUrl}
+      >
         대표 이미지 업데이트
       </Button>
-      <Button type="primary" disabled={!itemId} onClick={updateDetailImages}>
+      <Button
+        type="primary"
+        disabled={!itemId}
+        loading={updating.detailImages}
+        onClick={updateDetailImages}
+      >
         상세 이미지들 업데이트
       </Button>
       <StyledA target="_blank" href={`https://pickk.one/items/${itemId}`}>
