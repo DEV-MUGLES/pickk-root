@@ -26,7 +26,9 @@ export default function HomePage({ me }: HomePageProps) {
         <Link href="/images-upload">🖼 이미지업로드</Link>
         <Link href="/inquiries">💬 문의내역</Link>
         <Link href="/order-items">🛍 주문상품내역</Link>
-        <Link href="/item">👕 (임시) 상품 업데이트</Link>
+        <Link href="/sellable-items">👕 활성상품 관리</Link>
+        <Link href="/items">👖 전체상품 관리</Link>
+        <Link href="/item">✋ (임시) 상품 업데이트</Link>
       </StyledMenuWrapper>
     </div>
   );
