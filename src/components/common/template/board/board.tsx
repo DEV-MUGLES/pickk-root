@@ -45,7 +45,7 @@ export default function BoardTemplate(props: BoardTemplateProps) {
     router.back();
   };
 
-  if (!data) {
+  if (!data && !loading) {
     return null;
   }
 
@@ -64,7 +64,7 @@ export default function BoardTemplate(props: BoardTemplateProps) {
         />
       )}
       <BoardTable
-        title={title}
+        {...props}
         dataSource={data}
         loading={loading}
         columns={tableColumns}

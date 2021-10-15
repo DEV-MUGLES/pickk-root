@@ -1,4 +1,7 @@
-import { BoardFilterProps } from '@components/common/organisms';
+import {
+  BoardFilterProps,
+  BoardTableProps,
+} from '@components/common/organisms';
 import { ColumnsType } from 'antd/lib/table';
 
 export type BoardDataFetcher<
@@ -7,7 +10,7 @@ export type BoardDataFetcher<
 > = ({ filter }: { filter?: FilterType }) => {
   data: DataType[];
   loading: boolean;
-  refetch: () => Promise<void>;
+  refetch: () => Promise<unknown>;
 };
 
 export type BoardTemplateProps<DataType = any> = {
@@ -15,6 +18,9 @@ export type BoardTemplateProps<DataType = any> = {
   subTitle: string;
   useBoardData: BoardDataFetcher;
   tableColumns: ColumnsType<DataType>;
-  onRowClick?: (record: DataType) => void;
   filterInputs?: BoardFilterProps['inputs'];
-} & Pick<BoardFilterProps, 'defaultFilter'>;
+} & Pick<BoardFilterProps, 'defaultFilter'> &
+  Pick<
+    BoardTableProps,
+    'onRowClick' | 'selectedRowKeys' | 'onRowSelectionChange'
+  >;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Table, Typography, Button } from 'antd';
+import { TableRowSelection } from 'antd/lib/table/interface';
 import { ReloadOutlined } from '@ant-design/icons';
 import { palette } from '@pickk/design-token';
 
@@ -24,7 +25,14 @@ const StyledTableTitleWrapper = styled.div`
 const PAGE_SIZE = 20;
 
 export default function BoardTable(props: BoardTableProps) {
-  const { title, dataSource, onRefreshClick, onRowClick } = props;
+  const {
+    title,
+    dataSource,
+    onRefreshClick,
+    onRowClick,
+    selectedRowKeys,
+    onRowSelectionChange,
+  } = props;
 
   const renderTitle = () => {
     return (
@@ -39,10 +47,17 @@ export default function BoardTable(props: BoardTableProps) {
     );
   };
 
+  const rowSelection: TableRowSelection<unknown> = {
+    selectedRowKeys,
+    onChange: onRowSelectionChange,
+  };
+
   return (
     <StyledWrapper>
       <Table
         {...props}
+        {...(selectedRowKeys != null ? { rowSelection } : {})}
+        dataSource={dataSource.map((v) => ({ ...v, key: v.id }))}
         size="small"
         title={renderTitle}
         pagination={{ position: ['bottomCenter'], pageSize: PAGE_SIZE }}
