@@ -24,3 +24,14 @@ export const addCommaToNumber = (num: number) => {
   }
   return result;
 };
+
+export const removeDashFromNumber = (value: string) => {
+  if (!value) {
+    return undefined;
+  }
+
+  // 숫자로 시작하고, 숫자와 '-' 로만 구상된 경우
+  const isNumberAndDashOnly =
+    value.match(/^[0-9][0-9-]+/g)?.[0]?.length === value.length;
+  return isNumberAndDashOnly ? value.split('-').join('') : value;
+};
