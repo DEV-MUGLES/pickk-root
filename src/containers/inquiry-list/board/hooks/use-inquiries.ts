@@ -57,24 +57,14 @@ export const useInquiries: BoardTemplateProps['useBoardData'] = ({
 }: {
   filter?: InquiryFilter;
 }) => {
-  const {
-    data,
-    loading,
-    refetch: _refetch,
-  } = useQuery<{ rootInquiries: InquiryDataType[] }, QueryRootInquiriesArgs>(
-    GET_ROOT_INQUIRIES,
-    {
-      variables: {
-        filter,
-      },
-    }
-  );
-
-  const refetch = async () => {
-    await _refetch({
+  const { data, loading, refetch } = useQuery<
+    { rootInquiries: InquiryDataType[] },
+    QueryRootInquiriesArgs
+  >(GET_ROOT_INQUIRIES, {
+    variables: {
       filter,
-    });
-  };
+    },
+  });
 
   return { data: data?.rootInquiries, loading, refetch };
 };

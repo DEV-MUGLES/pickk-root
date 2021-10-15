@@ -63,11 +63,7 @@ export type OrderItemDataType = Pick<
 export const useOrderItems: BoardTemplateProps['useBoardData'] = ({
   filter,
 }) => {
-  const {
-    data,
-    loading,
-    refetch: _refetch,
-  } = useQuery<
+  const { data, loading, refetch } = useQuery<
     { rootOrderItems: OrderItemDataType[] },
     QueryRootOrderItemsArgs
   >(GET_ORDER_ITEMS, {
@@ -75,12 +71,6 @@ export const useOrderItems: BoardTemplateProps['useBoardData'] = ({
       orderItemFilter: filter,
     },
   });
-
-  const refetch = async () => {
-    await _refetch({
-      orderItemFilter: filter,
-    });
-  };
 
   return { data: data?.rootOrderItems, loading, refetch };
 };

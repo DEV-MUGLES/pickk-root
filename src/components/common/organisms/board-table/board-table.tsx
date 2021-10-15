@@ -40,7 +40,7 @@ export default function BoardTable(props: BoardTableProps) {
         <Title level={5}>
           {title} 목록 (총 {dataSource.length} 개)
         </Title>
-        <Button onClick={onRefreshClick} icon={<ReloadOutlined />}>
+        <Button onClick={() => onRefreshClick()} icon={<ReloadOutlined />}>
           새로고침
         </Button>
       </StyledTableTitleWrapper>
