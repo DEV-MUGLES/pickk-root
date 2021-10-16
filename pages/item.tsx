@@ -46,8 +46,8 @@ export default function ItemPage() {
     }
   `);
   const [crawlItemOptionSet] = useMutation(gql`
-    mutation crawlItemOptionSet {
-      crawlItemOptionSet(itemId: 35059) {
+    mutation crawlItemOptionSet($itemId: Int!) {
+      crawlItemOptionSet(itemId: $itemId) {
         id
       }
     }
