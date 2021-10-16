@@ -21,6 +21,7 @@ export default function ItemPage() {
     info: false,
     imageUrl: false,
     detailImages: false,
+    crawlOption: false,
   });
 
   const [updateRootItemImageUrl] = useMutation(gql`
@@ -40,6 +41,13 @@ export default function ItemPage() {
   const [updateRootItemByCrawl] = useMutation(gql`
     mutation updateRootItemByCrawl($itemId: Int!) {
       updateRootItemByCrawl(itemId: $itemId) {
+        id
+      }
+    }
+  `);
+  const [crawlItemOptionSet] = useMutation(gql`
+    mutation crawlItemOptionSet {
+      crawlItemOptionSet(itemId: 35059) {
         id
       }
     }
@@ -86,6 +94,19 @@ export default function ItemPage() {
     }
   };
 
+  const crawlOption = async () => {
+    setUpdating({ ...updating, crawlOption: true });
+
+    try {
+      await crawlItemOptionSet({ variables: { itemId } });
+      message.success('업데이트되었습니다.');
+    } catch (err) {
+      message.error('실패했습니다' + err);
+    } finally {
+      setUpdating({ ...updating, crawlOption: false });
+    }
+  };
+
   return (
     <StyledWrapper>
       아래에 아이템 ID를 입력하세요
@@ -113,6 +134,14 @@ export default function ItemPage() {
         onClick={updateDetailImages}
       >
         상세 이미지들 업데이트
+      </Button>
+      <Button
+        type="primary"
+        disabled={!itemId}
+        loading={updating.crawlOption}
+        onClick={crawlOption}
+      >
+        옵션 크롤링+재생성 (기존 product 모두 삭제됩니다.)
       </Button>
       <StyledA target="_blank" href={`https://pickk.one/items/${itemId}`}>
         핔 링크 (https://pickk.one/items/{itemId})
