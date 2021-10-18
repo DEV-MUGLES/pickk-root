@@ -63,10 +63,6 @@ export default function BoardTemplate(props: BoardTemplateProps) {
     filter,
   });
 
-  const handleBackClick = () => {
-    router.back();
-  };
-
   if (!data && !loading) {
     return null;
   }
@@ -76,7 +72,7 @@ export default function BoardTemplate(props: BoardTemplateProps) {
       <StyledPageHeader
         title={title}
         subTitle={subTitle}
-        onBack={handleBackClick}
+        onBack={router.back}
       />
       {!!filterInputs && (
         <BoardFilter
