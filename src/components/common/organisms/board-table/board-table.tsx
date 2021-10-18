@@ -22,12 +22,15 @@ const StyledTableTitleWrapper = styled.div`
   padding: 0 0.8rem;
 `;
 
-const PAGE_SIZE = 20;
-
 export default function BoardTable(props: BoardTableProps) {
   const {
     title,
     dataSource,
+    totalDataSize,
+    page,
+    pageSize,
+    onPageChange,
+    onPageSizeChange,
     onRefreshClick,
     onRowClick,
     selectedRowKeys,
@@ -38,7 +41,7 @@ export default function BoardTable(props: BoardTableProps) {
     return (
       <StyledTableTitleWrapper>
         <Title level={5}>
-          {title} 목록 (총 {dataSource.length} 개)
+          {title} 목록 (총 {totalDataSize} 개)
         </Title>
         <Button onClick={() => onRefreshClick()} icon={<ReloadOutlined />}>
           새로고침
@@ -60,13 +63,18 @@ export default function BoardTable(props: BoardTableProps) {
         dataSource={dataSource.map((v) => ({ ...v, key: v.id }))}
         size="small"
         title={renderTitle}
-        pagination={{ position: ['bottomCenter'], pageSize: PAGE_SIZE }}
-        scroll={{ x: true }}
-        onRow={(record) => {
-          return {
-            onClick: () => onRowClick(record),
-          };
+        pagination={{
+          total: totalDataSize,
+          current: page,
+          pageSize,
+          position: ['bottomCenter'],
+          onChange: onPageChange,
+          onShowSizeChange: (_, size) => onPageSizeChange(size),
         }}
+        scroll={{ x: true }}
+        onRow={(record) => ({
+          onClick: () => onRowClick(record),
+        })}
       />
     </StyledWrapper>
   );

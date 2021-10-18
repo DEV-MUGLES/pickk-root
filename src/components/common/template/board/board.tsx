@@ -24,7 +24,14 @@ const StyledPageHeader = styled(PageHeader)`
   background-color: ${palette.white};
 `;
 
+const DEFAULT_PAGE_SIZE = 20;
+
 export default function BoardTemplate(props: BoardTemplateProps) {
+  const propsWithDefault: BoardTemplateProps = {
+    ...props,
+    defaultPageSize: DEFAULT_PAGE_SIZE,
+  };
+
   const {
     title,
     subTitle,
@@ -32,14 +39,29 @@ export default function BoardTemplate(props: BoardTemplateProps) {
     tableColumns,
     defaultFilter,
     filterInputs,
+    defaultPageSize,
     onRowClick = () => null,
-  } = props;
+  } = propsWithDefault;
 
   const router = useRouter();
 
   const [filter, setFilter] = useState<Record<string, unknown>>(defaultFilter);
 
-  const { data = [], loading, refetch } = useBoardData({ filter });
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(defaultPageSize);
+
+  const {
+    data = [],
+    total,
+    loading,
+    refetch,
+  } = useBoardData({
+    pageInput: {
+      offset: (page - 1) * pageSize,
+      limit: pageSize,
+    },
+    filter,
+  });
 
   const handleBackClick = () => {
     router.back();
@@ -64,10 +86,15 @@ export default function BoardTemplate(props: BoardTemplateProps) {
         />
       )}
       <BoardTable
-        {...props}
+        {...propsWithDefault}
         dataSource={data}
+        totalDataSize={total}
         loading={loading}
         columns={tableColumns}
+        page={page}
+        pageSize={pageSize}
+        onPageChange={setPage}
+        onPageSizeChange={setPageSize}
         onRefreshClick={refetch}
         onRowClick={onRowClick}
       />
