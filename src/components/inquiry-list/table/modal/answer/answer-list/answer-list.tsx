@@ -8,7 +8,7 @@ import InquiryAnswerUpdateModal from './update-modal';
 
 import { InquiryAnswerDataType, useInquiryAnswers } from './hooks';
 
-const { Text } = Typography;
+const { Paragraph } = Typography;
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -79,7 +79,9 @@ export default function InquiryAnswerModalAnswerList({
 
       return (
         <StyledAnswerCard key={id}>
-          <Text>{content}</Text>
+          <Paragraph style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
+            {content}
+          </Paragraph>
           <StyledRow>
             <StyledText>
               {getCreatedAtText(createdAt)} {displayAuthor}
