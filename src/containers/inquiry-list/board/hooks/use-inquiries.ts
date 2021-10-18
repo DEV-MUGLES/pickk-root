@@ -7,7 +7,7 @@ import {
   User,
 } from '@pickk/common';
 
-import { BoardTemplateProps } from '@components/common/template';
+import { BoardDataFetcher } from '@components/common/template/board';
 
 const GET_ROOT_INQUIRIES = gql`
   query rootInquiries($filter: InquiryFilter, $pageInput: PageInput) {
@@ -52,10 +52,28 @@ export type InquiryDataType = Pick<
   user: Pick<User, 'id' | 'nickname'>;
 };
 
-export const useInquiries: BoardTemplateProps['useBoardData'] = ({
+/** @TODO 데이터 총 개수를 알기 위한 임시 쿼리 훅 */
+const useInquiriesCount = ({ filter }: { filter: InquiryFilter }): number => {
+  const { data } = useQuery<
+    { rootInquiries: InquiryDataType[] },
+    QueryRootInquiriesArgs
+  >(
+    gql`
+      query rootInquiries($filter: InquiryFilter) {
+        rootInquiries(filter: $filter) {
+          id
+        }
+      }
+    `,
+    { variables: { filter } }
+  );
+
+  return (data?.rootInquiries || []).length;
+};
+
+export const useInquiries: BoardDataFetcher<InquiryDataType, InquiryFilter> = ({
   filter,
-}: {
-  filter?: InquiryFilter;
+  pageInput,
 }) => {
   const { data, loading, refetch } = useQuery<
     { rootInquiries: InquiryDataType[] },
@@ -63,8 +81,15 @@ export const useInquiries: BoardTemplateProps['useBoardData'] = ({
   >(GET_ROOT_INQUIRIES, {
     variables: {
       filter,
+      pageInput,
     },
   });
+  const total = useInquiriesCount({ filter });
 
-  return { data: data?.rootInquiries, loading, refetch };
+  return {
+    data: data?.rootInquiries,
+    total,
+    loading,
+    refetch,
+  };
 };
