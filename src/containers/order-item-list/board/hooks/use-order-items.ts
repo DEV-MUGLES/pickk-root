@@ -6,7 +6,7 @@ import {
   OrderReceiver,
   SearchOrderItemsOutput,
   QuerySearchRootOrderItemsArgs,
-  OrderItemFilter,
+  OrderItemSearchFilter,
 } from '@pickk/common';
 
 import { BoardDataFetcher } from '@components/common/template/board';
@@ -44,8 +44,13 @@ const GET_ORDER_ITEMS = gql`
   query searchRootOrderItems(
     $searchFilter: OrderItemSearchFilter
     $pageInput: PageInput
+    $query: String
   ) {
-    searchRootOrderItems(searchFilter: $searchFilter, pageInput: $pageInput) {
+    searchRootOrderItems(
+      searchFilter: $searchFilter
+      pageInput: $pageInput
+      query: $query
+    ) {
       result {
         ...orderItemFragment
       }
@@ -77,8 +82,8 @@ export type OrderItemDataType = Pick<
 
 export const useOrderItems: BoardDataFetcher<
   OrderItemDataType,
-  OrderItemFilter
-> = ({ filter, pageInput }) => {
+  OrderItemSearchFilter
+> = ({ filter, pageInput, query }) => {
   const { data, loading, refetch } = useQuery<
     {
       searchRootOrderItems: Pick<SearchOrderItemsOutput, 'total'> & {
@@ -90,6 +95,7 @@ export const useOrderItems: BoardDataFetcher<
     variables: {
       searchFilter: filter,
       pageInput,
+      query,
     },
   });
 
