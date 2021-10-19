@@ -46,7 +46,6 @@ export default function BoardTemplate(props: BoardTemplateProps) {
   const router = useRouter();
 
   const [filter, setFilter] = useState<Record<string, unknown>>(defaultFilter);
-  const [query, setQuery] = useState(null);
 
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(defaultPageSize);
@@ -62,16 +61,7 @@ export default function BoardTemplate(props: BoardTemplateProps) {
       limit: pageSize,
     },
     filter,
-    ...(query ? { query } : {}),
   });
-
-  const handleFilterChange = (newFilter: Record<string, unknown>) => {
-    /** query 필드는 filter에서 제외한다. */
-    setQuery(newFilter.query ?? null);
-    delete newFilter.query;
-
-    setFilter(newFilter);
-  };
 
   if (!data && !loading) {
     return null;
@@ -87,7 +77,7 @@ export default function BoardTemplate(props: BoardTemplateProps) {
       {!!filterInputs && (
         <BoardFilter
           defaultFilter={filter}
-          onFilterChange={handleFilterChange}
+          onFilterChange={setFilter}
           inputs={filterInputs}
         />
       )}

@@ -4,60 +4,44 @@ import {
   Order,
   OrderBuyer,
   OrderReceiver,
-  SearchOrderItemsOutput,
-  QuerySearchRootOrderItemsArgs,
-  OrderItemSearchFilter,
+  QueryRootOrderItemsArgs,
+  OrderItemFilter,
 } from '@pickk/common';
 
 import { BoardDataFetcher } from '@components/common/template/board';
 
-const ORDER_ITEM_FRAGMENT = gql`
-  fragment orderItemFragment on OrderItem {
-    id
-    merchantUid
-    orderMerchantUid
-    createdAt
-    status
-    claimStatus
-    itemId
-    itemName
-    brandNameKor
-    productVariantName
-    quantity
-    order {
-      id
-      buyer {
-        id
-        name
-        phoneNumber
-      }
-      receiver {
-        id
-        name
-        receiverName
-      }
-    }
-  }
-`;
-
 const GET_ORDER_ITEMS = gql`
-  query searchRootOrderItems(
-    $searchFilter: OrderItemSearchFilter
+  query rootOrderItems(
+    $orderItemFilter: OrderItemFilter
     $pageInput: PageInput
-    $query: String
   ) {
-    searchRootOrderItems(
-      searchFilter: $searchFilter
-      pageInput: $pageInput
-      query: $query
-    ) {
-      result {
-        ...orderItemFragment
+    rootOrderItems(orderItemFilter: $orderItemFilter, pageInput: $pageInput) {
+      id
+      merchantUid
+      orderMerchantUid
+      createdAt
+      status
+      claimStatus
+      itemId
+      itemName
+      brandNameKor
+      productVariantName
+      quantity
+      order {
+        id
+        buyer {
+          id
+          name
+          phoneNumber
+        }
+        receiver {
+          id
+          name
+          receiverName
+        }
       }
-      total
     }
   }
-  ${ORDER_ITEM_FRAGMENT}
 `;
 
 export type OrderItemDataType = Pick<
@@ -80,29 +64,48 @@ export type OrderItemDataType = Pick<
   };
 };
 
+/** @TODO 데이터 총 개수를 알기 위한 임시 쿼리 훅 */
+const useOrderItemsCount = ({
+  filter,
+}: {
+  filter: OrderItemFilter;
+}): number => {
+  const { data } = useQuery<
+    { rootOrderItems: OrderItemDataType[] },
+    QueryRootOrderItemsArgs
+  >(
+    gql`
+      query rootOrderItems($orderItemFilter: OrderItemFilter) {
+        rootOrderItems(orderItemFilter: $orderItemFilter) {
+          id
+        }
+      }
+    `,
+    {
+      variables: {
+        orderItemFilter: filter,
+      },
+    }
+  );
+
+  return (data?.rootOrderItems || []).length;
+};
+
 export const useOrderItems: BoardDataFetcher<
   OrderItemDataType,
-  OrderItemSearchFilter
-> = ({ filter, pageInput, query }) => {
+  OrderItemFilter
+> = ({ filter, pageInput }) => {
   const { data, loading, refetch } = useQuery<
-    {
-      searchRootOrderItems: Pick<SearchOrderItemsOutput, 'total'> & {
-        result: OrderItemDataType[];
-      };
-    },
-    QuerySearchRootOrderItemsArgs
+    { rootOrderItems: OrderItemDataType[] },
+    QueryRootOrderItemsArgs
   >(GET_ORDER_ITEMS, {
     variables: {
-      searchFilter: filter,
+      orderItemFilter: filter,
       pageInput,
-      query,
     },
   });
 
-  return {
-    data: data?.searchRootOrderItems?.result,
-    total: data?.searchRootOrderItems?.total,
-    loading,
-    refetch,
-  };
+  const total = useOrderItemsCount({ filter });
+
+  return { data: data?.rootOrderItems, total, loading, refetch };
 };

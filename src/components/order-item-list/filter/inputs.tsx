@@ -7,7 +7,7 @@ import ClaimStatusSelect from './claim-status';
 
 export const orderItemsFilterInputs: BoardFilterInputType[] = [
   {
-    name: 'query',
+    name: 'search',
     label: '검색어',
     Component: Input,
   },

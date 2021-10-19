@@ -9,15 +9,7 @@ import { ColumnsType } from 'antd/lib/table';
 export type BoardDataFetcher<
   DataType = object,
   FilterType = Record<string, unknown>
-> = ({
-  pageInput,
-  filter,
-  query,
-}: {
-  pageInput: PageInput;
-  filter?: FilterType;
-  query?: string;
-}) => {
+> = ({ pageInput, filter }: { pageInput: PageInput; filter?: FilterType }) => {
   data: DataType[];
   total: number;
   loading: boolean;
