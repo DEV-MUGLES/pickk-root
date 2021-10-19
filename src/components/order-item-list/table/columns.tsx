@@ -65,7 +65,7 @@ export const orderItemsTableColumns: ColumnsType<OrderItemDataType> = [
         target="_blank"
         rel="noreferrer"
       >
-        {getOrderItemStatusDisplayName(value)}
+        {value}
       </a>
     ),
     sorter: (a, b) => stringSorter(b.itemName, a.itemName),
