@@ -22,7 +22,7 @@ export const renderDate = (value: Date) => {
     return '';
   }
 
-  return dayjs(value).format('YYYY/MM/DD');
+  return dayjs(value).format('YYYY-MM-DD');
 };
 
 export const renderDateWithTime = (value: Date) => {
@@ -30,5 +30,5 @@ export const renderDateWithTime = (value: Date) => {
     return '';
   }
 
-  return dayjs(value).format('YYYY/MM/DD hh:mm:ss');
+  return dayjs(value).format('YYYY-MM-DD hh:mm:ss');
 };
