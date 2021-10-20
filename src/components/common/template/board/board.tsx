@@ -71,6 +71,8 @@ export default function BoardTemplate(props: BoardTemplateProps) {
     delete newFilter.query;
 
     setFilter(newFilter);
+
+    setPage(1);
   };
 
   if (!data && !loading) {
