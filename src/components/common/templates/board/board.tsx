@@ -28,7 +28,7 @@ const StyledPageHeader = styled(PageHeader)`
 `;
 
 export default function BoardTemplate(props: BoardTemplateProps) {
-  const { tableRef, title, subTitle, defaultFilter, filterInputs } = props;
+  const { tableRef, title, subTitle, defaultFilter = {}, filterInputs } = props;
 
   const router = useRouter();
 
