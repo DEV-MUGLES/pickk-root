@@ -6,14 +6,13 @@ import {
   Ref,
 } from 'react';
 import styled from 'styled-components';
-import { Table, Typography, Button } from 'antd';
+import { Table } from 'antd';
 import { TableRowSelection } from 'antd/lib/table/interface';
-import { ReloadOutlined } from '@ant-design/icons';
 import { palette } from '@pickk/design-token';
 
-import { BoardTableProps, BoardTableHandle } from './board-table.types';
+import BoardTableHeader from './header';
 
-const { Title } = Typography;
+import { BoardTableProps, BoardTableHandle } from './board-table.types';
 
 const StyledTable = styled(Table)`
   padding: 0.4rem 0;
@@ -23,8 +22,7 @@ const StyledTable = styled(Table)`
 
 const StyledTableTitleWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 
   padding: 0 0.8rem;
 `;
@@ -78,12 +76,11 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
     const renderTitle = () => {
       return (
         <StyledTableTitleWrapper>
-          <Title level={5}>
-            {title} 목록 (총 {total} 개)
-          </Title>
-          <Button onClick={reload} icon={<ReloadOutlined />}>
-            새로고침
-          </Button>
+          <BoardTableHeader
+            title={title}
+            total={total}
+            onRefreshClick={reload}
+          />
         </StyledTableTitleWrapper>
       );
     };
