@@ -4,11 +4,18 @@ import { ItemCategoryCascader, DatePicker } from '@components/common/molecules';
 
 import { BoardFilterInputType } from '@components/common/organisms/board-filter';
 
+import BrandSelector from './brand';
+
 export const sellableItemsFilterInputs: BoardFilterInputType[] = [
   {
     name: 'search',
     label: '상품명',
     Component: (props) => <Input {...props} style={{ width: '20rem' }} />,
+  },
+  {
+    name: 'brandId',
+    label: '브랜드',
+    Component: BrandSelector,
   },
   {
     name: 'category',
