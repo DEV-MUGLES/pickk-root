@@ -2,7 +2,6 @@ import { gql, useQuery } from '@apollo/client';
 import {
   Item,
   ItemFilter,
-  QueryMeSellerItemsArgs,
   ItemUrl,
   ItemCategory,
   Product,
@@ -11,7 +10,7 @@ import {
 } from '@pickk/common';
 
 import { BoardTableDataFetcher } from '@components/common/organisms/board-table';
-import { useSellableItemsCount } from './use-sellable-items-count';
+import { formatItemFilter, useItemsCount } from '@containers/items/hooks';
 
 const GET_SELLABLE_ITEMS = gql`
   query items($itemFilter: ItemFilter, $pageInput: PageInput) {
@@ -76,24 +75,6 @@ export type SellableItemDataType = Pick<
   products: Array<Pick<Product, 'id' | 'stock' | 'isDeleted'>>;
 };
 
-const formatItemFilter = (
-  filter: ItemFilter & { category?: [number, number] }
-) => {
-  const result = {
-    ...filter,
-    ...(filter['category']
-      ? {
-          majorCategoryId: filter['category'][0],
-          minorCategoryId: filter['category'][1],
-        }
-      : {}),
-  };
-
-  delete result['category'];
-
-  return result;
-};
-
 export const useSellableItems: BoardTableDataFetcher<
   SellableItemDataType,
   ItemFilter & { category?: [number, number] }
@@ -113,7 +94,7 @@ export const useSellableItems: BoardTableDataFetcher<
     },
   });
 
-  const total = useSellableItemsCount({ filter: itemFilter });
+  const total = useItemsCount({ filter: itemFilter });
 
   return { data: data?.items, total, loading, refetch };
 };
