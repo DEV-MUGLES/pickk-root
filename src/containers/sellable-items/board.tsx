@@ -1,5 +1,8 @@
 import { BoardTemplate } from '@components/common/templates';
-import { sellableItemsColumns } from '@components/sellable-items';
+import {
+  sellableItemsColumns,
+  sellableItemsFilterInputs,
+} from '@components/sellable-items';
 
 import { useSellableItems } from './hooks';
 
@@ -10,6 +13,7 @@ export default function SellableItemsBoardContainer() {
       subTitle="판매 가능한 상품을 관리할 수 있는 메뉴입니다."
       useTableData={useSellableItems}
       columns={sellableItemsColumns}
+      filterInputs={sellableItemsFilterInputs}
     />
   );
 }

@@ -76,12 +76,30 @@ export type SellableItemDataType = Pick<
   products: Array<Pick<Product, 'id' | 'stock' | 'isDeleted'>>;
 };
 
+const formatItemFilter = (
+  filter: ItemFilter & { category?: [number, number] }
+) => {
+  const result = {
+    ...filter,
+    ...(filter['category']
+      ? {
+          majorCategoryId: filter['category'][0],
+          minorCategoryId: filter['category'][1],
+        }
+      : {}),
+  };
+
+  delete result['category'];
+
+  return result;
+};
+
 export const useSellableItems: BoardTableDataFetcher<
   SellableItemDataType,
-  ItemFilter
+  ItemFilter & { category?: [number, number] }
 > = ({ filter, pageInput }) => {
   const itemFilter: ItemFilter = {
-    ...filter,
+    ...formatItemFilter(filter),
     isSellable: true,
   };
 
