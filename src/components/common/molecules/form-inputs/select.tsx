@@ -1,4 +1,4 @@
-import { Select } from 'antd';
+import { Select, SelectProps } from 'antd';
 
 import { FormInputProps } from './form-input.types';
 
@@ -8,7 +8,7 @@ type SelectInputValueType = string | number;
 
 export type SelectInputProps = FormInputProps<SelectInputValueType> & {
   options: { label: string; value: SelectInputValueType }[];
-};
+} & Pick<SelectProps<unknown>, 'showSearch'>;
 
 export default function SelectInput(props: SelectInputProps) {
   const { onChange, options, ...selectProps } = props;
