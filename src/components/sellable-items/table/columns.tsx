@@ -48,7 +48,7 @@ export const sellableItemsColumns: ColumnsType<SellableItemDataType> = [
     title: '브랜드',
     dataIndex: 'brandNameKor',
     key: 'brandNameKor',
-    width: 200,
+    width: 100,
     render: (_, { brand }) => brand.nameKor,
   },
   {
