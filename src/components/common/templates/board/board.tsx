@@ -81,7 +81,7 @@ export default function BoardTemplate(props: BoardTemplateProps) {
       <StyledPageHeader
         title={title}
         subTitle={subTitle}
-        onBack={router.back}
+        onBack={() => router.push('/')}
       />
       {!!filterInputs && (
         <BoardFilter
