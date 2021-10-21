@@ -36,11 +36,9 @@ export default function BoardTemplate(props: BoardTemplateProps) {
     title,
     subTitle,
     useBoardData,
-    tableColumns,
     defaultFilter,
     filterInputs,
     defaultPageSize,
-    onRowClick = () => null,
   } = propsWithDefault;
 
   const router = useRouter();
@@ -98,13 +96,11 @@ export default function BoardTemplate(props: BoardTemplateProps) {
         dataSource={data}
         totalDataSize={total}
         loading={loading}
-        columns={tableColumns}
         page={page}
         pageSize={pageSize}
         onPageChange={setPage}
         onPageSizeChange={setPageSize}
         onRefreshClick={refetch}
-        onRowClick={onRowClick}
       />
     </StyledWrapper>
   );

@@ -32,7 +32,7 @@ export default function BoardTable(props: BoardTableProps) {
     onPageChange,
     onPageSizeChange,
     onRefreshClick,
-    onRowClick,
+    onRowClick = () => null,
     selectedRowKeys,
     onRowSelectionChange,
   } = props;

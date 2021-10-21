@@ -43,7 +43,7 @@ export default function InquiryListBoardContainer() {
         title="문의내역"
         subTitle="문의내역입니다."
         useBoardData={useInquiries}
-        tableColumns={newInquiriesColumns}
+        columns={newInquiriesColumns}
       />
       {!!selectedRecord && isModalVisible && (
         <InquiryAnswerModal

@@ -12,7 +12,7 @@ export default function OrderItemListBoardContainer() {
       title="주문상품내역"
       subTitle="주문상품내역을 볼 수 있습니다."
       useBoardData={useOrderItems}
-      tableColumns={orderItemsTableColumns}
+      columns={orderItemsTableColumns}
       filterInputs={orderItemsFilterInputs}
     />
   );
