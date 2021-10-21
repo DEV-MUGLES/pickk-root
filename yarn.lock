@@ -4266,6 +4266,7 @@ fsevents@~2.3.1:
     lodash: ^4.17.21
     next: 11.1.2
     prettier: ^2.4.0
+    rc-picker: ^2.5.19
     react: 17.0.2
     react-dom: 17.0.2
     react-is: ^17.0.2
@@ -4770,6 +4771,25 @@ fsevents@~2.3.1:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
   checksum: 62ef6ff95614b1f4ab457caa48d19dfd5a94a23ae1b6664ab73672c42679bb29264521d463dbdba5fd12cfa3615e75664522c17479219d4456f6d60e6363bb52
+  languageName: node
+  linkType: hard
+
+"rc-picker@npm:^2.5.19":
+  version: 2.5.19
+  resolution: "rc-picker@npm:2.5.19"
+  dependencies:
+    "@babel/runtime": ^7.10.1
+    classnames: ^2.2.1
+    date-fns: 2.x
+    dayjs: 1.x
+    moment: ^2.24.0
+    rc-trigger: ^5.0.4
+    rc-util: ^5.4.0
+    shallowequal: ^1.1.0
+  peerDependencies:
+    react: ">=16.9.0"
+    react-dom: ">=16.9.0"
+  checksum: 29eb13f1eb0d769f3df83569c7062d3844c66c9f4149205ac8301e51b00301112b65ee029f43ce14b266feeb2922b0daa8d7bf21ad9687d8787745e3ca6f1efa
   languageName: node
   linkType: hard
 
