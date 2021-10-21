@@ -24,44 +24,13 @@ const StyledPageHeader = styled(PageHeader)`
   background-color: ${palette.white};
 `;
 
-const DEFAULT_PAGE_SIZE = 20;
-
 export default function BoardTemplate(props: BoardTemplateProps) {
-  const propsWithDefault: BoardTemplateProps = {
-    ...props,
-    defaultPageSize: DEFAULT_PAGE_SIZE,
-  };
-
-  const {
-    title,
-    subTitle,
-    useBoardData,
-    defaultFilter,
-    filterInputs,
-    defaultPageSize,
-  } = propsWithDefault;
+  const { tableRef, title, subTitle, defaultFilter, filterInputs } = props;
 
   const router = useRouter();
 
   const [filter, setFilter] = useState<Record<string, unknown>>(defaultFilter);
   const [query, setQuery] = useState(null);
-
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(defaultPageSize);
-
-  const {
-    data = [],
-    total,
-    loading,
-    refetch,
-  } = useBoardData({
-    pageInput: {
-      offset: (page - 1) * pageSize,
-      limit: pageSize,
-    },
-    filter,
-    ...(query ? { query } : {}),
-  });
 
   const handleFilterChange = (newFilter: Record<string, unknown>) => {
     /** query 필드는 filter에서 제외한다. */
@@ -69,13 +38,7 @@ export default function BoardTemplate(props: BoardTemplateProps) {
     delete newFilter.query;
 
     setFilter(newFilter);
-
-    setPage(1);
   };
-
-  if (!data && !loading) {
-    return null;
-  }
 
   return (
     <StyledWrapper>
@@ -91,17 +54,7 @@ export default function BoardTemplate(props: BoardTemplateProps) {
           inputs={filterInputs}
         />
       )}
-      <BoardTable
-        {...propsWithDefault}
-        dataSource={data}
-        totalDataSize={total}
-        loading={loading}
-        page={page}
-        pageSize={pageSize}
-        onPageChange={setPage}
-        onPageSizeChange={setPageSize}
-        onRefreshClick={refetch}
-      />
+      <BoardTable {...props} ref={tableRef} filter={filter} query={query} />
     </StyledWrapper>
   );
 }

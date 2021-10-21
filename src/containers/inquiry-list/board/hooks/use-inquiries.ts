@@ -7,7 +7,7 @@ import {
   User,
 } from '@pickk/common';
 
-import { BoardDataFetcher } from '@components/common/templates/board';
+import { BoardTableDataFetcher } from '@components/common/organisms/board-table';
 
 const GET_ROOT_INQUIRIES = gql`
   query rootInquiries($filter: InquiryFilter, $pageInput: PageInput) {
@@ -71,10 +71,10 @@ const useInquiriesCount = ({ filter }: { filter: InquiryFilter }): number => {
   return (data?.rootInquiries || []).length;
 };
 
-export const useInquiries: BoardDataFetcher<InquiryDataType, InquiryFilter> = ({
-  filter,
-  pageInput,
-}) => {
+export const useInquiries: BoardTableDataFetcher<
+  InquiryDataType,
+  InquiryFilter
+> = ({ filter, pageInput }) => {
   const { data, loading, refetch } = useQuery<
     { rootInquiries: InquiryDataType[] },
     QueryRootInquiriesArgs

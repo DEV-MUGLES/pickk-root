@@ -11,7 +11,7 @@ export default function OrderItemListBoardContainer() {
     <BoardTemplate
       title="주문상품내역"
       subTitle="주문상품내역을 볼 수 있습니다."
-      useBoardData={useOrderItems}
+      useTableData={useOrderItems}
       columns={orderItemsTableColumns}
       filterInputs={orderItemsFilterInputs}
     />

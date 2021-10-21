@@ -9,7 +9,7 @@ import {
   OrderItemSearchFilter,
 } from '@pickk/common';
 
-import { BoardDataFetcher } from '@components/common/templates/board';
+import { BoardTableDataFetcher } from '@components/common/organisms/board-table';
 
 const ORDER_ITEM_FRAGMENT = gql`
   fragment orderItemFragment on OrderItem {
@@ -80,7 +80,7 @@ export type OrderItemDataType = Pick<
   };
 };
 
-export const useOrderItems: BoardDataFetcher<
+export const useOrderItems: BoardTableDataFetcher<
   OrderItemDataType,
   OrderItemSearchFilter
 > = ({ filter, pageInput, query }) => {

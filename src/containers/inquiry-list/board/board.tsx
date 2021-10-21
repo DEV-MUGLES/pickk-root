@@ -42,7 +42,7 @@ export default function InquiryListBoardContainer() {
       <BoardTemplate
         title="문의내역"
         subTitle="문의내역입니다."
-        useBoardData={useInquiries}
+        useTableData={useInquiries}
         columns={newInquiriesColumns}
       />
       {!!selectedRecord && isModalVisible && (

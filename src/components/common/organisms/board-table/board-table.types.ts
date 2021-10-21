@@ -1,19 +1,38 @@
 import { Key } from 'react';
 import { TableProps } from 'antd';
+import { PageInput } from '@pickk/common';
 
-export type BoardTableProps<DataType = object & { id?: Key }> = Pick<
-  TableProps<DataType>,
-  'dataSource' | 'loading' | 'columns'
-> & {
+export type BoardTableDataFetcher<
+  DataType = object,
+  FilterType = Record<string, unknown>
+> = ({
+  pageInput,
+  filter,
+  query,
+}: {
+  pageInput: PageInput;
+  filter?: FilterType;
+  query?: string;
+}) => {
+  data: DataType[];
+  total: number;
+  loading: boolean;
+  refetch: () => Promise<unknown>;
+};
+
+export type BoardTableProps<
+  DataType = object & { id?: Key },
+  FilterType = Record<string, unknown>
+> = Pick<TableProps<DataType>, 'columns'> & {
   title: string;
-  totalDataSize: number;
-  page: number;
-  pageSize: number;
+  useTableData: BoardTableDataFetcher<DataType, FilterType>;
+  filter?: FilterType;
+  query?: string;
+  /** @default 20 */
   defaultPageSize?: number;
   selectedRowKeys?: Key[];
-  onRefreshClick: () => void;
-  onPageChange: (page: number) => void;
-  onPageSizeChange: (pageSize: number) => void;
-  onRowClick?: (record: DataType) => void;
   onRowSelectionChange?: (selectedRowKeys: Key[]) => void;
+  onRowClick?: (record: DataType) => void;
 };
+
+export type BoardTableHandle = { reload: () => void };

@@ -1,27 +1,11 @@
-import { PageInput } from '@pickk/common';
+import { Ref } from 'react';
 
 import {
   BoardFilterProps,
   BoardTableProps,
 } from '@components/common/organisms';
 
-export type BoardDataFetcher<
-  DataType = object,
-  FilterType = Record<string, unknown>
-> = ({
-  pageInput,
-  filter,
-  query,
-}: {
-  pageInput: PageInput;
-  filter?: FilterType;
-  query?: string;
-}) => {
-  data: DataType[];
-  total: number;
-  loading: boolean;
-  refetch: () => Promise<unknown>;
-};
+import { BoardTableHandle } from '@components/common/organisms/board-table';
 
 export type BoardTemplateProps<
   DataType = any,
@@ -29,12 +13,15 @@ export type BoardTemplateProps<
 > = {
   title: string;
   subTitle: string;
-  useBoardData: BoardDataFetcher<DataType, FilterType>;
   filterInputs?: BoardFilterProps['inputs'];
-  /** @default 20 */
-  defaultPageSize?: number;
+  tableRef?: Ref<BoardTableHandle>;
 } & Pick<BoardFilterProps, 'defaultFilter'> &
   Pick<
-    BoardTableProps<DataType>,
-    'onRowClick' | 'selectedRowKeys' | 'onRowSelectionChange' | 'columns'
+    BoardTableProps<DataType, FilterType>,
+    | 'useTableData'
+    | 'onRowClick'
+    | 'selectedRowKeys'
+    | 'onRowSelectionChange'
+    | 'columns'
+    | 'defaultPageSize'
   >;
