@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { addCommaToNumber } from '.';
 
 export const renderPrice = (value: number) => {
-  if (!value) {
+  if (value == null) {
     return '';
   }
 
@@ -10,7 +10,7 @@ export const renderPrice = (value: number) => {
 };
 
 export const renderBoolean = (value: boolean) => {
-  if (!value) {
+  if (value == null) {
     return '';
   }
 
