@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
-import { BoardTemplate } from '@components/common/template';
+import { BoardTemplate } from '@components/common/templates';
 import { InquiryAnswerModal } from '@components/inquiry-list/table/modal';
 
 import { inquiriesColumns } from '@components/inquiry-list';

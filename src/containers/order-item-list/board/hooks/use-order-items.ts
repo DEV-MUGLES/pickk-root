@@ -9,7 +9,7 @@ import {
   OrderItemSearchFilter,
 } from '@pickk/common';
 
-import { BoardDataFetcher } from '@components/common/template/board';
+import { BoardDataFetcher } from '@components/common/templates/board';
 
 const ORDER_ITEM_FRAGMENT = gql`
   fragment orderItemFragment on OrderItem {

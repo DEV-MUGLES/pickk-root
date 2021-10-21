@@ -7,7 +7,7 @@ import {
   User,
 } from '@pickk/common';
 
-import { BoardDataFetcher } from '@components/common/template/board';
+import { BoardDataFetcher } from '@components/common/templates/board';
 
 const GET_ROOT_INQUIRIES = gql`
   query rootInquiries($filter: InquiryFilter, $pageInput: PageInput) {
