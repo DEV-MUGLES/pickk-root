@@ -4,6 +4,7 @@ import {
   forwardRef,
   useImperativeHandle,
   Ref,
+  Key,
 } from 'react';
 import styled from 'styled-components';
 import { Table } from 'antd';
@@ -11,6 +12,7 @@ import { TableRowSelection } from 'antd/lib/table/interface';
 import { palette } from '@pickk/design-token';
 
 import BoardTableHeader from './header';
+import BoardTableActions from './actions/actions';
 
 import { BoardTableProps, BoardTableHandle } from './board-table.types';
 
@@ -36,10 +38,9 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
       useTableData,
       filter,
       query,
+      actions,
       defaultPageSize = DEFAULT_PAGE_SIZE,
       onRowClick = () => null,
-      selectedRowKeys,
-      onRowSelectionChange,
     } = props;
 
     const [page, setPage] = useState(1);
@@ -65,6 +66,11 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
       ...(filter ? { filter } : {}),
     });
 
+    const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
+    const selectedRecords = data.filter((record) =>
+      selectedRowKeys.includes(record['id'])
+    );
+
     const reload = async () => {
       await refetch();
     };
@@ -81,13 +87,20 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
             total={total}
             onRefreshClick={reload}
           />
+          <BoardTableActions
+            actions={actions}
+            selectedRowKeys={selectedRowKeys}
+            selectedRecords={selectedRecords}
+            resetSelectedRowKeys={() => setSelectedRowKeys([])}
+            reload={reload}
+          />
         </StyledTableTitleWrapper>
       );
     };
 
     const rowSelection: TableRowSelection<unknown> = {
       selectedRowKeys,
-      onChange: onRowSelectionChange,
+      onChange: setSelectedRowKeys,
     };
 
     return (

@@ -2,6 +2,8 @@ import { Key } from 'react';
 import { TableProps } from 'antd';
 import { PageInput } from '@pickk/common';
 
+import { TableActionType } from './actions';
+
 export type BoardTableDataFetcher<
   DataType = object,
   FilterType = Record<string, unknown>
@@ -28,10 +30,9 @@ export type BoardTableProps<
   useTableData: BoardTableDataFetcher<DataType, FilterType>;
   filter?: FilterType;
   query?: string;
+  actions?: TableActionType[];
   /** @default 20 */
   defaultPageSize?: number;
-  selectedRowKeys?: Key[];
-  onRowSelectionChange?: (selectedRowKeys: Key[]) => void;
   onRowClick?: (record: DataType) => void;
 };
 
