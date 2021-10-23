@@ -550,16 +550,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pickk/common@npm:1.9.14":
-  version: 1.9.14
-  resolution: "@pickk/common@npm:1.9.14"
+"@pickk/common@npm:^1.9.15":
+  version: 1.9.15
+  resolution: "@pickk/common@npm:1.9.15"
   dependencies:
     cross-env: 5.0.5
   peerDependencies:
     "@apollo/client": ^3.3.20
     graphql: ^15.5.0
     react: ^17.0.1
-  checksum: 54e636fb39ee652cc870b5551cfeecd54f40b1d8cdaf4f01d9df90bd0ef573a443d35be69db030b47391d6551af8a1d2a259382fc103a4c25afee341e8d23494
+  checksum: 3fb7e1f4bb58eeed672cff405e5304a4377e5102f9391396dbaebba58065e9b0d3825c24b2c7528f831131f7371ea9948b2d9c548dc6ced2d6e95695c342f0b3
   languageName: node
   linkType: hard
 
@@ -4246,7 +4246,7 @@ fsevents@~2.3.1:
   dependencies:
     "@ant-design/icons": ^4.7.0
     "@apollo/client": ^3.4.10
-    "@pickk/common": 1.9.14
+    "@pickk/common": ^1.9.15
     "@pickk/design-token": ^0.0.6
     "@types/js-cookie": ^2.2.7
     "@types/lodash": ^4.14.172

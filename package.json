@@ -12,7 +12,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@apollo/client": "^3.4.10",
-    "@pickk/common": "1.9.14",
+    "@pickk/common": "^1.9.15",
     "@pickk/design-token": "^0.0.6",
     "antd": "^4.16.13",
     "axios": "^0.21.4",
