@@ -1,9 +1,10 @@
 import { BoardTemplate } from '@components/common/templates';
-import { itemsColumns, itemsFilterInputs } from '@components/items';
+import { itemsFilterInputs } from '@components/items';
 
-import { useItems, useItemsActions } from './hooks';
+import { useItems, useItemsColumns, useItemsActions } from './hooks';
 
 export default function ItemsBoardContainer() {
+  const { itemsColumns } = useItemsColumns();
   const { itemsActions } = useItemsActions();
 
   return (
