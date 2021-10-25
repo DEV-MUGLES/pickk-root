@@ -2,7 +2,11 @@ import { BoardTemplate } from '@components/common/templates';
 import { itemsFilterInputs } from '@components/items';
 import { ItemSizeChartDrawer } from '@components/sellable-items/table/drawers';
 
-import { useSellableItems, useSellableItemsColumns } from './hooks';
+import {
+  useSellableItems,
+  useSellableItemsColumns,
+  useSellableItemsActions,
+} from './hooks';
 
 export default function SellableItemsBoardContainer() {
   const {
@@ -11,6 +15,7 @@ export default function SellableItemsBoardContainer() {
     isSizeModalOpen,
     closeSizeModal,
   } = useSellableItemsColumns();
+  const { sellableItemsActions } = useSellableItemsActions();
 
   return (
     <>
@@ -20,6 +25,7 @@ export default function SellableItemsBoardContainer() {
         useTableData={useSellableItems}
         columns={sellableItemsColumns}
         filterInputs={itemsFilterInputs}
+        actions={sellableItemsActions}
       />
       {sellableItemsColumns && (
         <ItemSizeChartDrawer
