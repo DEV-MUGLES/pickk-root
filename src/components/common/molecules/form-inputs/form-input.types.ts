@@ -1,5 +1,5 @@
 export type FormInputProps<T = unknown> = {
   value: T;
-  defaultValue: T;
+  defaultValue?: T;
   onChange: (value: T) => void;
 };
