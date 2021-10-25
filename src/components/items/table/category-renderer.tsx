@@ -1,16 +1,10 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 import { Button, Typography } from 'antd';
 import { ItemCategory } from '@pickk/common';
 
 import { CategoryModal } from '@components/items';
 
 const { Text } = Typography;
-
-const StyledCol = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 export type CategoryRendererProps = {
   id: number;
@@ -32,7 +26,7 @@ export default function CategoryRenderer(props: CategoryRendererProps) {
 
   return (
     <>
-      <StyledCol>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Text>
           {majorCategory?.name ?? '-'}/{minorCategory?.name ?? '-'}
         </Text>
@@ -43,7 +37,7 @@ export default function CategoryRenderer(props: CategoryRendererProps) {
         >
           수정
         </Button>
-      </StyledCol>
+      </div>
       {isModalOpen && (
         <CategoryModal
           itemId={id}

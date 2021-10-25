@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
+import { CategoryRenderer } from '@components/items';
 import { sellableItemsColumns } from '@components/sellable-items';
 
 import { useToggleModals } from '@common/hooks';
@@ -46,7 +47,17 @@ export const useSellableItemsColumns = () => {
       ellipsis: true,
       align: 'center',
     },
-    ...sellableItemsColumns.slice(1),
+    ...sellableItemsColumns.slice(1, 2),
+    {
+      title: '카테고리',
+      dataIndex: 'category',
+      key: 'category',
+      render: (_, props) => <CategoryRenderer {...props} />,
+      width: 100,
+      ellipsis: true,
+      align: 'center',
+    },
+    ...sellableItemsColumns.slice(2),
   ];
 
   return {
