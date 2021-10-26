@@ -1,0 +1,12 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-top: 0.8rem;
+
+  .input {
+    width: 6rem;
+    margin-left: 0.4rem;
+  }
+}

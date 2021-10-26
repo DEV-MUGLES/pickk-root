@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 import { PageHeader } from 'antd';
-import { palette } from '@pickk/design-token';
 
 import { BoardFilter, BoardTable } from '@components/common/organisms';
 
@@ -11,21 +9,7 @@ import { removeDashFromNumber } from '@common/helpers';
 
 import { BoardTemplateProps } from './board.type';
 
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  height: 100vh;
-  padding: 0.8rem;
-
-  background-color: ${palette.gray1};
-`;
-
-const StyledPageHeader = styled(PageHeader)`
-  margin-bottom: 0.8rem;
-
-  background-color: ${palette.white};
-`;
+import styles from './board.module.scss';
 
 export default function BoardTemplate(props: BoardTemplateProps) {
   const { tableRef, title, subTitle, defaultFilter = {}, filterInputs } = props;
@@ -77,8 +61,9 @@ export default function BoardTemplate(props: BoardTemplateProps) {
   };
 
   return (
-    <StyledWrapper>
-      <StyledPageHeader
+    <div className={styles.wrapper}>
+      <PageHeader
+        className={styles.pageHeader}
         title={title}
         subTitle={subTitle}
         onBack={() => router.push('/')}
@@ -91,6 +76,6 @@ export default function BoardTemplate(props: BoardTemplateProps) {
         />
       )}
       <BoardTable {...props} ref={tableRef} filter={filter} query={query} />
-    </StyledWrapper>
+    </div>
   );
 }

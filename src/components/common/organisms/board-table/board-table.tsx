@@ -6,7 +6,6 @@ import {
   Ref,
   Key,
 } from 'react';
-import styled from 'styled-components';
 import { Table } from 'antd';
 import { TableRowSelection } from 'antd/lib/table/interface';
 import { palette } from '@pickk/design-token';
@@ -15,19 +14,6 @@ import BoardTableHeader from './header';
 import BoardTableActions from './actions/actions';
 
 import { BoardTableProps, BoardTableHandle } from './board-table.types';
-
-const StyledTable = styled(Table)`
-  padding: 0.4rem 0;
-
-  background-color: ${palette.white};
-`;
-
-const StyledTableTitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  padding: 0 0.8rem;
-`;
 
 const DEFAULT_PAGE_SIZE = 20;
 
@@ -81,7 +67,13 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
 
     const renderTitle = () => {
       return (
-        <StyledTableTitleWrapper>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '0 0.8rem',
+          }}
+        >
           <BoardTableHeader
             title={title}
             total={total}
@@ -94,7 +86,7 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
             resetSelectedRowKeys={() => setSelectedRowKeys([])}
             reload={reload}
           />
-        </StyledTableTitleWrapper>
+        </div>
       );
     };
 
@@ -104,7 +96,8 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
     };
 
     return (
-      <StyledTable
+      <Table
+        style={{ padding: '0.4rem 0', backgroundColor: palette.white }}
         {...props}
         {...(selectedRowKeys != null ? { rowSelection } : {})}
         title={renderTitle}

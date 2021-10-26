@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 import dayjs from 'dayjs';
 import { Typography, Alert, Button } from 'antd';
 import { palette } from '@pickk/design-token';
@@ -9,38 +8,6 @@ import InquiryAnswerUpdateModal from './update-modal';
 import { InquiryAnswerDataType, useInquiryAnswers } from './hooks';
 
 const { Paragraph } = Typography;
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledAlert = styled(Alert).attrs({
-  showIcon: true,
-  type: 'warning',
-})`
-  margin-top: 1.6rem;
-`;
-
-const StyledAnswerCard = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  border: 1px solid ${palette.gray2};
-  padding: 1.2rem;
-  margin-top: 0.8rem;
-`;
-
-const StyledRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const StyledText = styled.div`
-  color: ${palette.gray5};
-`;
 
 type InquiryAnswerModalAnswerListProps = {
   id: number;
@@ -78,29 +45,48 @@ export default function InquiryAnswerModalAnswerList({
       const { id, content, displayAuthor, createdAt } = answer;
 
       return (
-        <StyledAnswerCard key={id}>
+        <div
+          key={id}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            border: `1px solid ${palette.gray2}`,
+            padding: '1.2rem',
+            marginTop: '0.8rem',
+          }}
+        >
           <Paragraph style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
             {content}
           </Paragraph>
-          <StyledRow>
-            <StyledText>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div>
               {getCreatedAtText(createdAt)} {displayAuthor}
-            </StyledText>
+            </div>
             <Button onClick={handleUpdateClick(answer)}>수정</Button>
-          </StyledRow>
-        </StyledAnswerCard>
+          </div>
+        </div>
       );
     });
   };
 
   return (
     <>
-      <StyledWrapper>
-        <StyledAlert
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Alert
+          type="warning"
           message={`기존 답변에 추가적인 답변으로 등록됩니다. (이미 등록된 답변 개수: ${answers.length})`}
+          showIcon
+          style={{ marginTop: '1.6rem' }}
         />
         {renderAnswers()}
-      </StyledWrapper>
+      </div>
       {isModalVisible && (
         <InquiryAnswerUpdateModal
           visible={isModalVisible}

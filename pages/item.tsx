@@ -1,20 +1,6 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 import { useMutation, gql } from '@apollo/client';
 import { Button, InputNumber, message } from 'antd';
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: fit-content;
-`;
-
-const StyledA = styled.a`
-  font-size: 2rem;
-  color: blue;
-  text-decoration: underline;
-`;
 
 export default function ItemPage() {
   const [updating, setUpdating] = useState({
@@ -108,7 +94,13 @@ export default function ItemPage() {
   };
 
   return (
-    <StyledWrapper>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: 'fit-content',
+      }}
+    >
       아래에 아이템 ID를 입력하세요
       <InputNumber min={1} value={itemId} onChange={setItemId} />
       <Button
@@ -143,9 +135,14 @@ export default function ItemPage() {
       >
         옵션 크롤링+재생성 (기존 product 모두 삭제됩니다.)
       </Button>
-      <StyledA target="_blank" href={`https://pickk.one/items/${itemId}`}>
+      <a
+        target="_blank"
+        href={`https://pickk.one/items/${itemId}`}
+        rel="noreferrer"
+        style={{ fontSize: '2rem' }}
+      >
         핔 링크 (https://pickk.one/items/{itemId})
-      </StyledA>
-    </StyledWrapper>
+      </a>
+    </div>
   );
 }

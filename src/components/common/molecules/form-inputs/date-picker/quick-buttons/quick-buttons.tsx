@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Radio, RadioChangeEvent } from 'antd';
-import styled from 'styled-components';
 import dayjs from 'dayjs';
 
 import { setEndOfDay, setStartOfDay } from '@common/helpers';
@@ -12,15 +11,6 @@ import {
   QuickButtonValues,
   QuickButtonValue,
 } from './quick-buttons.types';
-
-const StyledRadioGroup = styled(Radio.Group)`
-  width: fit-content;
-  margin-bottom: 0.8rem;
-`;
-
-const StyledRadioButton = styled(Radio.Button).attrs({
-  style: { width: '4rem' },
-})``;
 
 export default function DatePickerQuickButtons(
   props: DatePickerQuickButtonsProps
@@ -41,15 +31,19 @@ export default function DatePickerQuickButtons(
   };
 
   return (
-    <StyledRadioGroup
+    <Radio.Group
       value={selectedQuickButton}
       onChange={handleChoicedQuickButtonChange}
+      style={{
+        width: 'fit-content',
+        marginBottom: '0.8rem',
+      }}
     >
       {QuickButtonValues.map((value) => (
-        <StyledRadioButton key={value} value={value}>
+        <Radio.Button key={value} value={value} style={{ width: '4rem' }}>
           {quickBtnValue2Name(value)}
-        </StyledRadioButton>
+        </Radio.Button>
       ))}
-    </StyledRadioGroup>
+    </Radio.Group>
   );
 }

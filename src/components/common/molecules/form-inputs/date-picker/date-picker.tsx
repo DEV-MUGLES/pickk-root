@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Select, Typography } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 
@@ -12,17 +11,6 @@ import DatePickerQuickButtons, {
 import { DatePickerProps } from './date-picker.types';
 
 const { Option } = Select;
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledSelect = styled(Select).attrs({
-  style: { width: '20rem' },
-})`
-  margin-bottom: 0.8rem;
-`;
 
 export default function DatePicker(props: DatePickerProps) {
   const propsWithDefault: DatePickerProps = {
@@ -61,19 +49,20 @@ export default function DatePicker(props: DatePickerProps) {
   };
 
   return (
-    <StyledWrapper>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       {lookupOptions && (
-        <StyledSelect
+        <Select
           value={value?.lookup}
           defaultValue={defaultValue?.lookup}
           onChange={(value) => handleChoicedSelectChange(value.toString())}
+          style={{ width: '20rem', marginBottom: '0.8rem' }}
         >
           {lookupOptions.map((option) => (
             <Option key={option.name} value={option.value}>
               <Typography.Text>{option.name}</Typography.Text>
             </Option>
           ))}
-        </StyledSelect>
+        </Select>
       )}
       <DatePickerQuickButtons
         defaultQuickButtonValue={defaultQuickButtonValue}
@@ -84,6 +73,6 @@ export default function DatePicker(props: DatePickerProps) {
         defaultValue={defaultSelectedRange}
         onChange={handleRangeChange}
       />
-    </StyledWrapper>
+    </div>
   );
 }

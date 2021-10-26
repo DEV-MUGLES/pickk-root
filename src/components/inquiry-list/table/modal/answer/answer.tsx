@@ -1,5 +1,4 @@
 import { ChangeEvent, useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { Modal, Input, Typography, message } from 'antd';
 
 import { useMe } from '@common/hooks';
@@ -8,21 +7,10 @@ import AnswerList from './answer-list';
 
 import { useAnswerInquiry } from './hooks';
 
+import styles from './answer.module.scss';
+
 const { Text } = Typography;
 const { TextArea } = Input;
-
-const StyledRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  margin-top: 0.8rem;
-`;
-
-const StyledInput = styled(Input)`
-  width: 6rem;
-  margin-left: 0.4rem;
-`;
 
 export type InquiryAnswerModalProps = {
   visible: boolean;
@@ -81,13 +69,14 @@ export default function InquiryAnswerModal(props: InquiryAnswerModalProps) {
   return (
     <Modal visible={visible} onOk={answer} onCancel={onClose} title="답변달기">
       <TextArea value={content} onChange={handleContentChange} />
-      <StyledRow>
+      <div className={styles.row}>
         <Text>담당자명: </Text>
-        <StyledInput
+        <Input
+          className={styles.input}
           value={displayAuthor}
           onChange={handleDisplayAuthorChange}
         />
-      </StyledRow>
+      </div>
       <AnswerList id={inquiryId} />
     </Modal>
   );

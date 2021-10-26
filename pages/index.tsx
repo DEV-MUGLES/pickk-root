@@ -1,13 +1,7 @@
 import Link from 'next/link';
-import styled from 'styled-components';
 import { User } from '@pickk/common';
 
 import { useRefreshJwtToken } from '@common/hooks';
-
-const StyledMenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 export type HomePageProps = {
   me?: User;
@@ -21,7 +15,7 @@ export default function HomePage({ me }: HomePageProps) {
       <h1>
         {me.nickname}님 안녕하세요! {getRandomMessage()}
       </h1>
-      <StyledMenuWrapper>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Link href="/my">👮 내정보수정</Link>
         <Link href="/images-upload">🖼 이미지업로드</Link>
         <Link href="/inquiries">💬 문의내역</Link>
@@ -29,7 +23,7 @@ export default function HomePage({ me }: HomePageProps) {
         <Link href="/sellable-items">👕 활성 상품관리</Link>
         <Link href="/items">👖 전체 상품관리 </Link>
         <Link href="/item">👕 (임시) 상품 업데이트</Link>
-      </StyledMenuWrapper>
+      </div>
     </div>
   );
 }

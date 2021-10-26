@@ -1,17 +1,8 @@
 import { Image, Typography } from 'antd';
-import styled from 'styled-components';
+
+import styles from './item-card.module.scss';
 
 const { Text } = Typography;
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const StyledImg = styled(Image).attrs({ width: '6rem' })`
-  margin-right: 0.4rem;
-`;
 
 type InquiriesTableItemCardProps = {
   imageUrl: string;
@@ -23,9 +14,9 @@ export default function InquiriesTableItemCard({
   name,
 }: InquiriesTableItemCardProps) {
   return (
-    <StyledWrapper>
-      <StyledImg src={imageUrl} alt={name} />
+    <div className={styles.wrapper}>
+      <Image src={imageUrl} alt={name} />
       <Text>{name}</Text>
-    </StyledWrapper>
+    </div>
   );
 }
