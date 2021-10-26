@@ -1,12 +1,11 @@
-import App, { AppContext, AppProps } from 'next/app';
-import { ApolloProvider, gql } from '@apollo/client';
+import { AppProps } from 'next/app';
+import { ApolloProvider } from '@apollo/client';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
 import 'antd/dist/antd.css';
-import { UserRole } from '@pickk/common';
 
-import { createApolloClient, useApolloClient } from '@providers/apollo';
+import { useApolloClient } from '@providers/apollo';
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
@@ -20,47 +19,3 @@ export default function AdminApp({ Component, pageProps }: AppProps) {
     </ApolloProvider>
   );
 }
-
-AdminApp.getInitialProps = async (appContext: AppContext) => {
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
-  const appProps = await App.getInitialProps(appContext);
-
-  if (appContext.ctx.pathname === '/login') {
-    return appProps;
-  }
-
-  try {
-    const client = createApolloClient(appContext.ctx.req);
-    const {
-      data: { me },
-    } = await client.query<{ me: { role: UserRole } }>({
-      query: GET_ME,
-    });
-
-    if (!me || me.role !== UserRole.Admin) {
-      throw new Error('권한 없음');
-    }
-
-    return { ...appProps, pageProps: { ...appProps.pageProps, me } };
-  } catch {
-    const { ctx } = appContext;
-
-    if (ctx.res) {
-      ctx.res.writeHead(302, {
-        Location: `/login?to=${ctx.pathname}`,
-      });
-      ctx.res.end();
-      ctx.res;
-    }
-  }
-};
-
-const GET_ME = gql`
-  query me {
-    me {
-      id
-      nickname
-      role
-    }
-  }
-`;

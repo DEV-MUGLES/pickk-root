@@ -1,20 +1,13 @@
 import Link from 'next/link';
-import { User } from '@pickk/common';
 
 import { useRefreshJwtToken } from '@common/hooks';
 
-export type HomePageProps = {
-  me?: User;
-};
-
-export default function HomePage({ me }: HomePageProps) {
+export default function HomePage() {
   useRefreshJwtToken();
 
   return (
     <div>
-      <h1>
-        {me.nickname}님 안녕하세요! {getRandomMessage()}
-      </h1>
+      <h1>안녕하세요! {getRandomMessage()}</h1>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Link href="/my">👮 내정보수정</Link>
         <Link href="/images-upload">🖼 이미지업로드</Link>
