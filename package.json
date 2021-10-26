@@ -9,6 +9,7 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },
+  "sideEffects": false,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@apollo/client": "^3.4.10",
