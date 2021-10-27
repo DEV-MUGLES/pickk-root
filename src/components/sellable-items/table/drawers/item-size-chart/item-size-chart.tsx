@@ -16,7 +16,7 @@ import {
   useRemoveSizeChart,
 } from './hooks';
 
-const StyledSection = ({
+const Section = ({
   children,
   title,
 }: {
@@ -122,7 +122,7 @@ export default function ItemSizeChartDrawer({
   return (
     <Drawer visible={visible} onClose={onClose} width={'60%'} closeIcon={null}>
       <Space direction="vertical" style={{ width: '100%' }} size="small">
-        <StyledSection title="실측 사이즈">
+        <Section title="실측 사이즈">
           <Space>
             <Button onClick={() => openModal('sizeTable')}>
               사이즈 {!!sizeChart ? '수정' : '등록'}
@@ -142,8 +142,8 @@ export default function ItemSizeChartDrawer({
               onSubmit={handleItemSizeSubmit}
             />
           )}
-        </StyledSection>
-        <StyledSection title="추천 사이즈">
+        </Section>
+        <Section title="추천 사이즈">
           <Button onClick={openRecommendationsModal}>
             추천 사이즈 {!!sizeChart?.recommendations ? '수정' : '등록'}
           </Button>
@@ -156,7 +156,7 @@ export default function ItemSizeChartDrawer({
               onSubmit={handleRecommendationsSubmit}
             />
           )}
-        </StyledSection>
+        </Section>
       </Space>
     </Drawer>
   );

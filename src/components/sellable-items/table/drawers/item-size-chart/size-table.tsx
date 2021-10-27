@@ -1,29 +1,7 @@
-import styled from 'styled-components';
 import { Typography } from 'antd';
 import { ItemSizeChart } from '@pickk/common';
-import { palette } from '@pickk/design-token';
 
 const { Text } = Typography;
-
-const StyledTable = styled.table`
-  width: 100%;
-`;
-
-const StyledTr = styled.tr`
-  display: flex;
-  flex-direction: row;
-
-  border-bottom: 1px solid ${palette.gray2};
-`;
-
-const StyledTh = styled.td`
-  flex: 1;
-  font-weight: 700;
-`;
-
-const StyledTd = styled.td`
-  flex: 1;
-`;
 
 type ItemSizeTableProps = Pick<ItemSizeChart, 'id' | 'labels' | 'sizes'>;
 
@@ -39,26 +17,24 @@ export default function ItemSizeTable(props: ItemSizeTableProps) {
       return null;
     }
 
-    return ['', ...labels].map((label) => (
-      <StyledTh key={label}>{label}</StyledTh>
-    ));
+    return ['', ...labels].map((label) => <th key={label}>{label}</th>);
   };
 
   const renderSizeRows = () => {
     return sizes?.map((size) => (
-      <StyledTr key={size.name}>
-        <StyledTd>{size.name}</StyledTd>
+      <tr key={size.name}>
+        <td>{size.name}</td>
         {size.values.map((value) => (
-          <StyledTd key={value}>{value}</StyledTd>
+          <td key={value}>{value}</td>
         ))}
-      </StyledTr>
+      </tr>
     ));
   };
 
   return (
-    <StyledTable>
-      <StyledTr>{renderLabels()}</StyledTr>
+    <table width="100%" style={{ borderCollapse: 'collapse' }}>
+      <tr>{renderLabels()}</tr>
       {renderSizeRows()}
-    </StyledTable>
+    </table>
   );
 }

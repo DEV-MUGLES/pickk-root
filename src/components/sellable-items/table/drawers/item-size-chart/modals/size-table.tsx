@@ -1,22 +1,8 @@
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { Modal, Space, Input, Divider, Typography } from 'antd';
-import { palette } from '@pickk/design-token';
 import { ItemSizeChart } from '@pickk/common';
 
 const { Text } = Typography;
-
-const StyledRow = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  width: 100%;
-`;
-
-const StyledCol = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 const Label = ({
   title,
@@ -27,36 +13,27 @@ const Label = ({
   children: ReactNode;
   guidText?: string;
 }) => (
-  <StyledRow>
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+    }}
+  >
     <Text style={{ width: '10rem' }}>{title}</Text>
-    <StyledCol>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       {children}
       <Text type="secondary" style={{ marginTop: '0.4rem' }}>
         {guidText}
       </Text>
-    </StyledCol>
-  </StyledRow>
+    </div>
+  </div>
 );
-
-const StyledTable = styled.table`
-  width: 100%;
-`;
-
-const StyledTr = styled.tr`
-  display: flex;
-  flex-direction: row;
-
-  border-bottom: 1px solid ${palette.gray2};
-`;
-
-const StyledTh = styled.td`
-  flex: 1;
-  font-weight: 700;
-`;
-
-const StyledTd = styled.td`
-  flex: 1;
-`;
 
 type ItemSizeChartInput = Pick<
   ItemSizeChart,
@@ -136,24 +113,22 @@ export default function ItemSizeTableModal(props: ItemSizeTableModalProps) {
   };
 
   const renderLabels = () => {
-    return ['', ...labels].map((label) => (
-      <StyledTh key={label}>{label}</StyledTh>
-    ));
+    return ['', ...labels].map((label) => <th key={label}>{label}</th>);
   };
 
   const renderSizeRows = () => {
     return sizeNames?.map((name, i) => (
-      <StyledTr key={name}>
-        <StyledTd>{name}</StyledTd>
+      <tr key={name}>
+        <td>{name}</td>
         {labels.map((_, j) => (
-          <StyledTd key={`${i}_${j}`}>
+          <td key={`${i}_${j}`}>
             <Input
               value={sizeValues?.[i]?.[j] ?? ''}
               onChange={(e) => handleSizeValuesChange(i, j, e.target.value)}
             />
-          </StyledTd>
+          </td>
         ))}
-      </StyledTr>
+      </tr>
     ));
   };
 
@@ -179,10 +154,10 @@ export default function ItemSizeTableModal(props: ItemSizeTableModalProps) {
           <Input value={sizeNames.join(',')} onChange={handleSizeNamesChange} />
         </Label>
         <Divider />
-        <StyledTable>
-          <StyledTr>{renderLabels()}</StyledTr>
+        <table width="100%">
+          <tr>{renderLabels()}</tr>
           {renderSizeRows()}
-        </StyledTable>
+        </table>
       </Space>
     </Modal>
   );
