@@ -94,10 +94,6 @@ export default function ItemSizeTableModal(props: ItemSizeTableModalProps) {
   };
 
   const handleSubmit = async () => {
-    console.log({
-      labels,
-      sizes: sizeNames.map((name, i) => ({ name, values: sizeValues[i] })),
-    });
     if (!confirm('저장하시겠습니까?')) {
       return;
     }
