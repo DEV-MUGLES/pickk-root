@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 import { Collapse, Drawer, Space, Button, message } from 'antd';
 import CollapsePanel from 'antd/lib/collapse/CollapsePanel';
-import { ItemSizeChart } from '@pickk/common';
+import { ItemSizeChart, ItemSizeRecommendation } from '@pickk/common';
 
 import { useToggleModals } from '@common/hooks';
 
 import ItemSizeTable from './size-table';
-import { ItemSizeTableModal } from './modals';
+import ItemSizeRecommendations from './recommendations';
+import { ItemSizeTableModal, ItemSizeRecommendationsModal } from './modals';
 
 import {
   useCreateSizeChart,
@@ -58,12 +59,17 @@ export default function ItemSizeChartDrawer({
   const { updateSizeChart } = useUpdateSizeChart();
   const { removeSizeChart } = useRemoveSizeChart();
 
-  const handleItemSizeTableModalSubmit = async (input: ItemSizeChartInput) => {
+  const handleItemSizeSubmit = async (input: ItemSizeChartInput) => {
     try {
       if (!sizeChart) {
         await createSizeChart(itemId, input);
       } else {
-        await updateSizeChart(itemId, input);
+        await updateSizeChart(itemId, {
+          ...input,
+          ...(!!sizeChart?.recommendations
+            ? { recommendations: sizeChart.recommendations }
+            : {}),
+        });
       }
 
       return true;
@@ -88,6 +94,31 @@ export default function ItemSizeChartDrawer({
     }
   };
 
+  const openRecommendationsModal = () => {
+    if (!sizeChart) {
+      alert('실측 사이즈를 먼저 등록해주세요');
+      return;
+    }
+    openModal('recommendations');
+  };
+
+  const handleRecommendationsSubmit = async (
+    recommendations: ItemSizeRecommendation[]
+  ) => {
+    try {
+      await updateSizeChart(itemId, {
+        labels: sizeChart.labels,
+        sizes: sizeChart.sizes.map((v) => ({ name: v.name, values: v.values })),
+        recommendations,
+      });
+
+      return true;
+    } catch (error) {
+      message.error('실패했습니다. - ' + error);
+      return false;
+    }
+  };
+
   return (
     <Drawer visible={visible} onClose={onClose} width={'60%'} closeIcon={null}>
       <Space direction="vertical" style={{ width: '100%' }} size="small">
@@ -108,7 +139,21 @@ export default function ItemSizeChartDrawer({
               itemSizeChart={sizeChart}
               visible={isModalOpen.sizeTable}
               onClose={() => closeModal('sizeTable')}
-              onSubmit={handleItemSizeTableModalSubmit}
+              onSubmit={handleItemSizeSubmit}
+            />
+          )}
+        </StyledSection>
+        <StyledSection title="추천 사이즈">
+          <Button onClick={openRecommendationsModal}>
+            추천 사이즈 {!!sizeChart?.recommendations ? '수정' : '등록'}
+          </Button>
+          <ItemSizeRecommendations {...sizeChart} />
+          {isModalOpen.recommendations && (
+            <ItemSizeRecommendationsModal
+              {...sizeChart}
+              visible={isModalOpen.recommendations}
+              onClose={() => closeModal('recommendations')}
+              onSubmit={handleRecommendationsSubmit}
             />
           )}
         </StyledSection>
