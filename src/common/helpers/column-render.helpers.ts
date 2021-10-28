@@ -30,5 +30,5 @@ export const renderDateWithTime = (value: Date) => {
     return '';
   }
 
-  return dayjs(value).format('YYYY-MM-DD hh:mm:ss');
+  return dayjs(value).format('YYYY-MM-DD HH:mm:ss');
 };
