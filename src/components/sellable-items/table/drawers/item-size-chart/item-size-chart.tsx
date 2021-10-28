@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
-import { Collapse, Drawer, Space, Button, message } from 'antd';
-import CollapsePanel from 'antd/lib/collapse/CollapsePanel';
+import { Drawer, Space, Button, message } from 'antd';
 import { ItemSizeChart, ItemSizeRecommendation } from '@pickk/common';
+
+import { Accordion } from '@components/common/molecules';
 
 import { useToggleModals } from '@common/hooks';
 
@@ -15,22 +15,6 @@ import {
   useUpdateSizeChart,
   useRemoveSizeChart,
 } from './hooks';
-
-const Section = ({
-  children,
-  title,
-}: {
-  children: ReactNode;
-  title: string;
-}) => (
-  <Collapse defaultActiveKey="1">
-    <CollapsePanel key="1" header={title}>
-      <Space direction="vertical" style={{ width: '100%' }}>
-        {children}
-      </Space>
-    </CollapsePanel>
-  </Collapse>
-);
 
 type ItemSizeChartInput = Pick<
   ItemSizeChart,
@@ -122,7 +106,7 @@ export default function ItemSizeChartDrawer({
   return (
     <Drawer visible={visible} onClose={onClose} width={'60%'} closeIcon={null}>
       <Space direction="vertical" style={{ width: '100%' }} size="small">
-        <Section title="실측 사이즈">
+        <Accordion title="실측 사이즈">
           <Space>
             <Button onClick={() => openModal('sizeTable')}>
               사이즈 {!!sizeChart ? '수정' : '등록'}
@@ -142,8 +126,8 @@ export default function ItemSizeChartDrawer({
               onSubmit={handleItemSizeSubmit}
             />
           )}
-        </Section>
-        <Section title="추천 사이즈">
+        </Accordion>
+        <Accordion title="추천 사이즈">
           <Button onClick={openRecommendationsModal}>
             추천 사이즈 {!!sizeChart?.recommendations ? '수정' : '등록'}
           </Button>
@@ -156,7 +140,7 @@ export default function ItemSizeChartDrawer({
               onSubmit={handleRecommendationsSubmit}
             />
           )}
-        </Section>
+        </Accordion>
       </Space>
     </Drawer>
   );
