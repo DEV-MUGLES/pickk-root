@@ -40,7 +40,6 @@ export default function BaseForm(props: BaseFormProps) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        padding: '0.8rem 4rem',
       }}
     >
       {renderInputs()}
