@@ -9,7 +9,12 @@ import { useToggleModals } from '@common/hooks';
 
 import { SellableItemDataType } from './use-sellable-items';
 
-const SellableItemsModalTypes = ['size', 'optionStock', 'price'] as const;
+const SellableItemsModalTypes = [
+  'size',
+  'optionStock',
+  'price',
+  'info',
+] as const;
 type SellableItemsModalType = typeof SellableItemsModalTypes[number];
 
 export const useSellableItemsColumns = () => {
@@ -57,6 +62,12 @@ export const useSellableItemsColumns = () => {
           >
             사이즈 관리
           </Button>
+          <Button
+            size="small"
+            onClick={handleManageButtonClick(record, 'info')}
+          >
+            정보 수정
+          </Button>
         </Space>
       ),
       ellipsis: true,
@@ -81,8 +92,10 @@ export const useSellableItemsColumns = () => {
     isPriceModalOpen: isModalOpen.price,
     isOptionStockModalOpen: isModalOpen.optionStock,
     isSizeModalOpen: isModalOpen.size,
+    isInfoModalOpen: isModalOpen.info,
     closePriceModal: handleModalClose('price'),
     closeOptionStockModal: handleModalClose('optionStock'),
     closeSizeModal: handleModalClose('size'),
+    closeInfoModal: () => closeModal('info'),
   };
 };
