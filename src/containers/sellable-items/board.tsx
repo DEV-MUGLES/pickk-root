@@ -4,6 +4,7 @@ import {
   ItemPriceManageDrawer,
   ItemSizeChartDrawer,
   ItemOptionStockManageDrawer,
+  ItemInfoManageDrawer,
 } from '@components/sellable-items/table/drawers';
 
 import {
@@ -19,9 +20,11 @@ export default function SellableItemsBoardContainer() {
     isPriceModalOpen,
     isSizeModalOpen,
     isOptionStockModalOpen,
+    isInfoModalOpen,
     closePriceModal,
     closeSizeModal,
     closeOptionStockModal,
+    closeInfoModal,
   } = useSellableItemsColumns();
   const { sellableItemsActions } = useSellableItemsActions();
 
@@ -55,6 +58,13 @@ export default function SellableItemsBoardContainer() {
           itemId={selectedRecord.id}
           visible={isSizeModalOpen}
           onClose={closeSizeModal}
+        />
+      )}
+      {!!selectedRecord && (
+        <ItemInfoManageDrawer
+          itemId={selectedRecord.id}
+          visible={isInfoModalOpen}
+          onClose={closeInfoModal}
         />
       )}
     </>
