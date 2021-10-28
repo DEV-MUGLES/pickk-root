@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
 import { CategoryRenderer } from '@components/items';
@@ -9,7 +9,7 @@ import { useToggleModals } from '@common/hooks';
 
 import { SellableItemDataType } from './use-sellable-items';
 
-const SellableItemsModalTypes = ['size'] as const;
+const SellableItemsModalTypes = ['size', 'optionStock', 'price'] as const;
 type SellableItemsModalType = typeof SellableItemsModalTypes[number];
 
 export const useSellableItemsColumns = () => {
@@ -22,12 +22,12 @@ export const useSellableItemsColumns = () => {
   const handleManageButtonClick =
     (itemId: number, types: SellableItemsModalType) => () => {
       setSelectedRowKey(itemId);
-      openModal('size');
+      openModal(types);
     };
 
-  const handleModalClose = () => {
+  const handleModalClose = (types: SellableItemsModalType) => () => {
     setSelectedRowKey(null);
-    closeModal('size');
+    closeModal(types);
   };
 
   const newSellableItemsColumns: ColumnsType<SellableItemDataType> = [
@@ -37,12 +37,20 @@ export const useSellableItemsColumns = () => {
       dataIndex: 'management',
       key: 'management',
       render: (_, record) => (
-        <Button
-          size="small"
-          onClick={handleManageButtonClick(record.id, 'size')}
-        >
-          사이즈 관리
-        </Button>
+        <Space direction="vertical">
+          <Button
+            size="small"
+            onClick={handleManageButtonClick(record.id, 'optionStock')}
+          >
+            옵션/재고 관리
+          </Button>
+          <Button
+            size="small"
+            onClick={handleManageButtonClick(record.id, 'size')}
+          >
+            사이즈 관리
+          </Button>
+        </Space>
       ),
       ellipsis: true,
       align: 'center',
@@ -64,7 +72,9 @@ export const useSellableItemsColumns = () => {
     sellableItemsColumns: newSellableItemsColumns,
     selectedRowKey,
     setSelectedRowKey,
+    isOptionStockModalOpen: isModalOpen.optionStock,
     isSizeModalOpen: isModalOpen.size,
-    closeSizeModal: handleModalClose,
+    closeOptionStockModal: handleModalClose('optionStock'),
+    closeSizeModal: handleModalClose('size'),
   };
 };
