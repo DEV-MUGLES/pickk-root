@@ -1,6 +1,7 @@
 import { BoardTemplate } from '@components/common/templates';
 import { itemsFilterInputs } from '@components/items';
 import {
+  ItemPriceManageDrawer,
   ItemSizeChartDrawer,
   ItemOptionStockManageDrawer,
 } from '@components/sellable-items/table/drawers';
@@ -14,9 +15,11 @@ import {
 export default function SellableItemsBoardContainer() {
   const {
     sellableItemsColumns,
-    selectedRowKey,
+    selectedRecord,
+    isPriceModalOpen,
     isSizeModalOpen,
     isOptionStockModalOpen,
+    closePriceModal,
     closeSizeModal,
     closeOptionStockModal,
   } = useSellableItemsColumns();
@@ -32,16 +35,24 @@ export default function SellableItemsBoardContainer() {
         filterInputs={itemsFilterInputs}
         actions={sellableItemsActions}
       />
-      {!!selectedRowKey && (
+      {!!selectedRecord && (
+        <ItemPriceManageDrawer
+          itemId={selectedRecord.id}
+          sellerId={selectedRecord.brand.seller.id}
+          visible={isPriceModalOpen}
+          onClose={closePriceModal}
+        />
+      )}
+      {!!selectedRecord && (
         <ItemOptionStockManageDrawer
-          itemId={selectedRowKey}
+          itemId={selectedRecord.id}
           visible={isOptionStockModalOpen}
           onClose={closeOptionStockModal}
         />
       )}
-      {!!selectedRowKey && (
+      {!!selectedRecord && (
         <ItemSizeChartDrawer
-          itemId={selectedRowKey}
+          itemId={selectedRecord.id}
           visible={isSizeModalOpen}
           onClose={closeSizeModal}
         />
