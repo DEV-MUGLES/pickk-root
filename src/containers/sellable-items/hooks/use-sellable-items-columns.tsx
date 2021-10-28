@@ -13,20 +13,21 @@ const SellableItemsModalTypes = ['size', 'optionStock', 'price'] as const;
 type SellableItemsModalType = typeof SellableItemsModalTypes[number];
 
 export const useSellableItemsColumns = () => {
-  const [selectedRowKey, setSelectedRowKey] = useState(null);
+  const [selectedRecord, setSelectedRecord] =
+    useState<SellableItemDataType>(null);
 
   const { isModalOpen, openModal, closeModal } = useToggleModals(
     SellableItemsModalTypes
   );
 
   const handleManageButtonClick =
-    (itemId: number, types: SellableItemsModalType) => () => {
-      setSelectedRowKey(itemId);
+    (record: SellableItemDataType, types: SellableItemsModalType) => () => {
+      setSelectedRecord(record);
       openModal(types);
     };
 
   const handleModalClose = (types: SellableItemsModalType) => () => {
-    setSelectedRowKey(null);
+    setSelectedRecord(null);
     closeModal(types);
   };
 
@@ -40,13 +41,19 @@ export const useSellableItemsColumns = () => {
         <Space direction="vertical">
           <Button
             size="small"
-            onClick={handleManageButtonClick(record.id, 'optionStock')}
+            onClick={handleManageButtonClick(record, 'price')}
+          >
+            가격 관리
+          </Button>
+          <Button
+            size="small"
+            onClick={handleManageButtonClick(record, 'optionStock')}
           >
             옵션/재고 관리
           </Button>
           <Button
             size="small"
-            onClick={handleManageButtonClick(record.id, 'size')}
+            onClick={handleManageButtonClick(record, 'size')}
           >
             사이즈 관리
           </Button>
@@ -70,10 +77,11 @@ export const useSellableItemsColumns = () => {
 
   return {
     sellableItemsColumns: newSellableItemsColumns,
-    selectedRowKey,
-    setSelectedRowKey,
+    selectedRecord,
+    isPriceModalOpen: isModalOpen.price,
     isOptionStockModalOpen: isModalOpen.optionStock,
     isSizeModalOpen: isModalOpen.size,
+    closePriceModal: handleModalClose('price'),
     closeOptionStockModal: handleModalClose('optionStock'),
     closeSizeModal: handleModalClose('size'),
   };
