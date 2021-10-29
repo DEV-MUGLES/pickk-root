@@ -12,5 +12,5 @@ export type BaseFormItemValueProps = {
 export type BaseFormProps = {
   formItems: BaseFormItemValueProps[];
   defaultValue?: Record<string, unknown>;
-  onSaveClick: (value: any) => Promise<boolean>;
+  onSaveClick: (value: any) => Promise<boolean | void>;
 };
