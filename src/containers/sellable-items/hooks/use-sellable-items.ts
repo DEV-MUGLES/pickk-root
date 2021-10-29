@@ -7,6 +7,7 @@ import {
   Product,
   PageInput,
   Brand,
+  Seller,
 } from '@pickk/common';
 
 import { BoardTableDataFetcher } from '@components/common/organisms/board-table';
@@ -30,6 +31,9 @@ const GET_SELLABLE_ITEMS = gql`
       brand {
         id
         nameKor
+        seller {
+          id
+        }
       }
       urls {
         id
@@ -68,7 +72,9 @@ export type SellableItemDataType = Pick<
   | 'createdAt'
   | 'sellableAt'
 > & {
-  brand: Pick<Brand, 'id' | 'nameKor'>;
+  brand: Pick<Brand, 'id' | 'nameKor'> & {
+    seller: Pick<Seller, 'id'>;
+  };
   urls: Array<Pick<ItemUrl, 'id' | 'isPrimary' | 'url'>>;
   majorCategory: Pick<ItemCategory, 'id' | 'name'>;
   minorCategory: Pick<ItemCategory, 'id' | 'name'>;

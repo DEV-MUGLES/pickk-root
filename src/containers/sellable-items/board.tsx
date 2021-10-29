@@ -1,16 +1,32 @@
 import { BoardTemplate } from '@components/common/templates';
 import { itemsFilterInputs } from '@components/items';
-import { ItemSizeChartDrawer } from '@components/sellable-items/table/drawers';
+import {
+  ItemPriceManageDrawer,
+  ItemSizeChartDrawer,
+  ItemOptionStockManageDrawer,
+  ItemInfoManageDrawer,
+} from '@components/sellable-items/table/drawers';
 
-import { useSellableItems, useSellableItemsColumns } from './hooks';
+import {
+  useSellableItems,
+  useSellableItemsColumns,
+  useSellableItemsActions,
+} from './hooks';
 
 export default function SellableItemsBoardContainer() {
   const {
     sellableItemsColumns,
-    selectedRowKey,
+    selectedRecord,
+    isPriceModalOpen,
     isSizeModalOpen,
+    isOptionStockModalOpen,
+    isInfoModalOpen,
+    closePriceModal,
     closeSizeModal,
+    closeOptionStockModal,
+    closeInfoModal,
   } = useSellableItemsColumns();
+  const { sellableItemsActions } = useSellableItemsActions();
 
   return (
     <>
@@ -20,12 +36,35 @@ export default function SellableItemsBoardContainer() {
         useTableData={useSellableItems}
         columns={sellableItemsColumns}
         filterInputs={itemsFilterInputs}
+        actions={sellableItemsActions}
       />
-      {sellableItemsColumns && (
+      {!!selectedRecord && (
+        <ItemPriceManageDrawer
+          itemId={selectedRecord.id}
+          sellerId={selectedRecord.brand.seller.id}
+          visible={isPriceModalOpen}
+          onClose={closePriceModal}
+        />
+      )}
+      {!!selectedRecord && (
+        <ItemOptionStockManageDrawer
+          itemId={selectedRecord.id}
+          visible={isOptionStockModalOpen}
+          onClose={closeOptionStockModal}
+        />
+      )}
+      {!!selectedRecord && (
         <ItemSizeChartDrawer
-          itemId={selectedRowKey}
+          itemId={selectedRecord.id}
           visible={isSizeModalOpen}
           onClose={closeSizeModal}
+        />
+      )}
+      {!!selectedRecord && (
+        <ItemInfoManageDrawer
+          itemId={selectedRecord.id}
+          visible={isInfoModalOpen}
+          onClose={closeInfoModal}
         />
       )}
     </>

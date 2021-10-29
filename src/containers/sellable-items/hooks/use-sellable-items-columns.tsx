@@ -1,32 +1,39 @@
 import { useState } from 'react';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
+import { CategoryRenderer } from '@components/items';
 import { sellableItemsColumns } from '@components/sellable-items';
 
 import { useToggleModals } from '@common/hooks';
 
 import { SellableItemDataType } from './use-sellable-items';
 
-const SellableItemsModalTypes = ['size'] as const;
+const SellableItemsModalTypes = [
+  'size',
+  'optionStock',
+  'price',
+  'info',
+] as const;
 type SellableItemsModalType = typeof SellableItemsModalTypes[number];
 
 export const useSellableItemsColumns = () => {
-  const [selectedRowKey, setSelectedRowKey] = useState(null);
+  const [selectedRecord, setSelectedRecord] =
+    useState<SellableItemDataType>(null);
 
   const { isModalOpen, openModal, closeModal } = useToggleModals(
     SellableItemsModalTypes
   );
 
   const handleManageButtonClick =
-    (itemId: number, types: SellableItemsModalType) => () => {
-      setSelectedRowKey(itemId);
-      openModal('size');
+    (record: SellableItemDataType, types: SellableItemsModalType) => () => {
+      setSelectedRecord(record);
+      openModal(types);
     };
 
-  const handleModalClose = () => {
-    setSelectedRowKey(null);
-    closeModal('size');
+  const handleModalClose = (types: SellableItemsModalType) => () => {
+    setSelectedRecord(null);
+    closeModal(types);
   };
 
   const newSellableItemsColumns: ColumnsType<SellableItemDataType> = [
@@ -36,24 +43,59 @@ export const useSellableItemsColumns = () => {
       dataIndex: 'management',
       key: 'management',
       render: (_, record) => (
-        <Button
-          size="small"
-          onClick={handleManageButtonClick(record.id, 'size')}
-        >
-          사이즈 관리
-        </Button>
+        <Space direction="vertical">
+          <Button
+            size="small"
+            onClick={handleManageButtonClick(record, 'price')}
+          >
+            가격 관리
+          </Button>
+          <Button
+            size="small"
+            onClick={handleManageButtonClick(record, 'optionStock')}
+          >
+            옵션/재고 관리
+          </Button>
+          <Button
+            size="small"
+            onClick={handleManageButtonClick(record, 'size')}
+          >
+            사이즈 관리
+          </Button>
+          <Button
+            size="small"
+            onClick={handleManageButtonClick(record, 'info')}
+          >
+            정보 수정
+          </Button>
+        </Space>
       ),
       ellipsis: true,
       align: 'center',
     },
-    ...sellableItemsColumns.slice(1),
+    ...sellableItemsColumns.slice(1, 2),
+    {
+      title: '카테고리',
+      dataIndex: 'category',
+      key: 'category',
+      render: (_, props) => <CategoryRenderer {...props} />,
+      width: 100,
+      ellipsis: true,
+      align: 'center',
+    },
+    ...sellableItemsColumns.slice(2),
   ];
 
   return {
     sellableItemsColumns: newSellableItemsColumns,
-    selectedRowKey,
-    setSelectedRowKey,
+    selectedRecord,
+    isPriceModalOpen: isModalOpen.price,
+    isOptionStockModalOpen: isModalOpen.optionStock,
     isSizeModalOpen: isModalOpen.size,
-    closeSizeModal: handleModalClose,
+    isInfoModalOpen: isModalOpen.info,
+    closePriceModal: handleModalClose('price'),
+    closeOptionStockModal: handleModalClose('optionStock'),
+    closeSizeModal: handleModalClose('size'),
+    closeInfoModal: () => closeModal('info'),
   };
 };

@@ -29,16 +29,6 @@ export const sellableItemsColumns: ColumnsType<SellableItemDataType> = [
     align: 'center',
   },
   {
-    title: '카테고리',
-    dataIndex: 'category',
-    key: 'category',
-    render: (_, { majorCategory, minorCategory }) =>
-      `${majorCategory?.name ?? '-'}/${minorCategory?.name ?? '-'}`,
-    width: 100,
-    ellipsis: true,
-    align: 'center',
-  },
-  {
     title: '상품명',
     dataIndex: 'name',
     key: 'name',

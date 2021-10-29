@@ -1,9 +1,12 @@
 import { BoardTemplate } from '@components/common/templates';
-import { itemsColumns, itemsFilterInputs } from '@components/items';
+import { itemsFilterInputs } from '@components/items';
 
-import { useItems } from './hooks';
+import { useItems, useItemsColumns, useItemsActions } from './hooks';
 
 export default function ItemsBoardContainer() {
+  const { itemsColumns } = useItemsColumns();
+  const { itemsActions } = useItemsActions();
+
   return (
     <BoardTemplate
       title="전체상품 관리"
@@ -11,6 +14,7 @@ export default function ItemsBoardContainer() {
       useTableData={useItems}
       columns={itemsColumns}
       filterInputs={itemsFilterInputs}
+      actions={itemsActions}
     />
   );
 }
