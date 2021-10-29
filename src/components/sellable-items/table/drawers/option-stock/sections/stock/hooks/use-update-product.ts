@@ -1,17 +1,14 @@
 import { gql, useMutation } from '@apollo/client';
-import { MutationUpdateProductArgs, Product } from '@pickk/common';
+import { Product, UpdateProductInput } from '@pickk/common';
 
 export const useUpdateProduct = () => {
   const [update] = useMutation<
     { updateRootProduct: Product },
-    MutationUpdateProductArgs
+    { id: number; input: UpdateProductInput }
   >(
     gql`
-      mutation updateRootProduct(
-        $id: Int!
-        $updateProductInput: UpdateProductInput!
-      ) {
-        updateRootProduct(id: $id, updateProductInput: $updateProductInput) {
+      mutation updateRootProduct($id: Int!, $input: UpdateProductInput!) {
+        updateRootProduct(id: $id, updateProductInput: $input) {
           id
           stock
         }
@@ -23,9 +20,7 @@ export const useUpdateProduct = () => {
     await update({
       variables: {
         id,
-        updateProductInput: {
-          stock,
-        },
+        input: { stock },
       },
     });
   };

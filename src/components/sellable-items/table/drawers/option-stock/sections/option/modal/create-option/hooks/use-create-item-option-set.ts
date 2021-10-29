@@ -1,19 +1,16 @@
 import { gql, useMutation } from '@apollo/client';
 import {
-  MutationCreateItemOptionSetArgs,
   CreateItemOptionInput,
+  CreateItemOptionSetInput,
   Item,
 } from '@pickk/common';
 
 export const CREATE_ITEM_OPTION_SET = gql`
   mutation createRootItemOptionSet(
     $id: Int!
-    $createItemOptionSetInput: CreateItemOptionSetInput!
+    $input: CreateItemOptionSetInput!
   ) {
-    createRootItemOptionSet(
-      id: $id
-      createItemOptionSetInput: $createItemOptionSetInput
-    ) {
+    createRootItemOptionSet(id: $id, createItemOptionSetInput: $input) {
       id
       options {
         id
@@ -44,7 +41,7 @@ export const CREATE_ITEM_OPTION_SET = gql`
 export const useCreateItemOptionSet = () => {
   const [create] = useMutation<
     { createRootItemOptionSet: Item },
-    MutationCreateItemOptionSetArgs
+    { id: number; input: CreateItemOptionSetInput }
   >(CREATE_ITEM_OPTION_SET);
 
   const createItemOptionSet = async (
@@ -54,9 +51,7 @@ export const useCreateItemOptionSet = () => {
     await create({
       variables: {
         id,
-        createItemOptionSetInput: {
-          options,
-        },
+        input: { options },
       },
     });
   };
