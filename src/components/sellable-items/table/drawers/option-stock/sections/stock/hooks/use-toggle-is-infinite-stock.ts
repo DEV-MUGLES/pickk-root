@@ -1,10 +1,11 @@
-import {gql, useMutation} from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
+import { Item } from '@pickk/common';
 
 const UPDATE_ITEM = gql`
-  mutation UpdateItem($itemId: Int!, $isInfiniteStock: Boolean!) {
-    updateItem(
+  mutation updateRootItem($itemId: Int!, $isInfiniteStock: Boolean!) {
+    updateRootItem(
       itemId: $itemId
-      updateItemInput: {isInfiniteStock: $isInfiniteStock}
+      updateItemInput: { isInfiniteStock: $isInfiniteStock }
     ) {
       id
       isInfiniteStock
@@ -13,16 +14,16 @@ const UPDATE_ITEM = gql`
 `;
 
 export const useToggleIsInfiniteStock = () => {
-  const [updateItem] = useMutation<
-    unknown,
-    {itemId: number; isInfiniteStock: boolean}
+  const [updateRootItem] = useMutation<
+    { updateRootItem: Item },
+    { itemId: number; isInfiniteStock: boolean }
   >(UPDATE_ITEM);
 
   const toggleIsInfiniteStock = async (
     itemId: number,
-    isInfiniteStock: boolean,
+    isInfiniteStock: boolean
   ) => {
-    await updateItem({
+    await updateRootItem({
       variables: {
         itemId,
         isInfiniteStock,
@@ -30,5 +31,5 @@ export const useToggleIsInfiniteStock = () => {
     });
   };
 
-  return {toggleIsInfiniteStock};
+  return { toggleIsInfiniteStock };
 };

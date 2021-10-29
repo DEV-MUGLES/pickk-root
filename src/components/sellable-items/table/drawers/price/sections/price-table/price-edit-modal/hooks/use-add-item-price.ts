@@ -1,13 +1,16 @@
-import {gql, useMutation} from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import {
   AddItemPriceInput,
-  Mutation,
+  Item,
   MutationAddItemPriceArgs,
 } from '@pickk/common';
 
 const ADD_ITEM_PRICE = gql`
-  mutation AddItemPrice($itemId: Int!, $addItemPriceInput: AddItemPriceInput!) {
-    addItemPrice(itemId: $itemId, addItemPriceInput: $addItemPriceInput) {
+  mutation addRootItemPrice(
+    $itemId: Int!
+    $addItemPriceInput: AddItemPriceInput!
+  ) {
+    addRootItemPrice(itemId: $itemId, addItemPriceInput: $addItemPriceInput) {
       id
       originalPrice
       sellPrice
@@ -26,13 +29,13 @@ const ADD_ITEM_PRICE = gql`
 
 export const useAddItemPrice = () => {
   const [add] = useMutation<
-    Pick<Mutation, 'addItemPrice'>,
+    { addRootItemPrice: Item },
     MutationAddItemPriceArgs
   >(ADD_ITEM_PRICE);
 
   const addItemPrice = async (
     itemId: number,
-    addItemPriceInput: AddItemPriceInput,
+    addItemPriceInput: AddItemPriceInput
   ) => {
     await add({
       variables: {
@@ -42,5 +45,5 @@ export const useAddItemPrice = () => {
     });
   };
 
-  return {addItemPrice};
+  return { addItemPrice };
 };

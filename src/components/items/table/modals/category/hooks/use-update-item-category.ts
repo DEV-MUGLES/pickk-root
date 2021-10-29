@@ -1,5 +1,5 @@
-import {gql, useMutation} from '@apollo/client';
-import {Item, ItemCategory} from '@pickk/common';
+import { gql, useMutation } from '@apollo/client';
+import { Item, ItemCategory } from '@pickk/common';
 
 const UPDATE_ITEM_CATEGORY = gql`
   mutation UpdateItemCategory(
@@ -7,7 +7,7 @@ const UPDATE_ITEM_CATEGORY = gql`
     $majorCategoryId: Float
     $minorCategoryId: Float
   ) {
-    updateItem(
+    updateRootItem(
       itemId: $itemId
       updateItemInput: {
         majorCategoryId: $majorCategoryId
@@ -46,14 +46,14 @@ type UpdateItemCategoryReturnType = Pick<
 
 export const useUpdateItemCategory = () => {
   const [update] = useMutation<
-    {updateItem: UpdateItemCategoryReturnType},
+    { updateRootItem: UpdateItemCategoryReturnType },
     UpdateItemCategoryArgsType
   >(UPDATE_ITEM_CATEGORY);
 
   const updateItemCategory = async (
     itemId: number,
     majorCategoryId: number,
-    minorCategoryId: number,
+    minorCategoryId: number
   ) => {
     await update({
       variables: {
@@ -64,5 +64,5 @@ export const useUpdateItemCategory = () => {
     });
   };
 
-  return {updateItemCategory};
+  return { updateItemCategory };
 };

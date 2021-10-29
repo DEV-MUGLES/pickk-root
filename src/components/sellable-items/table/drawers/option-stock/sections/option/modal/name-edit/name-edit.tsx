@@ -15,7 +15,7 @@ function OptionNameEditModal({
   onClose,
 }: OptionNameEditModalProps) {
   const [name, setName] = useState<string>();
-  const { updateItemOption } = useUpdateItemOption();
+  const { updateRootItemOption: updateItemOption } = useUpdateItemOption();
 
   const handleChange = ({
     target: { value },

@@ -1,13 +1,13 @@
-import {gql, useMutation} from '@apollo/client';
-import {Mutation, MutationRemoveItemPriceArgs} from '@pickk/common';
+import { gql, useMutation } from '@apollo/client';
+import { Item, MutationRemoveItemPriceArgs } from '@pickk/common';
 
 export const useRemoveItemPrice = () => {
   const [remove] = useMutation<
-    Pick<Mutation, 'removeItemPrice'>,
+    { removeRootItemPrice: Item },
     MutationRemoveItemPriceArgs
   >(gql`
-    mutation RemoveItemPrice($itemId: Int!, $priceId: Int!) {
-      removeItemPrice(itemId: $itemId, priceId: $priceId) {
+    mutation removeRootItemPrice($itemId: Int!, $priceId: Int!) {
+      removeRootItemPrice(itemId: $itemId, priceId: $priceId) {
         id
         prices {
           id
@@ -25,5 +25,5 @@ export const useRemoveItemPrice = () => {
     });
   };
 
-  return {removeItemPrice};
+  return { removeItemPrice };
 };
