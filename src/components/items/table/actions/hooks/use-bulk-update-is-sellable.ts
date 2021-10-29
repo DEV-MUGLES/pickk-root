@@ -3,10 +3,7 @@ import { Mutation } from '@pickk/common';
 
 const BULK_UPDATE_IS_SELLABLE = gql`
   mutation BulkUpdateRootItems($ids: [Int!]!, $isSellable: Boolean) {
-    bulkUpdateRootItems(
-      ids: $ids
-      bulkUpdateItemInput: { isSellable: $isSellable }
-    )
+    bulkUpdateRootItems(ids: $ids, input: { isSellable: $isSellable })
   }
 `;
 

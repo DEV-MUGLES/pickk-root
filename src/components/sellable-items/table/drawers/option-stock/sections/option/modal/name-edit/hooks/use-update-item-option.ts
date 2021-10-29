@@ -3,7 +3,7 @@ import { ItemOption, UpdateItemOptionInput } from '@pickk/common';
 
 const UPDATE_ROOT_ITEM_OPTION = gql`
   mutation updateRootItemOption($id: Int!, $input: UpdateItemOptionInput!) {
-    updateRootItemOption(id: $id, updateItemOptionInput: $input) {
+    updateRootItemOption(id: $id, input: $input) {
       id
       name
       values {

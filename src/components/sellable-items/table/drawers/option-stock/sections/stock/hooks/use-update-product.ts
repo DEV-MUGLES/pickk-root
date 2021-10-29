@@ -8,7 +8,7 @@ export const useUpdateProduct = () => {
   >(
     gql`
       mutation updateRootProduct($id: Int!, $input: UpdateProductInput!) {
-        updateRootProduct(id: $id, updateProductInput: $input) {
+        updateRootProduct(id: $id, input: $input) {
           id
           stock
         }

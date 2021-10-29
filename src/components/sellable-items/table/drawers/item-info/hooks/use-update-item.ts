@@ -2,8 +2,8 @@ import { gql, useMutation } from '@apollo/client';
 import { Item, UpdateItemInput } from '@pickk/common';
 
 const UPDATE_ITEM = gql`
-  mutation updateRootItem($itemId: Int!, $input: UpdateItemInput!) {
-    updateRootItem(itemId: $itemId, updateItemInput: $input) {
+  mutation updateRootItem($id: Int!, $input: UpdateItemInput!) {
+    updateRootItem(id: $id, input: $input) {
       id
       name
       imageUrl
@@ -22,14 +22,13 @@ const UPDATE_ITEM = gql`
 `;
 
 export const useUpdateItem = () => {
-  const [update] = useMutation<
-    Item,
-    { itemId: number; input: UpdateItemInput }
-  >(UPDATE_ITEM);
+  const [update] = useMutation<Item, { id: number; input: UpdateItemInput }>(
+    UPDATE_ITEM
+  );
 
-  const updateItem = async (itemId: number, input: UpdateItemInput) => {
+  const updateItem = async (id: number, input: UpdateItemInput) => {
     await update({
-      variables: { itemId, input },
+      variables: { id, input },
     });
   };
 

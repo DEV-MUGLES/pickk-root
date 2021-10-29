@@ -2,10 +2,7 @@ import { gql, useMutation } from '@apollo/client';
 
 const BULK_UPDATE_IS_MD_RECOMMENDED = gql`
   mutation BulkUpdateRootItems($ids: [Int!]!, $isMdRecommended: Boolean) {
-    bulkUpdateRootItems(
-      ids: $ids
-      bulkUpdateItemInput: { isMdRecommended: $isMdRecommended }
-    )
+    bulkUpdateRootItems(ids: $ids, input: { isMdRecommended: $isMdRecommended })
   }
 `;
 

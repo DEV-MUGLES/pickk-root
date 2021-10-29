@@ -3,7 +3,7 @@ import { Item, UpdateItemPriceInput } from '@pickk/common';
 
 const UPDATE_ITEM_PRICE = gql`
   mutation updateRootItemPrice($id: Int!, $input: UpdateItemPriceInput!) {
-    updateRootItemPrice(id: $id, updateItemPriceInput: $input) {
+    updateRootItemPrice(id: $id, input: $input) {
       id
       originalPrice
       sellPrice

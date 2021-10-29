@@ -10,7 +10,7 @@ export const CREATE_ITEM_OPTION_SET = gql`
     $id: Int!
     $input: CreateItemOptionSetInput!
   ) {
-    createRootItemOptionSet(id: $id, createItemOptionSetInput: $input) {
+    createRootItemOptionSet(id: $id, input: $input) {
       id
       options {
         id

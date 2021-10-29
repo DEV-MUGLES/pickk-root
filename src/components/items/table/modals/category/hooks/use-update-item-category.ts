@@ -3,13 +3,13 @@ import { Item, ItemCategory } from '@pickk/common';
 
 const UPDATE_ITEM_CATEGORY = gql`
   mutation UpdateItemCategory(
-    $itemId: Int!
+    $id: Int!
     $majorCategoryId: Float
     $minorCategoryId: Float
   ) {
     updateRootItem(
-      itemId: $itemId
-      updateItemInput: {
+      id: $id
+      input: {
         majorCategoryId: $majorCategoryId
         minorCategoryId: $minorCategoryId
       }
@@ -31,7 +31,7 @@ const UPDATE_ITEM_CATEGORY = gql`
 `;
 
 type UpdateItemCategoryArgsType = {
-  itemId: number;
+  id: number;
   majorCategoryId: number;
   minorCategoryId: number;
 };
@@ -51,13 +51,13 @@ export const useUpdateItemCategory = () => {
   >(UPDATE_ITEM_CATEGORY);
 
   const updateItemCategory = async (
-    itemId: number,
+    id: number,
     majorCategoryId: number,
     minorCategoryId: number
   ) => {
     await update({
       variables: {
-        itemId,
+        id,
         majorCategoryId,
         minorCategoryId,
       },

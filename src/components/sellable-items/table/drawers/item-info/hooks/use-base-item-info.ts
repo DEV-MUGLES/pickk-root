@@ -1,5 +1,5 @@
-import {gql, useQuery} from '@apollo/client';
-import {Item, ItemCategory, QueryItemArgs} from '@pickk/common';
+import { gql, useQuery } from '@apollo/client';
+import { Item, ItemCategory, QueryItemArgs } from '@pickk/common';
 
 const GET_ITEM_BASE_INFO = gql`
   query item($id: Int!) {
@@ -29,17 +29,17 @@ export type ItemBaseInfoDataType = Pick<
   minorCategory: Pick<ItemCategory, 'id' | 'name'>;
 };
 
-export const useBaseItemInfo = (itemId: number) => {
-  const {data} = useQuery<
+export const useBaseItemInfo = (id: number) => {
+  const { data } = useQuery<
     {
       item: ItemBaseInfoDataType;
     },
     QueryItemArgs
   >(GET_ITEM_BASE_INFO, {
     variables: {
-      id: itemId,
+      id,
     },
   });
 
-  return {data: data?.item};
+  return { data: data?.item };
 };
