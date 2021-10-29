@@ -21,11 +21,11 @@ export default function ItemSizeTable(props: ItemSizeTableProps) {
   };
 
   const renderSizeRows = () => {
-    return sizes?.map((size) => (
+    return sizes?.map((size, i) => (
       <tr key={size.name}>
         <td>{size.name}</td>
-        {size.values.map((value) => (
-          <td key={value}>{value}</td>
+        {size.values.map((value, j) => (
+          <td key={`${i}_${j}`}>{value}</td>
         ))}
       </tr>
     ));

@@ -1,15 +1,15 @@
-import {gql, useMutation} from '@apollo/client';
-import {Item, ItemCategory} from '@pickk/common';
+import { gql, useMutation } from '@apollo/client';
+import { Item, ItemCategory } from '@pickk/common';
 
 const UPDATE_ITEM_CATEGORY = gql`
   mutation UpdateItemCategory(
-    $itemId: Int!
+    $id: Int!
     $majorCategoryId: Float
     $minorCategoryId: Float
   ) {
-    updateItem(
-      itemId: $itemId
-      updateItemInput: {
+    updateRootItem(
+      id: $id
+      input: {
         majorCategoryId: $majorCategoryId
         minorCategoryId: $minorCategoryId
       }
@@ -31,7 +31,7 @@ const UPDATE_ITEM_CATEGORY = gql`
 `;
 
 type UpdateItemCategoryArgsType = {
-  itemId: number;
+  id: number;
   majorCategoryId: number;
   minorCategoryId: number;
 };
@@ -46,23 +46,23 @@ type UpdateItemCategoryReturnType = Pick<
 
 export const useUpdateItemCategory = () => {
   const [update] = useMutation<
-    {updateItem: UpdateItemCategoryReturnType},
+    { updateItem: UpdateItemCategoryReturnType },
     UpdateItemCategoryArgsType
   >(UPDATE_ITEM_CATEGORY);
 
   const updateItemCategory = async (
-    itemId: number,
+    id: number,
     majorCategoryId: number,
-    minorCategoryId: number,
+    minorCategoryId: number
   ) => {
     await update({
       variables: {
-        itemId,
+        id,
         majorCategoryId,
         minorCategoryId,
       },
     });
   };
 
-  return {updateItemCategory};
+  return { updateItemCategory };
 };

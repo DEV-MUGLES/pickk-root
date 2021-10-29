@@ -61,7 +61,13 @@ export default function ItemSizeRecommendationsModal(
   };
 
   return (
-    <Modal closable={false} width="60%" visible={visible} onCancel={onClose}>
+    <Modal
+      closable={false}
+      width="60%"
+      visible={visible}
+      onCancel={onClose}
+      footer={null}
+    >
       <Form form={form} onFinish={handleFinish}>
         <Form.List name="recommendations">
           {(fields, { add, remove }) => (

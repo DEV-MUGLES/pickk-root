@@ -43,7 +43,6 @@ function ItemBaseInfoEditSection({
         minorCategoryId,
       });
       message.success('아이템 정보를 수정했습니다!');
-      return true;
     } catch (error) {
       message.error('저장에 실패했습니다. err - ' + error);
     }

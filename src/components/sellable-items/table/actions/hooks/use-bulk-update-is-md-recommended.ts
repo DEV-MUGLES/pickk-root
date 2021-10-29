@@ -1,24 +1,21 @@
-import {gql, useMutation} from '@apollo/client';
-import {Mutation} from '@pickk/common';
+import { gql, useMutation } from '@apollo/client';
+import { Mutation } from '@pickk/common';
 
 const BULK_UPDATE_IS_MD_RECOMMENDED = gql`
-  mutation BulkUpdateItems($ids: [Int!]!, $isMdRecommended: Boolean) {
-    bulkUpdateItems(
-      ids: $ids
-      bulkUpdateItemInput: {isMdRecommended: $isMdRecommended}
-    )
+  mutation bulkUpdateRootItems($ids: [Int!]!, $isMdRecommended: Boolean) {
+    bulkUpdateRootItems(ids: $ids, input: { isMdRecommended: $isMdRecommended })
   }
 `;
 
 export const useBulkUpdateIsMdRecommended = () => {
   const [bulkUpdate] = useMutation<
-    Pick<Mutation, 'bulkUpdateItems'>,
-    {ids: number[]; isMdRecommended: boolean}
+    Pick<Mutation, 'bulkUpdateRootItems'>,
+    { ids: number[]; isMdRecommended: boolean }
   >(BULK_UPDATE_IS_MD_RECOMMENDED);
 
   const bulkUpdateIsMdRecommended = async (
     ids: number[],
-    isMdRecommended: boolean,
+    isMdRecommended: boolean
   ) => {
     await bulkUpdate({
       variables: {
@@ -28,5 +25,5 @@ export const useBulkUpdateIsMdRecommended = () => {
     });
   };
 
-  return {bulkUpdateIsMdRecommended};
+  return { bulkUpdateIsMdRecommended };
 };

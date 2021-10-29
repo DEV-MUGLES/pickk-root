@@ -60,8 +60,7 @@ export default function PriceEditModal({
       ? ['가격 추가', '추가', undefined, handleAddItemPrice]
       : ['가격 수정', '저장', selectedPriceRecord, handleUpdateItemPrice];
 
-  const validateDate = (formInput: AddItemPriceInput): boolean => {
-    const { startAt, endAt } = formInput;
+  const validateDate = (startAt: Date, endAt: Date): boolean => {
     if (isBeforeDate(startAt, new Date())) {
       message.error('시작일은 금일 이전일 수 없습니다.');
       return false;
@@ -106,9 +105,9 @@ export default function PriceEditModal({
     startAt: Date;
     endAt: Date;
   }) => {
-    // if (!validateDate(value)) {
-    //   return false;
-    // }
+    if (!validateDate(value.startAt, value.endAt)) {
+      return false;
+    }
 
     try {
       await handleSave({

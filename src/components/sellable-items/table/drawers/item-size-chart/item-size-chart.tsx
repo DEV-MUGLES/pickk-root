@@ -48,11 +48,17 @@ export default function ItemSizeChartDrawer({
       if (!sizeChart) {
         await createSizeChart(itemId, input);
       } else {
+        const recommendations = sizeChart.recommendations.map(
+          ({ height, weight, sizeName }) => ({
+            height,
+            weight,
+            sizeName,
+          })
+        );
+
         await updateSizeChart(itemId, {
           ...input,
-          ...(!!sizeChart?.recommendations
-            ? { recommendations: sizeChart.recommendations }
-            : {}),
+          ...(!!sizeChart?.recommendations ? { recommendations } : {}),
         });
       }
 
