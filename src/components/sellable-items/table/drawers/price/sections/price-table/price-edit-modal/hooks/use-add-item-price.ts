@@ -1,4 +1,4 @@
-import {gql, useMutation} from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import {
   AddItemPriceInput,
   Mutation,
@@ -32,7 +32,7 @@ export const useAddItemPrice = () => {
 
   const addItemPrice = async (
     itemId: number,
-    addItemPriceInput: AddItemPriceInput,
+    addItemPriceInput: AddItemPriceInput
   ) => {
     await add({
       variables: {
@@ -42,5 +42,5 @@ export const useAddItemPrice = () => {
     });
   };
 
-  return {addItemPrice};
+  return { addItemPrice };
 };

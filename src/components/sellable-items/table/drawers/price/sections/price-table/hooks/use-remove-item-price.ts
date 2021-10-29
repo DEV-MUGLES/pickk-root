@@ -1,5 +1,5 @@
-import {gql, useMutation} from '@apollo/client';
-import {Mutation, MutationRemoveItemPriceArgs} from '@pickk/common';
+import { gql, useMutation } from '@apollo/client';
+import { Mutation, MutationRemoveItemPriceArgs } from '@pickk/common';
 
 export const useRemoveItemPrice = () => {
   const [remove] = useMutation<
@@ -25,5 +25,5 @@ export const useRemoveItemPrice = () => {
     });
   };
 
-  return {removeItemPrice};
+  return { removeItemPrice };
 };
