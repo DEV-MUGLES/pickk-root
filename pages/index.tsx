@@ -13,6 +13,12 @@ export default function HomePage() {
         <Link href="/images-upload">🖼 이미지업로드</Link>
         <Link href="/inquiries">💬 문의내역</Link>
         <Link href="/order-items">🛍 주문상품내역</Link>
+        <Link href="/confirmed-order-items">
+          💰 (정산) 구매확정 주문상품내역
+        </Link>
+        <Link href="/completed-refund-requests">
+          💰 (정산) 완료된 반품신청내역
+        </Link>
         <Link href="/sellable-items">👕 활성 상품관리</Link>
         <Link href="/items">👖 전체 상품관리 </Link>
         <Link href="/item">👕 (임시) 상품 업데이트</Link>
