@@ -18,5 +18,10 @@ export type BoardTemplateProps<
 } & Pick<BoardFilterProps, 'defaultFilter'> &
   Pick<
     BoardTableProps<DataType, FilterType>,
-    'useTableData' | 'onRowClick' | 'columns' | 'defaultPageSize' | 'actions'
+    | 'useTableData'
+    | 'onRowClick'
+    | 'columns'
+    | 'excelColumns'
+    | 'defaultPageSize'
+    | 'actions'
   >;

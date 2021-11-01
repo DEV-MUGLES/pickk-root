@@ -2,6 +2,7 @@ import { BoardTemplate } from '@components/common/templates';
 import {
   orderItemsTableColumns,
   orderItemsFilterInputs,
+  orderItemsExcelColumns,
 } from '@components/order-item-list';
 
 import { useOrderItems } from './hooks';
@@ -13,6 +14,7 @@ export default function ConfirmedOrderItemListBoardContainer() {
       subTitle="주문상품내역을 볼 수 있습니다."
       useTableData={useOrderItems}
       columns={orderItemsTableColumns}
+      excelColumns={orderItemsExcelColumns}
       filterInputs={orderItemsFilterInputs}
     />
   );

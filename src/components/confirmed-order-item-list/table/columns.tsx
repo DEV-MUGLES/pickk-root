@@ -96,8 +96,8 @@ export const confirmedOrderItemsTableColumns: ColumnsType<ConfirmedOrderItemData
     },
     {
       title: '정산비율(퇴점한 경우 70)',
-      dataIndex: 'settleAmount',
-      key: 'settleAmount',
+      dataIndex: 'settlePolicyRate',
+      key: 'settlePolicyRate',
       render: (_, { seller }) => seller?.settlePolicy.rate ?? 70,
       width: 140,
       ellipsis: true,

@@ -1,3 +1,4 @@
+export * from './buttons';
 export * from './form-inputs';
 
 export { default as Accordion } from './accordion';

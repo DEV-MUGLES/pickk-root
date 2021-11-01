@@ -1,6 +1,7 @@
 import { Key } from 'react';
 import { TableProps } from 'antd';
 import { PageInput } from '@pickk/common';
+import { ExcelColumnsType } from '@pickk/react-excel';
 
 import { TableActionType } from './actions';
 
@@ -34,6 +35,7 @@ export type BoardTableProps<
   /** @default 20 */
   defaultPageSize?: number;
   onRowClick?: (record: DataType) => void;
+  excelColumns?: ExcelColumnsType<DataType>;
 };
 
 export type BoardTableHandle = { reload: () => void };
