@@ -7,8 +7,8 @@ import { useConfirmedOrderItems } from './hooks';
 export default function OrderItemListBoardContainer() {
   return (
     <BoardTemplate
-      title="주문상품내역"
-      subTitle="주문상품내역을 볼 수 있습니다."
+      title="구매확정 주문상품내역"
+      subTitle="구매확정된건들만 표시됩니다."
       useTableData={useConfirmedOrderItems}
       columns={confirmedOrderItemsTableColumns}
       filterInputs={confirmedOrderItemsFilterInputs}
