@@ -1,9 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import {
   OrderItem,
-  Order,
-  OrderBuyer,
-  OrderReceiver,
   SearchOrderItemsOutput,
   QuerySearchRootOrderItemsArgs,
   OrderItemSearchFilter,
