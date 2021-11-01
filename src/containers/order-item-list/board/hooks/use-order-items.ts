@@ -24,6 +24,9 @@ const ORDER_ITEM_FRAGMENT = gql`
     brandNameKor
     productVariantName
     quantity
+    paidAt
+    confirmedAt
+    isConfirmed
     order {
       id
       buyer {
@@ -73,6 +76,9 @@ export type OrderItemDataType = Pick<
   | 'brandNameKor'
   | 'productVariantName'
   | 'quantity'
+  | 'paidAt'
+  | 'confirmedAt'
+  | 'isConfirmed'
 > & {
   order: Pick<Order, 'id'> & {
     buyer: Pick<OrderBuyer, 'id' | 'name' | 'phoneNumber'>;

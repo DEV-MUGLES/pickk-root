@@ -41,7 +41,8 @@ export const orderItemsTableColumns: ColumnsType<OrderItemDataType> = [
     title: '주문상태',
     dataIndex: 'status',
     key: 'status',
-    render: (value) => getOrderItemStatusDisplayName(value),
+    render: (value, { isConfirmed }) =>
+      getOrderItemStatusDisplayName(value, isConfirmed),
     sorter: (a, b) => stringSorter(b.status, a.status),
     width: 90,
     ellipsis: true,

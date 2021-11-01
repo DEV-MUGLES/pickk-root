@@ -1,8 +1,15 @@
 import { OrderItemStatus } from '@pickk/common';
 
-export const getOrderItemStatusDisplayName = (status: OrderItemStatus) => {
+export const getOrderItemStatusDisplayName = (
+  status: OrderItemStatus,
+  isConfirmed: boolean
+) => {
   if (!status) {
     return;
+  }
+
+  if (isConfirmed) {
+    return '구매확정';
   }
 
   const {

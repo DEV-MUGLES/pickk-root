@@ -9,7 +9,7 @@ export default function StatusSelect(props: Omit<SelectInputProps, 'options'>) {
     <SelectInput
       {...props}
       options={Object.keys(OrderItemStatus).map((status) => ({
-        label: getOrderItemStatusDisplayName(status as OrderItemStatus),
+        label: getOrderItemStatusDisplayName(status as OrderItemStatus, false),
         value: status,
       }))}
     />
