@@ -18,6 +18,7 @@ export const confirmedOrderItemsExcelColumns =
         getOrderItemStatusDisplayName(status, null),
       claimStatus: ({ claimStatus }) =>
         getOrderItemClaimStatusDisplayName(claimStatus),
+      buyerName: ({ order }) => order?.buyer?.name,
       paidAmount: ({
         itemFinalPrice,
         shippingFee,

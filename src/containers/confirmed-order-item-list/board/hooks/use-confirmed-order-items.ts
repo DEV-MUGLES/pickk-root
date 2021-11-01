@@ -7,6 +7,8 @@ import {
   Item,
   Seller,
   ExchangeRequest,
+  Order,
+  OrderBuyer,
 } from '@pickk/common';
 
 import { BoardTableDataFetcher } from '@components/common/organisms/board-table';
@@ -24,6 +26,7 @@ const CONFIRMED_ORDER_ITEM_FRAGMENT = gql`
     brandNameKor
     productVariantName
     quantity
+    recommenderNickname
 
     itemFinalPrice
     shippingFee
@@ -39,6 +42,13 @@ const CONFIRMED_ORDER_ITEM_FRAGMENT = gql`
     seller {
       settlePolicy {
         rate
+      }
+    }
+
+    order {
+      buyer {
+        id
+        name
       }
     }
 
@@ -89,6 +99,9 @@ export type ConfirmedOrderItemDataType = Pick<
   item: Pick<Item, 'sellPrice'>;
   seller: Pick<Seller, 'settlePolicy'>;
   exchangeRequest: Pick<ExchangeRequest, 'shippingFee'>;
+  order: Pick<Order, 'id'> & {
+    buyer: Pick<OrderBuyer, 'id' | 'name'>;
+  };
 };
 
 export const useConfirmedOrderItems: BoardTableDataFetcher<

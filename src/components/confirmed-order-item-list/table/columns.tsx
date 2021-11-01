@@ -79,6 +79,21 @@ export const confirmedOrderItemsTableColumns: ColumnsType<ConfirmedOrderItemData
       ellipsis: true,
     },
     {
+      title: '구매자명',
+      dataIndex: 'buyerName',
+      key: 'buyerName',
+      render: (_, { order }) => order?.buyer?.name,
+      width: 140,
+      ellipsis: true,
+    },
+    {
+      title: '추천인플루언서',
+      dataIndex: 'recommenderNickname',
+      key: 'recommenderNickname',
+      width: 140,
+      ellipsis: true,
+    },
+    {
       title: '사용된 포인트',
       dataIndex: 'usedPointAmount',
       key: 'usedPointAmount',
