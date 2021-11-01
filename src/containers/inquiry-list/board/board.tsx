@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
 import { BoardTemplate } from '@components/common/templates';
@@ -29,7 +29,12 @@ export default function InquiryListBoardContainer() {
       dataIndex: 'answer',
       key: 'answer',
       render: (_, record) => (
-        <Button onClick={handleAnswerClick(record)}>답변달기</Button>
+        <Space direction="vertical">
+          <Button onClick={handleAnswerClick(record)}>답변달기</Button>
+          <Button href={`/inquiries/${record.id}`} target="_blank">
+            상세보기
+          </Button>
+        </Space>
       ),
       width: 60,
       ellipsis: true,
