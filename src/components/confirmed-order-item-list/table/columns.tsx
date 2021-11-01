@@ -6,7 +6,6 @@ import { ConfirmedOrderItemDataType } from '@containers/confirmed-order-item-lis
 import {
   getOrderItemClaimStatusDisplayName,
   getOrderItemStatusDisplayName,
-  stringSorter,
 } from '@common/helpers';
 
 export const confirmedOrderItemsTableColumns: ColumnsType<ConfirmedOrderItemDataType> =
@@ -47,7 +46,7 @@ export const confirmedOrderItemsTableColumns: ColumnsType<ConfirmedOrderItemData
       key: 'status',
       render: (_, { status, claimStatus }) =>
         getOrderItemClaimStatusDisplayName(claimStatus) ??
-        getOrderItemStatusDisplayName(status),
+        getOrderItemStatusDisplayName(status, null),
       width: 140,
       ellipsis: true,
     },
