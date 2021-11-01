@@ -110,6 +110,20 @@ export const confirmedOrderItemsTableColumns: ColumnsType<ConfirmedOrderItemData
       ellipsis: true,
     },
     {
+      title: '공급가액',
+      dataIndex: 'itemSellPrice',
+      key: 'itemSellPrice',
+      width: 140,
+      ellipsis: true,
+    },
+    {
+      title: '배송비',
+      dataIndex: 'shippingFee',
+      key: 'shippingFee',
+      width: 140,
+      ellipsis: true,
+    },
+    {
       title: '정산비율(퇴점한 경우 70)',
       dataIndex: 'settlePolicyRate',
       key: 'settlePolicyRate',

@@ -28,6 +28,7 @@ const CONFIRMED_ORDER_ITEM_FRAGMENT = gql`
     quantity
     recommenderNickname
 
+    itemSellPrice
     itemFinalPrice
     shippingFee
 
@@ -92,6 +93,7 @@ export type ConfirmedOrderItemDataType = Pick<
   | 'productVariantName'
   | 'quantity'
   | 'paidAt'
+  | 'itemSellPrice'
   | 'itemFinalPrice'
   | 'shippingFee'
   | 'usedPointAmount'
