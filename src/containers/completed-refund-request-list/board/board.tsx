@@ -1,5 +1,8 @@
 import { BoardTemplate } from '@components/common/templates';
-import { completedRefundRequestsTableColumns } from '@components/completed-refund-requests';
+import {
+  completedRefundRequestsTableColumns,
+  completedRefundRequestsExcelColumns,
+} from '@components/completed-refund-requests';
 import { confirmedRefundRequestsFilterInputs } from '@components/completed-refund-requests/filter';
 
 import { useCopmletedRefundRequests } from './hooks';
@@ -11,6 +14,7 @@ export default function CompletedRefundRequestListBoardContainer() {
       subTitle="반품완료 상태인 건들만 표시됩니다."
       useTableData={useCopmletedRefundRequests}
       columns={completedRefundRequestsTableColumns}
+      excelColumns={completedRefundRequestsExcelColumns}
       filterInputs={confirmedRefundRequestsFilterInputs}
     />
   );
