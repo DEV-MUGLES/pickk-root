@@ -116,8 +116,8 @@ export const orderItemsTableColumns: ColumnsType<OrderItemDataType> = [
   },
   {
     title: '수취인명',
-    dataIndex: 'receiverName',
-    key: 'receiverName',
+    dataIndex: 'receiverReceiverName',
+    key: 'receiverReceiverName',
     render: (_, { order }) => order?.receiver?.receiverName,
     sorter: (a, b) =>
       stringSorter(
