@@ -127,4 +127,11 @@ export const orderItemsTableColumns: ColumnsType<OrderItemDataType> = [
     width: 75,
     ellipsis: true,
   },
+  {
+    title: '추천인플루언서',
+    dataIndex: 'recommenderNickname',
+    key: 'recommenderNickname',
+    width: 75,
+    ellipsis: true,
+  },
 ];
