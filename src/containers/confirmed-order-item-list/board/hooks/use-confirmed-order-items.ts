@@ -117,7 +117,7 @@ export const useConfirmedOrderItems: BoardTableDataFetcher<
     QuerySearchRootOrderItemsArgs
   >(GET_CONFIRMED_ORDER_ITEMS, {
     variables: {
-      searchFilter: { ...filter, isConfirmed: true },
+      searchFilter: { ...filter, isConfirmed: true, isSettled: false },
       pageInput,
       query,
     },
