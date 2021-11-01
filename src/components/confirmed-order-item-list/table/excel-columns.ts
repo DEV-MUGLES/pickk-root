@@ -33,6 +33,6 @@ export const confirmedOrderItemsExcelColumns =
             100
         ),
       exchangeRequestShippingFee: ({ exchangeRequest }) =>
-        exchangeRequest?.shippingFee ?? '-',
+        exchangeRequest?.shippingFee ?? 0,
     }
   );

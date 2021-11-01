@@ -134,7 +134,7 @@ export const confirmedOrderItemsTableColumns: ColumnsType<ConfirmedOrderItemData
       title: '결제된 교환배송비',
       dataIndex: 'exchangeRequestShippingFee',
       key: 'exchangeRequestShippingFee',
-      render: (_, { exchangeRequest }) => exchangeRequest?.shippingFee ?? '-',
+      render: (_, { exchangeRequest }) => exchangeRequest?.shippingFee ?? 0,
       width: 140,
       ellipsis: true,
     },
