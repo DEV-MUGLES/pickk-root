@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  padding: 0.8rem;
+
+  background-color: $gray1;
+
+  .pageHeader {
+    margin-bottom: 0.8rem;
+
+    background-color: $white;
+  }
+
+  > section {
+    display: flex;
+    flex-direction: row;
+
+    padding: 1.2rem 1.6rem;
+    margin-bottom: 0.8rem;
+
+    background-color: $white;
+  }
+}
