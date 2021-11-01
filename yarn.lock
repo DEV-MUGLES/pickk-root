@@ -452,6 +452,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pickk/react-excel@npm:^0.0.8":
+  version: 0.0.8
+  resolution: "@pickk/react-excel@npm:0.0.8"
+  peerDependencies:
+    react: ">=16.14.0"
+    xlsx: ">=0.17.0"
+  checksum: 40dbbe296c03f4a402da4007999ffe841b9140c2ecf5d094f98fc491f4cc5c830bedcc8afa2706fc1bc207452b39f4b0206a7b8378e68fc634c221f3c7fc8af1
+  languageName: node
+  linkType: hard
+
 "@rushstack/eslint-patch@npm:^1.0.6":
   version: 1.0.6
   resolution: "@rushstack/eslint-patch@npm:1.0.6"
@@ -3940,6 +3950,7 @@ __metadata:
     "@apollo/client": ^3.4.10
     "@pickk/common": ^1.9.16
     "@pickk/design-token": ^0.0.6
+    "@pickk/react-excel": ^0.0.8
     "@types/js-cookie": 2.2.1
     "@types/lodash": ^4.14.172
     "@types/node": ^16.9.1

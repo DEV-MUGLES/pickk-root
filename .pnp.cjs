@@ -39,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
             ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.16"],
             ["@pickk/design-token", "npm:0.0.6"],
+            ["@pickk/react-excel", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:0.0.8"],
             ["@types/js-cookie", "npm:2.2.1"],
             ["@types/lodash", "npm:4.14.172"],
             ["@types/node", "npm:16.9.1"],
@@ -681,6 +682,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@pickk-design-token-npm-0.0.6-4a82e37942-a129686abc.zip/node_modules/@pickk/design-token/",
           "packageDependencies": [
             ["@pickk/design-token", "npm:0.0.6"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@pickk/react-excel", [
+        ["npm:0.0.8", {
+          "packageLocation": "./.yarn/cache/@pickk-react-excel-npm-0.0.8-7c86af153e-40dbbe296c.zip/node_modules/@pickk/react-excel/",
+          "packageDependencies": [
+            ["@pickk/react-excel", "npm:0.0.8"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:0.0.8", {
+          "packageLocation": "./.yarn/__virtual__/@pickk-react-excel-virtual-a313c9743a/0/cache/@pickk-react-excel-npm-0.0.8-7c86af153e-40dbbe296c.zip/node_modules/@pickk/react-excel/",
+          "packageDependencies": [
+            ["@pickk/react-excel", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:0.0.8"],
+            ["@types/react", "npm:17.0.20"],
+            ["@types/xlsx", null],
+            ["react", "npm:17.0.2"],
+            ["xlsx", null]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "@types/xlsx",
+            "react",
+            "xlsx"
           ],
           "linkType": "HARD",
         }]
@@ -4755,6 +4782,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
             ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.16"],
             ["@pickk/design-token", "npm:0.0.6"],
+            ["@pickk/react-excel", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:0.0.8"],
             ["@types/js-cookie", "npm:2.2.1"],
             ["@types/lodash", "npm:4.14.172"],
             ["@types/node", "npm:16.9.1"],
