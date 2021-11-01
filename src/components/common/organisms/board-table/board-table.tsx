@@ -22,6 +22,8 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
     const {
       title,
       useTableData,
+      columns,
+      excelColumns,
       filter,
       query,
       actions,
@@ -52,6 +54,16 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
       ...(filter ? { filter } : {}),
     });
 
+    const useExcelData = () =>
+      useTableData({
+        pageInput: {
+          offset: 0,
+          limit: total,
+        },
+        ...(query ? { query } : {}),
+        ...(filter ? { filter } : {}),
+      });
+
     const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
     const selectedRecords = data.filter((record) =>
       selectedRowKeys.includes(record['id'])
@@ -63,6 +75,11 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
 
     useImperativeHandle(ref, () => ({
       reload,
+    }));
+
+    const defaultExcelColumns = columns.map(({ title, key }) => ({
+      label: title.toString(),
+      propName: key.toString(),
     }));
 
     const renderTitle = () => {
@@ -78,6 +95,8 @@ const BoardTable = forwardRef<BoardTableHandle, BoardTableProps>(
             title={title}
             total={total}
             onRefreshClick={reload}
+            useExcelData={useExcelData}
+            excelColumns={excelColumns ?? defaultExcelColumns}
           />
           <BoardTableActions
             actions={actions}
