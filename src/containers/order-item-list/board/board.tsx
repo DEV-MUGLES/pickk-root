@@ -6,7 +6,7 @@ import {
 
 import { useOrderItems } from './hooks';
 
-export default function OrderItemListBoardContainer() {
+export default function ConfirmedOrderItemListBoardContainer() {
   return (
     <BoardTemplate
       title="주문상품내역"
