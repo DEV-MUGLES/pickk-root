@@ -24,7 +24,15 @@ export default function InquiryAnswerCard(props: InquiryAnswerCardProps) {
 
   return (
     <div key={id} className={styles.cardWrapper}>
-      <Text style={{ marginBottom: '0.4rem' }}>{content}</Text>
+      <Text
+        style={{
+          marginBottom: '0.4rem',
+          whiteSpace: 'pre-wrap',
+          wordBreak: 'break-all',
+        }}
+      >
+        {content}
+      </Text>
       <div className={styles.row}>
         <Text>
           {getCreatedAtText(createdAt)} {displayAuthor}
