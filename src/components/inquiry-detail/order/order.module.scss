@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  margin-left: 1.6rem;
+  border-left: 1px solid $gray2;
+  padding-left: 1.6rem;
+}

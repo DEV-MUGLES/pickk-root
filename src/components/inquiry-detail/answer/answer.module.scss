@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  margin-left: 1.6rem;
+  border-left: 1px solid $gray2;
+  padding-left: 1.6rem;
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid $gray2;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  & > :not(:last-child) {
+    margin-bottom: 0.4rem;
+  }
+
+  input {
+    width: 8rem;
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 0.4rem;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
