@@ -22,6 +22,8 @@ export default function HomePage() {
         <Link href="/sellable-items">👕 활성 상품관리</Link>
         <Link href="/items">👖 전체 상품관리 </Link>
         <Link href="/item">👕 (임시) 상품 업데이트</Link>
+        <h3>기획전</h3>
+        <Link href="/exhibition/items">👕 아이템 기획전</Link>
       </div>
     </div>
   );
