@@ -9,16 +9,16 @@ export default function HomePage() {
     <div>
       <h1>안녕하세요! {getRandomMessage()}</h1>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <h3>일반</h3>
         <Link href="/my">👮 내정보수정</Link>
         <Link href="/images-upload">🖼 이미지업로드</Link>
+        <h3>주문/판매</h3>
         <Link href="/inquiries">💬 문의내역</Link>
         <Link href="/order-items">🛍 주문상품내역</Link>
-        <Link href="/confirmed-order-items">
-          💰 (정산) 구매확정 주문상품내역
-        </Link>
-        <Link href="/completed-refund-requests">
-          💰 (정산) 완료된 반품신청내역
-        </Link>
+        <h3>정산</h3>
+        <Link href="/confirmed-order-items">💰 구매확정 주문상품내역</Link>
+        <Link href="/completed-refund-requests">💰 완료된 반품신청내역</Link>
+        <h3>상품</h3>
         <Link href="/sellable-items">👕 활성 상품관리</Link>
         <Link href="/items">👖 전체 상품관리 </Link>
         <Link href="/item">👕 (임시) 상품 업데이트</Link>

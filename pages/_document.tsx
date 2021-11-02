@@ -4,7 +4,14 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="ko">
-        <Head></Head>
+        <Head>
+          <link
+            rel="shortcut icon"
+            type="image/png"
+            href="/images/icons/logo/favicon.png"
+            key="favicon"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
