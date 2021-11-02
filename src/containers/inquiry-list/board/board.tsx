@@ -5,7 +5,10 @@ import { ColumnsType } from 'antd/lib/table';
 import { BoardTemplate } from '@components/common/templates';
 import { InquiryAnswerModal } from '@components/inquiry-list/table/modal';
 
-import { inquiriesColumns } from '@components/inquiry-list';
+import {
+  inquiriesColumns,
+  inquiryListFilterInputs,
+} from '@components/inquiry-list';
 
 import { useInquiries, InquiryDataType } from './hooks';
 
@@ -49,6 +52,7 @@ export default function InquiryListBoardContainer() {
         subTitle="문의내역입니다."
         useTableData={useInquiries}
         columns={newInquiriesColumns}
+        filterInputs={inquiryListFilterInputs}
       />
       {!!selectedRecord && isModalVisible && (
         <InquiryAnswerModal
