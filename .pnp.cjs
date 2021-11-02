@@ -37,7 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@ant-design/icons", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:4.7.0"],
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
-            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.16"],
+            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.17"],
             ["@pickk/design-token", "npm:0.0.6"],
             ["@pickk/react-excel", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:0.0.8"],
             ["@types/js-cookie", "npm:2.2.1"],
@@ -648,17 +648,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@pickk/common", [
-        ["npm:1.9.16", {
-          "packageLocation": "./.yarn/cache/@pickk-common-npm-1.9.16-169e41e3df-650c87b326.zip/node_modules/@pickk/common/",
+        ["npm:1.9.17", {
+          "packageLocation": "./.yarn/cache/@pickk-common-npm-1.9.17-90e9839d2a-3604f26df7.zip/node_modules/@pickk/common/",
           "packageDependencies": [
-            ["@pickk/common", "npm:1.9.16"]
+            ["@pickk/common", "npm:1.9.17"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.16", {
-          "packageLocation": "./.yarn/__virtual__/@pickk-common-virtual-37f196741b/0/cache/@pickk-common-npm-1.9.16-169e41e3df-650c87b326.zip/node_modules/@pickk/common/",
+        ["virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.17", {
+          "packageLocation": "./.yarn/__virtual__/@pickk-common-virtual-d76ecd949e/0/cache/@pickk-common-npm-1.9.17-90e9839d2a-3604f26df7.zip/node_modules/@pickk/common/",
           "packageDependencies": [
-            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.16"],
+            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.17"],
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
             ["@types/apollo__client", null],
             ["@types/graphql", null],
@@ -4868,7 +4868,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pickk-root", "workspace:."],
             ["@ant-design/icons", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:4.7.0"],
             ["@apollo/client", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:3.4.10"],
-            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.16"],
+            ["@pickk/common", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:1.9.17"],
             ["@pickk/design-token", "npm:0.0.6"],
             ["@pickk/react-excel", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:0.0.8"],
             ["@types/js-cookie", "npm:2.2.1"],
