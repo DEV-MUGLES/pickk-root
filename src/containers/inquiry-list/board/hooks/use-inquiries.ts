@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 import {
-  InquiryFilter,
-  QueryRootInquiriesArgs,
+  InquirySearchFilter,
+  QuerySearchRootInquiriesArgs,
   Inquiry,
   Item,
   User,
@@ -9,31 +9,48 @@ import {
 
 import { BoardTableDataFetcher } from '@components/common/organisms/board-table';
 
-const GET_ROOT_INQUIRIES = gql`
-  query rootInquiries($filter: InquiryFilter, $pageInput: PageInput) {
-    rootInquiries(filter: $filter, pageInput: $pageInput) {
+const INQUIRY_FRAGMENT = gql`
+  fragment inquiryFragment on Inquiry {
+    id
+    isAnswered
+    title
+    content
+    type
+    isSecret
+    createdAt
+    orderItemMerchantUid
+    contactPhoneNumber
+    item {
       id
-      isAnswered
-      title
-      content
-      type
-      isSecret
-      createdAt
-      orderItemMerchantUid
-      contactPhoneNumber
-      item {
-        id
-        imageUrl
-        name
-      }
-      user {
-        id
-        name
-        nickname
-        phoneNumber
-      }
+      imageUrl
+      name
+    }
+    user {
+      id
+      nickname
+      phoneNumber
     }
   }
+`;
+
+const GET_ROOT_INQUIRIES = gql`
+  query searchRootInquiries(
+    $searchFilter: InquirySearchFilter
+    $pageInput: PageInput
+    $query: String
+  ) {
+    searchRootInquiries(
+      searchFilter: $searchFilter
+      pageInput: $pageInput
+      query: $query
+    ) {
+      result {
+        ...inquiryFragment
+      }
+      total
+    }
+  }
+  ${INQUIRY_FRAGMENT}
 `;
 
 export type InquiryDataType = Pick<
@@ -52,43 +69,24 @@ export type InquiryDataType = Pick<
   user: Pick<User, 'id' | 'nickname'>;
 };
 
-/** @TODO 데이터 총 개수를 알기 위한 임시 쿼리 훅 */
-const useInquiriesCount = ({ filter }: { filter: InquiryFilter }): number => {
-  const { data } = useQuery<
-    { rootInquiries: InquiryDataType[] },
-    QueryRootInquiriesArgs
-  >(
-    gql`
-      query rootInquiries($filter: InquiryFilter) {
-        rootInquiries(filter: $filter) {
-          id
-        }
-      }
-    `,
-    { variables: { filter } }
-  );
-
-  return (data?.rootInquiries || []).length;
-};
-
 export const useInquiries: BoardTableDataFetcher<
   InquiryDataType,
-  InquiryFilter
-> = ({ filter, pageInput }) => {
+  InquirySearchFilter
+> = ({ filter, pageInput, query }) => {
   const { data, loading, refetch } = useQuery<
-    { rootInquiries: InquiryDataType[] },
-    QueryRootInquiriesArgs
+    { searchRootInquiries: { result: InquiryDataType[]; total: number } },
+    QuerySearchRootInquiriesArgs
   >(GET_ROOT_INQUIRIES, {
     variables: {
-      filter,
+      searchFilter: filter,
       pageInput,
+      query,
     },
   });
-  const total = useInquiriesCount({ filter });
 
   return {
-    data: data?.rootInquiries,
-    total,
+    data: data?.searchRootInquiries?.result,
+    total: data?.searchRootInquiries?.total,
     loading,
     refetch,
   };
