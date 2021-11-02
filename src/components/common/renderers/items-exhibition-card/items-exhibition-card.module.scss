@@ -1,0 +1,55 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 360px;
+  height: fit-content;
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    overflow: hidden;
+
+    height: 200px;
+    padding: 16px;
+    margin-bottom: 16px;
+
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 200px;
+    }
+
+    > h3 {
+      margin-top: auto;
+
+      font-size: 23px;
+      font-weight: 700;
+      color: $white;
+
+      z-index: 1;
+    }
+
+    > p {
+    }
+  }
+
+  .items {
+    overflow-x: scroll;
+
+    > div {
+      display: flex;
+      flex-direction: row;
+
+      width: fit-content;
+      padding-left: 16px;
+
+      > * {
+        margin-right: 16px;
+      }
+    }
+  }
+}
