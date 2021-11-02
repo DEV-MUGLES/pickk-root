@@ -9,5 +9,8 @@ export { default as ItemCategoryCascader } from './item-category-cascader';
 export type { RangePickerProps } from './range-picker';
 export { default as RangePicker } from './range-picker';
 
+export type { TripleSwitchProps } from './triple-switch';
+export { default as TripleSwitch } from './triple-switch';
+
 export type { SelectInputProps } from './select';
 export { default as SelectInput } from './select';
