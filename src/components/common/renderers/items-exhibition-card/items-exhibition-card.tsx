@@ -18,6 +18,7 @@ export default function ItemsExhibitionCard(props: ItemsExhibitionCardProps) {
           alt=""
         />
         <h3>{props.title}</h3>
+        {props.description && <p>{props.description}</p>}
       </div>
       <div className={styles.items}>
         <div>

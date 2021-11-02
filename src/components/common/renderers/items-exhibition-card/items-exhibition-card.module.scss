@@ -24,16 +24,22 @@
     }
 
     > h3 {
-      margin-top: auto;
-
       font-size: 23px;
       font-weight: 700;
       color: $white;
 
+      margin-top: auto;
+      margin-bottom: 0;
       z-index: 1;
     }
 
     > p {
+      font-size: 17px;
+      font-weight: 700;
+      color: $white;
+
+      margin-bottom: 0;
+      z-index: 1;
     }
   }
 
