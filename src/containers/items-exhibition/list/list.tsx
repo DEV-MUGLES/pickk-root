@@ -17,18 +17,20 @@ export default function ItemsExhibitionList() {
 
   return (
     <>
-      {itemsExhibitions.map((v) => (
-        <div key={v.id} style={{ marginBottom: '24px' }}>
-          <span>
-            (id: {v.id})
-            <Link href={`/exhibition/items/edit?id=${v.id}`}>
-              <a>수정하기</a>
-            </Link>{' '}
-            / <a onClick={handleDeleteClick(v.id)}>삭제하기</a>
-          </span>
-          <ItemsExhibitionCard {...v} />
-        </div>
-      ))}
+      {[...itemsExhibitions]
+        .sort((a, b) => a.order - b.order)
+        .map((v) => (
+          <div key={v.id} style={{ marginBottom: '24px' }}>
+            <span>
+              (id: {v.id}, 노출중: {v.isVisible ? '✅' : '❌'}, 순서: {v.order})
+              <Link href={`/exhibition/items/edit?id=${v.id}`}>
+                <a>수정하기</a>
+              </Link>{' '}
+              / <a onClick={handleDeleteClick(v.id)}>삭제하기</a>
+            </span>
+            <ItemsExhibitionCard {...v} />
+          </div>
+        ))}
     </>
   );
 }

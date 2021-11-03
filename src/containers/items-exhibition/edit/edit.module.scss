@@ -1,0 +1,19 @@
+.wrapper {
+  textarea,
+  input {
+    width: 500px;
+  }
+
+  button {
+    background-color: red;
+    color: white;
+    font-size: 32px;
+
+    width: 500px;
+    height: 200px;
+
+    &:hover {
+      background-color: crimson;
+    }
+  }
+}

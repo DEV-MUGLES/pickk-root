@@ -3,36 +3,37 @@ import { Brand, Item } from '@pickk/common';
 import { addCommaToNumber } from '@common/helpers';
 
 import styles from './home-item-card.module.scss';
+import { useItem } from './hooks';
 
-type HomeItemCardProps = Pick<
-  Item,
-  'id' | 'name' | 'imageUrl' | 'originalPrice' | 'finalPrice'
-> & {
-  brand: Pick<Brand, 'nameKor'>;
-};
+type HomeItemCardProps =
+  | (Pick<Item, 'id' | 'name' | 'imageUrl' | 'originalPrice' | 'finalPrice'> & {
+      brand: Pick<Brand, 'nameKor'>;
+    })
+  | Pick<Item, 'id'>;
 
 export default function HomeItemCard(props: HomeItemCardProps) {
-  const itemInfo = props.name ? props : null;
+  const { data: fetched } = useItem('name' in props ? null : props.id);
 
-  if (!itemInfo) {
+  const item = 'name' in props ? props : fetched;
+
+  if (!item) {
     return null;
   }
 
   const discountRate = Math.floor(
-    ((itemInfo.originalPrice - itemInfo.finalPrice) / itemInfo.originalPrice) *
-      100
+    ((item.originalPrice - item.finalPrice) / item.originalPrice) * 100
   );
 
   return (
     <div className={styles.wrapper}>
-      <img src={itemInfo.imageUrl} alt={itemInfo.name} />
+      <img src={item.imageUrl} alt={item.name} />
       <p>
-        {itemInfo.brand.nameKor}
+        {item.brand.nameKor}
         <br />
-        {itemInfo.name}
+        {item.name}
       </p>
       <div className={styles.price}>
-        <p>₩ {addCommaToNumber(itemInfo.finalPrice)}</p>
+        <p>₩ {addCommaToNumber(item.finalPrice)}</p>
         {discountRate > 0 && <em>{discountRate}%</em>}
       </div>
     </div>

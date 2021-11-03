@@ -1,9 +1,20 @@
-import { ItemsExhibition } from '@pickk/common';
-import { HomeItemCard } from '..';
+import { Item, ItemsExhibition } from '@pickk/common';
+
+import HomeItemCard from '../home-item-card';
 
 import styles from './items-exhibition-card.module.scss';
 
-type ItemsExhibitionCardProps = ItemsExhibition;
+type ItemsExhibitionCardProps = Pick<
+  ItemsExhibition,
+  | 'backgroundColor'
+  | 'imageUrl'
+  | 'imageTop'
+  | 'imageRight'
+  | 'title'
+  | 'description'
+> & {
+  items: { id: number }[] | Item[];
+};
 
 export default function ItemsExhibitionCard(props: ItemsExhibitionCardProps) {
   return (
