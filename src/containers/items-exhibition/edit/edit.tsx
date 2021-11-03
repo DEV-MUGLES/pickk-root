@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { SketchPicker } from 'react-color';
 
 import { ItemsExhibitionCard } from '@components/common/renderers';
 
@@ -60,10 +61,11 @@ export default function ItemsExhibitionEditContainer({ id }: { id?: number }) {
         onChange={handleInputChange}
       />
       <h4>배경색</h4>
-      <input
-        name="backgroundColor"
-        value={form.backgroundColor}
-        onChange={handleInputChange}
+      <SketchPicker
+        color={form.backgroundColor ?? '#fff'}
+        onChange={(color) => {
+          handleFieldChange('backgroundColor', color?.hex);
+        }}
       />
       <br />
       <h4>노출여부</h4>
