@@ -44,6 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/lodash", "npm:4.14.172"],
             ["@types/node", "npm:16.9.1"],
             ["@types/react", "npm:17.0.20"],
+            ["@types/react-color", "npm:3.0.6"],
             ["antd", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:4.16.13"],
             ["axios", "npm:0.21.4"],
             ["classnames", "npm:2.3.1"],
@@ -58,6 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.4.0"],
             ["rc-picker", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:2.5.19"],
             ["react", "npm:17.0.2"],
+            ["react-color", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:2.19.3"],
             ["react-dom", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:17.0.2"],
             ["react-is", "npm:17.0.2"],
             ["regenerator-runtime", "npm:0.13.9"],
@@ -387,6 +389,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@humanwhocodes-object-schema-npm-1.2.0-6bc0ff9fda-40b7548037.zip/node_modules/@humanwhocodes/object-schema/",
           "packageDependencies": [
             ["@humanwhocodes/object-schema", "npm:1.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@icons/material", [
+        ["npm:0.2.4", {
+          "packageLocation": "./.yarn/cache/@icons-material-npm-0.2.4-7c2363ec33-24baa360cb.zip/node_modules/@icons/material/",
+          "packageDependencies": [
+            ["@icons/material", "npm:0.2.4"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:059e67b861620ba7380059b19cba42ee6e8e2ee963e1a5628306cdb86e0e7602b901c530ca40a8426fa8dba68d77845f5c5a8253b27dd5a207509156b6f9e2e3#npm:0.2.4", {
+          "packageLocation": "./.yarn/__virtual__/@icons-material-virtual-ddbb08e660/0/cache/@icons-material-npm-0.2.4-7c2363ec33-24baa360cb.zip/node_modules/@icons/material/",
+          "packageDependencies": [
+            ["@icons/material", "virtual:059e67b861620ba7380059b19cba42ee6e8e2ee963e1a5628306cdb86e0e7602b901c530ca40a8426fa8dba68d77845f5c5a8253b27dd5a207509156b6f9e2e3#npm:0.2.4"],
+            ["@types/react", "npm:17.0.20"],
+            ["react", "npm:17.0.2"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
           ],
           "linkType": "HARD",
         }]
@@ -784,6 +808,37 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prop-types", "npm:15.7.4"],
             ["@types/scheduler", "npm:0.16.2"],
             ["csstype", "npm:3.0.8"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:17.0.34", {
+          "packageLocation": "./.yarn/cache/@types-react-npm-17.0.34-7a53209557-16729ad7d5.zip/node_modules/@types/react/",
+          "packageDependencies": [
+            ["@types/react", "npm:17.0.34"],
+            ["@types/prop-types", "npm:15.7.4"],
+            ["@types/scheduler", "npm:0.16.2"],
+            ["csstype", "npm:3.0.8"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/react-color", [
+        ["npm:3.0.6", {
+          "packageLocation": "./.yarn/cache/@types-react-color-npm-3.0.6-d97738133b-8cd881d6eb.zip/node_modules/@types/react-color/",
+          "packageDependencies": [
+            ["@types/react-color", "npm:3.0.6"],
+            ["@types/react", "npm:17.0.34"],
+            ["@types/reactcss", "npm:1.2.6"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/reactcss", [
+        ["npm:1.2.6", {
+          "packageLocation": "./.yarn/cache/@types-reactcss-npm-1.2.6-e0159cfd52-f4711d707a.zip/node_modules/@types/reactcss/",
+          "packageDependencies": [
+            ["@types/reactcss", "npm:1.2.6"],
+            ["@types/react", "npm:17.0.34"]
           ],
           "linkType": "HARD",
         }]
@@ -4011,6 +4066,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["lodash-es", [
+        ["npm:4.17.21", {
+          "packageLocation": "./.yarn/cache/lodash-es-npm-4.17.21-b45832dfce-05cbffad6e.zip/node_modules/lodash-es/",
+          "packageDependencies": [
+            ["lodash-es", "npm:4.17.21"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["lodash.clonedeep", [
         ["npm:4.5.0", {
           "packageLocation": "./.yarn/cache/lodash.clonedeep-npm-4.5.0-fbc3cda4e5-92c46f094b.zip/node_modules/lodash.clonedeep/",
@@ -4106,6 +4170,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["promise-retry", "npm:2.0.1"],
             ["socks-proxy-agent", "npm:5.0.1"],
             ["ssri", "npm:8.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["material-colors", [
+        ["npm:1.2.6", {
+          "packageLocation": "./.yarn/cache/material-colors-npm-1.2.6-38f7e3d1c1-72d005cccc.zip/node_modules/material-colors/",
+          "packageDependencies": [
+            ["material-colors", "npm:1.2.6"]
           ],
           "linkType": "HARD",
         }]
@@ -4875,6 +4948,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/lodash", "npm:4.14.172"],
             ["@types/node", "npm:16.9.1"],
             ["@types/react", "npm:17.0.20"],
+            ["@types/react-color", "npm:3.0.6"],
             ["antd", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:4.16.13"],
             ["axios", "npm:0.21.4"],
             ["classnames", "npm:2.3.1"],
@@ -4889,6 +4963,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.4.0"],
             ["rc-picker", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:2.5.19"],
             ["react", "npm:17.0.2"],
+            ["react-color", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:2.19.3"],
             ["react-dom", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:17.0.2"],
             ["react-is", "npm:17.0.2"],
             ["regenerator-runtime", "npm:0.13.9"],
@@ -6241,6 +6316,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["react-color", [
+        ["npm:2.19.3", {
+          "packageLocation": "./.yarn/cache/react-color-npm-2.19.3-d63f96d772-40b49e1aa2.zip/node_modules/react-color/",
+          "packageDependencies": [
+            ["react-color", "npm:2.19.3"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:2.19.3", {
+          "packageLocation": "./.yarn/__virtual__/react-color-virtual-059e67b861/0/cache/react-color-npm-2.19.3-d63f96d772-40b49e1aa2.zip/node_modules/react-color/",
+          "packageDependencies": [
+            ["react-color", "virtual:a18dc8bcf317389aef101cedb115bf629c5a02f340b69072914d6edd6b2409e1e44b9e37241ae24fc2fb01cddafd4c901199affd0be8316006d7cc74b454451e#npm:2.19.3"],
+            ["@icons/material", "virtual:059e67b861620ba7380059b19cba42ee6e8e2ee963e1a5628306cdb86e0e7602b901c530ca40a8426fa8dba68d77845f5c5a8253b27dd5a207509156b6f9e2e3#npm:0.2.4"],
+            ["@types/react", "npm:17.0.20"],
+            ["lodash", "npm:4.17.21"],
+            ["lodash-es", "npm:4.17.21"],
+            ["material-colors", "npm:1.2.6"],
+            ["prop-types", "npm:15.7.2"],
+            ["react", "npm:17.0.2"],
+            ["reactcss", "virtual:059e67b861620ba7380059b19cba42ee6e8e2ee963e1a5628306cdb86e0e7602b901c530ca40a8426fa8dba68d77845f5c5a8253b27dd5a207509156b6f9e2e3#npm:1.2.3"],
+            ["tinycolor2", "npm:1.4.2"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["react-dom", [
         ["npm:17.0.2", {
           "packageLocation": "./.yarn/cache/react-dom-npm-17.0.2-f551215af1-1c1eaa3bca.zip/node_modules/react-dom/",
@@ -6287,6 +6391,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/react-refresh-npm-0.8.3-9b3fb3900b-3cffe5a9cb.zip/node_modules/react-refresh/",
           "packageDependencies": [
             ["react-refresh", "npm:0.8.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["reactcss", [
+        ["npm:1.2.3", {
+          "packageLocation": "./.yarn/cache/reactcss-npm-1.2.3-16f7947bcd-c53e386a08.zip/node_modules/reactcss/",
+          "packageDependencies": [
+            ["reactcss", "npm:1.2.3"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:059e67b861620ba7380059b19cba42ee6e8e2ee963e1a5628306cdb86e0e7602b901c530ca40a8426fa8dba68d77845f5c5a8253b27dd5a207509156b6f9e2e3#npm:1.2.3", {
+          "packageLocation": "./.yarn/__virtual__/reactcss-virtual-c0220d658d/0/cache/reactcss-npm-1.2.3-16f7947bcd-c53e386a08.zip/node_modules/reactcss/",
+          "packageDependencies": [
+            ["reactcss", "virtual:059e67b861620ba7380059b19cba42ee6e8e2ee963e1a5628306cdb86e0e7602b901c530ca40a8426fa8dba68d77845f5c5a8253b27dd5a207509156b6f9e2e3#npm:1.2.3"],
+            ["@types/react", "npm:17.0.20"],
+            ["lodash", "npm:4.17.21"],
+            ["react", "npm:17.0.2"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
           ],
           "linkType": "HARD",
         }]
@@ -7183,6 +7310,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["timers-browserify", "npm:2.0.12"],
             ["setimmediate", "npm:1.0.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["tinycolor2", [
+        ["npm:1.4.2", {
+          "packageLocation": "./.yarn/cache/tinycolor2-npm-1.4.2-462ba30c26-57ed262e08.zip/node_modules/tinycolor2/",
+          "packageDependencies": [
+            ["tinycolor2", "npm:1.4.2"]
           ],
           "linkType": "HARD",
         }]
