@@ -101,18 +101,9 @@ export const confirmedOrderItemsTableColumns: ColumnsType<ConfirmedOrderItemData
       ellipsis: true,
     },
     {
-      title: '결제액(상품판매가*수량+배송비-포인트)',
-      dataIndex: 'paidAmount',
-      key: 'paidAmount',
-      render: (_, { itemFinalPrice, shippingFee, quantity, usedPointAmount }) =>
-        itemFinalPrice * quantity + shippingFee - usedPointAmount,
-      width: 140,
-      ellipsis: true,
-    },
-    {
-      title: '공급가액',
-      dataIndex: 'itemSellPrice',
-      key: 'itemSellPrice',
+      title: '판매가',
+      dataIndex: 'itemFinalPrice',
+      key: 'itemFinalPrice',
       width: 140,
       ellipsis: true,
     },
@@ -124,21 +115,55 @@ export const confirmedOrderItemsTableColumns: ColumnsType<ConfirmedOrderItemData
       ellipsis: true,
     },
     {
-      title: '정산비율(퇴점한 경우 70)',
-      dataIndex: 'settlePolicyRate',
-      key: 'settlePolicyRate',
-      render: (_, { seller }) => seller?.settlePolicy.rate ?? 70,
+      title: '결제액(상품판매가*수량+배송비-포인트)',
+      dataIndex: 'paidAmount',
+      key: 'paidAmount',
+      render: (_, { itemFinalPrice, shippingFee, quantity, usedPointAmount }) =>
+        itemFinalPrice * quantity + shippingFee - usedPointAmount,
       width: 140,
       ellipsis: true,
     },
     {
-      title: '정산기준액(상품공급가*수량+배송비)*정산비율',
+      title: '공급가',
+      dataIndex: 'itemSellPrice',
+      key: 'itemSellPrice',
+      width: 140,
+      ellipsis: true,
+    },
+    {
+      title: '옵션추가금액',
+      dataIndex: 'productPriceVariant',
+      key: 'productPriceVariant',
+      width: 140,
+      ellipsis: true,
+    },
+    {
+      title: '정산비율(퇴점한 경우 70)',
+      dataIndex: 'settlePolicyRate',
+      key: 'settlePolicyRate',
+      render: (_, { campaign, seller }) =>
+        campaign?.rate ?? seller?.settlePolicy.rate ?? 70,
+      width: 140,
+      ellipsis: true,
+    },
+    {
+      title: '정산기준액((공급가+옵션추가금액)*수량+배송비)*정산비율',
       dataIndex: 'settleAmount',
       key: 'settleAmount',
-      render: (_, { item, shippingFee, quantity, seller }) =>
+      render: (
+        _,
+        {
+          itemSellPrice,
+          productPriceVariant,
+          shippingFee,
+          quantity,
+          seller,
+          campaign,
+        }
+      ) =>
         Math.floor(
-          ((item.sellPrice * quantity + shippingFee) *
-            (seller?.settlePolicy.rate ?? 70)) /
+          (((itemSellPrice + productPriceVariant) * quantity + shippingFee) *
+            (campaign?.rate ?? seller?.settlePolicy.rate ?? 70)) /
             100
         ),
       width: 140,
