@@ -1,19 +1,26 @@
 .wrapper {
-  textarea,
-  input {
-    width: 500px;
-  }
+  display: flex;
+  flex-direction: row;
 
-  button {
-    background-color: red;
-    color: white;
-    font-size: 32px;
+  .edit {
+    margin-right: 20px;
 
-    width: 500px;
-    height: 200px;
+    textarea,
+    input {
+      width: 500px;
+    }
 
-    &:hover {
-      background-color: crimson;
+    button {
+      background-color: red;
+      color: white;
+      font-size: 32px;
+
+      width: 500px;
+      height: 200px;
+
+      &:hover {
+        background-color: crimson;
+      }
     }
   }
 }
