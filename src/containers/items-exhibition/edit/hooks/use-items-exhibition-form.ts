@@ -15,6 +15,7 @@ export type ItemsExhibitionFormType = Pick<
   | 'backgroundColor'
   | 'order'
   | 'isVisible'
+  | 'videoId'
 > & {
   itemIds: number[];
   itemIdsStr: string;
@@ -72,6 +73,7 @@ const INITIAL_FORM: ItemsExhibitionFormType = {
   isVisible: true,
   itemIds: [],
   itemIdsStr: '',
+  videoId: null,
 };
 
 const serialize = (input: ItemsExhibition): ItemsExhibitionFormType => ({
@@ -85,4 +87,5 @@ const serialize = (input: ItemsExhibition): ItemsExhibitionFormType => ({
   isVisible: input.isVisible,
   itemIds: input.items.map((v) => v.id),
   itemIdsStr: input.items.map((v) => v.id).join(', '),
+  videoId: input.videoId,
 });

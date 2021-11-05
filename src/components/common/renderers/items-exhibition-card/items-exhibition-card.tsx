@@ -12,6 +12,7 @@ type ItemsExhibitionCardProps = Pick<
   | 'imageRight'
   | 'title'
   | 'description'
+  | 'videoId'
 > & {
   items: { id: number }[] | Item[];
 };
@@ -30,6 +31,7 @@ export default function ItemsExhibitionCard(props: ItemsExhibitionCardProps) {
         />
         <h3>{props.title}</h3>
         {props.description && <p>{props.description}</p>}
+        {props.videoId && <button>ONLINE NOW</button>}
       </div>
       <div className={styles.items}>
         <div>

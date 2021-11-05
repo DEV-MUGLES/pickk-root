@@ -18,6 +18,7 @@ const UPDATE_ROOT_ITEMS_EXHIBITION = gql`
 
       order
       isVisible
+      videoId
 
       items {
         id

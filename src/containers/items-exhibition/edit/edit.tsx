@@ -15,6 +15,12 @@ export default function ItemsExhibitionEditContainer({ id }: { id?: number }) {
   const handleInputChange = (e: any) => {
     if (e.target.name === 'isVisible') {
       handleFieldChange(e.target.name, e.target.checked);
+    } else if (e.target.name === 'videoId') {
+      console.log(e.target.value, typeof e.target.value);
+      handleFieldChange(
+        e.target.name,
+        ['', '0'].includes(e.target.value) ? null : Number(e.target.value)
+      );
     } else {
       handleFieldChange(
         e.target.name,
@@ -91,6 +97,13 @@ export default function ItemsExhibitionEditContainer({ id }: { id?: number }) {
         <input
           name="itemIdsStr"
           value={form.itemIdsStr}
+          onChange={handleInputChange}
+        />
+        <h4>비디오ID (선택)</h4>
+        <input
+          type="number"
+          name="videoId"
+          value={form.videoId}
           onChange={handleInputChange}
         />
         <br />

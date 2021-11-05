@@ -15,6 +15,7 @@ const GET_ITEMS_EXHIBITION = gql`
 
       order
       isVisible
+      videoId
 
       items {
         id
