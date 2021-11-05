@@ -20,6 +20,8 @@ const GET_INQUIRY = gql`
       user {
         id
         nickname
+        oauthProvider
+        oauthCode
       }
       orderItemMerchantUid
       orderItem {
@@ -52,7 +54,7 @@ type InquiryDetailDataType = Pick<
   | 'orderItemMerchantUid'
 > & {
   item: Pick<Item, 'id' | 'imageUrl' | 'name'>;
-  user: Pick<User, 'id' | 'nickname'>;
+  user: Pick<User, 'id' | 'nickname' | 'oauthProvider' | 'oauthCode'>;
   orderItem: Pick<
     OrderItem,
     'id' | 'merchantUid' | 'productVariantName' | 'quantity'

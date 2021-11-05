@@ -30,7 +30,7 @@ type InquiryDetailContentSectionProps = Pick<
   Inquiry,
   'isAnswered' | 'isSecret' | 'type' | 'title' | 'content' | 'createdAt'
 > & {
-  user: Pick<User, 'id' | 'nickname'>;
+  user: Pick<User, 'id' | 'nickname' | 'oauthProvider' | 'oauthCode'>;
 };
 
 export default function InquiryDetailContentSection(
@@ -51,6 +51,9 @@ export default function InquiryDetailContentSection(
         <Divider />
         <Text>작성일시: {getCreatedAtText(createdAt)}</Text>
         <Text>작성자(닉네임): {user.nickname}</Text>
+        <Text>
+          작성자 치트로그인 정보: {user.oauthProvider} / {user.oauthCode}
+        </Text>
       </section>
     </div>
   );
